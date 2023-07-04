@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, BackHandler } from "react-native"
+import { View, Text, TouchableOpacity, StyleSheet} from "react-native"
 import Container from "../../components/ui/Container"
 
 const Auth = () => {

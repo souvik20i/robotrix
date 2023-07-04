@@ -10,7 +10,7 @@ const Button = ({ label, onPress, dark = false }) => {
         <TouchableOpacity onPress={onPress}>
             <Text style={{
                 ...styles.label,
-                color: dark ? colors.textLight : 'black'
+                color: dark ? colors.textLight : colors.textDark
             }}>{label}</Text>
         </TouchableOpacity>
     </View>)
@@ -18,15 +18,15 @@ const Button = ({ label, onPress, dark = false }) => {
 
 const styles = StyleSheet.create({
     button: {
-        paddingVertical: 10,
-        paddingHorizontal: 50,
         borderRadius: 50,
         elevation: 5
     },
     label: {
         fontWeight: 'bold',
         fontSize: 30,
-        textAlign: 'center'
+        textAlign: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 50,
     }
 })
 
