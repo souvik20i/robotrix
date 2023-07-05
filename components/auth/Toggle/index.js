@@ -1,20 +1,56 @@
+import { useState } from "react"
 import { View, Text, StyleSheet } from "react-native"
 
 import colors from "../../../public/colors"
 
 const Toggle = () => {
+    const [isSigninActive, setIsSigninActive] = useState(true)
+    const signinHandler = () => setIsSigninActive(true)
+    const signupHandler = () => setIsSigninActive(false)
+
     return (<View style={styles.toggle}>
-        <Text>Toggle 1</Text>
-        <Text>Toggle 2</Text>
+        <Text
+            style={{
+                ...styles.tab, ...styles.signin,
+                backgroundColor: isSigninActive ? colors.bgPrimary : colors.textBg,
+                color: isSigninActive ? colors.textLight : colors.textDark
+            }}
+            onPress={signinHandler}>
+            Sign In
+        </Text>
+        <Text
+            style={{
+                ...styles.tab, ...styles.signup,
+                backgroundColor: !isSigninActive ? colors.bgPrimary : colors.textBg,
+                color: !isSigninActive ? colors.textLight : colors.textDark
+            }}
+            onPress={signupHandler}>
+            Sign Up
+        </Text>
     </View>)
 }
 
 const styles = StyleSheet.create({
     toggle: {
-        width: '50%',
-        backgroundColor: colors.bgSecondary,
+        backgroundColor: colors.textBg,
         flexDirection: 'row',
-        borderRadius: 20
+        borderRadius: 50,
+        padding: 5
+    },
+    tab: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        paddingVertical: 15,
+        paddingHorizontal: 35,
+        borderRadius: 50
+    },
+    signin: {
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0
+    },
+    signup: {
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0
     }
 })
 
