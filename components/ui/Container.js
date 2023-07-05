@@ -1,6 +1,8 @@
 import { View, StyleSheet, StatusBar } from "react-native"
 
-const Container = ({ style, children }) => {
+import colors from "../../public/colors"
+
+const Container = ({ style = {}, children }) => {
     return (<View style={{
         ...styles.container,
         ...style
@@ -12,7 +14,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: colors.bgPrimary,
         paddingTop: StatusBar.currentHeight
     }
 })

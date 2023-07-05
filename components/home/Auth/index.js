@@ -3,6 +3,7 @@ import { useRouter } from "expo-router"
 import { useDispatch } from "react-redux"
 
 import Button from "../../ui/Button"
+import HelperText from "../../ui/HelperText"
 
 import { authActions } from "../../../store/authSlice"
 import colors from "../../../public/colors"
@@ -24,7 +25,7 @@ const Auth = () => {
     return (<View style={styles.auth}>
         <Button label={'Sign In'} onPress={signinHandler} />
         <View style={styles.alternative}>
-            <Text style={styles.altText}>Don't have an account?</Text>
+            <HelperText label={"Don't have an account?"} />
             <TouchableOpacity style={styles.altAuth} onPress={signupHandler}>
                 <Text style={styles.altAuthText}>Sign Up</Text>
             </TouchableOpacity>
@@ -40,23 +41,18 @@ const styles = StyleSheet.create({
     },
     alternative: {
         alignItems: 'center',
-        padding: 20
-    },
-    altText: {
-        fontWeight: 'bold',
-        color: colors.textBg
+        paddingTop: 30
     },
     altAuth: {
-        padding: 20,
         paddingBottom: 10
     },
     altAuthText: {
         fontWeight: 'bold',
         fontSize: 20,
-        color: colors.textBg
+        color: colors.textLight
     },
     bar: {
-        backgroundColor: colors.textBg,
+        backgroundColor: colors.textLight,
         height: 2,
         width: '100%'
     }

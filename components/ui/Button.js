@@ -2,10 +2,11 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
 
 import colors from "../../public/colors"
 
-const Button = ({ label, onPress, dark = false }) => {
+const Button = ({ label, onPress = () => { }, dark = false, style = {} }) => {
     return (<View style={{
         ...styles.button,
-        backgroundColor: dark ? colors.bgPrimary : colors.textBg
+        backgroundColor: dark ? colors.bgSecondary : colors.textBg,
+        ...style
     }}>
         <TouchableOpacity onPress={onPress}>
             <Text style={{

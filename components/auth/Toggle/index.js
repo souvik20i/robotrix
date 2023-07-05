@@ -14,8 +14,8 @@ const Toggle = () => {
         <Text
             style={{
                 ...styles.tab, ...styles.signin,
-                backgroundColor: isSigninActive ? colors.bgPrimary : colors.textBg,
-                color: isSigninActive ? colors.textLight : colors.textDark
+                backgroundColor: isSigninActive ? colors.bgSecondary : colors.textBg,
+                color: isSigninActive ? colors.bgPrimary : colors.textDark
             }}
             onPress={signinHandler}>
             Sign In
@@ -23,8 +23,8 @@ const Toggle = () => {
         <Text
             style={{
                 ...styles.tab, ...styles.signup,
-                backgroundColor: !isSigninActive ? colors.bgPrimary : colors.textBg,
-                color: !isSigninActive ? colors.textLight : colors.textDark
+                backgroundColor: !isSigninActive ? colors.bgSecondary : colors.textBg,
+                color: !isSigninActive ? colors.bgPrimary : colors.textDark
             }}
             onPress={signupHandler}>
             Sign Up

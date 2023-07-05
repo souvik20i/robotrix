@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         height: 200
     },
     title: {
-        color: colors.textBg,
+        color: colors.textLight,
         fontSize: 50,
         fontWeight: 'bold',
         padding: 20
