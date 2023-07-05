@@ -1,12 +1,14 @@
-import { useState } from "react"
 import { View, Text, StyleSheet } from "react-native"
+import { useDispatch, useSelector } from "react-redux"
 
+import { authActions } from "../../../store/authSlice"
 import colors from "../../../public/colors"
 
 const Toggle = () => {
-    const [isSigninActive, setIsSigninActive] = useState(true)
-    const signinHandler = () => setIsSigninActive(true)
-    const signupHandler = () => setIsSigninActive(false)
+    const dispatch = useDispatch()
+    const isSigninActive = useSelector(state => state.auth.isSigninActive)
+    const signinHandler = () => dispatch(authActions.turnToSignin())
+    const signupHandler = () => dispatch(authActions.turnToSignup())
 
     return (<View style={styles.toggle}>
         <Text
