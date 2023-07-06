@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native"
+import { View, ScrollView, StyleSheet } from "react-native"
 import { useDispatch } from "react-redux"
 
 import SigninButton from "./SigninButton"
@@ -26,10 +26,10 @@ const Signin = () => {
     }
 
     return (<Container style={styles.container}>
-        <View style={styles.fields}>
+        <ScrollView style={styles.fields}>
             <Input label={'Phone / Email'} onChange={phoneEmailChangeHandler} />
             <Input label={'Password'} onChange={passwordChangeHandler} secured />
-        </View>
+        </ScrollView>
         <View style={styles.actions}>
             <SigninButton />
             <HelperText label={'Forgot your password?'} dark />
