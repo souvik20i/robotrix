@@ -2,10 +2,14 @@ import { View, Text, TextInput, StyleSheet } from "react-native"
 
 import colors from "../../public/colors"
 
-const Input = ({ label, secured = false }) => {
+const Input = ({ label, onChange, secured = false }) => {
     return (<View style={styles.block}>
         <Text style={styles.label}>{label}</Text>
-        <TextInput style={styles.input} secureTextEntry={secured} />
+        <TextInput
+            style={styles.input}
+            onChangeText={onChange}
+            secureTextEntry={secured}
+        />
     </View>)
 }
 

@@ -1,18 +1,37 @@
 import { View, StyleSheet } from "react-native"
+import { useDispatch } from "react-redux"
 
+import SigninButton from "./SigninButton"
 import Container from "../../ui/Container"
 import Input from "../../ui/Input"
-import Button from "../../ui/Button"
 import HelperText from "../../ui/HelperText"
 
+import { authActions } from "../../../store/authSlice"
+
 const Signin = () => {
+    const dispatch = useDispatch()
+
+    const phoneEmailChangeHandler = value => {
+        if (isNaN(value)) {
+            dispatch(authActions.changeSigninEmail(value))
+            dispatch(authActions.changeSigninPhone(''))
+        } else {
+            dispatch(authActions.changeSigninPhone(value))
+            dispatch(authActions.changeSigninEmail(''))
+        }
+    }
+
+    const passwordChangeHandler = value => {
+        dispatch(authActions.changeSigninPassword(value))
+    }
+
     return (<Container style={styles.container}>
         <View style={styles.fields}>
-            <Input label={'Phone / Email'} />
-            <Input label={'Password'} secured />
+            <Input label={'Phone / Email'} onChange={phoneEmailChangeHandler} />
+            <Input label={'Password'} onChange={passwordChangeHandler} secured />
         </View>
         <View style={styles.actions}>
-            <Button label={'Signin'} dark />
+            <SigninButton />
             <HelperText label={'Forgot your password?'} dark />
         </View>
     </Container>)
