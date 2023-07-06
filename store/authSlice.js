@@ -3,7 +3,21 @@ import { createSlice } from "@reduxjs/toolkit";
 const authSlice = createSlice({
     name: 'authentication',
     initialState: {
-        isSigninActive: true
+        isSigninActive: true,
+        signin: {
+            phone: '',
+            email: '',
+            password: ''
+        },
+        signup: {
+            name: '',
+            email: '',
+            enrollment: '',
+            phone: '',
+            city: '',
+            stream: '',
+            tenure: ''
+        }
     },
     reducers: {
         turnToSignin(state) {
@@ -11,7 +25,11 @@ const authSlice = createSlice({
         },
         turnToSignup(state) {
             state.isSigninActive = false
-        }
+        },
+        changeSigninPhone(state,action){},
+        changeSigninEmail(state,action){},
+        changeSigninPassword(state,action){},
+
     }
 })
 

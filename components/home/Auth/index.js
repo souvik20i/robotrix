@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     },
     alternative: {
         alignItems: 'center',
-        paddingTop: 30
+        paddingTop: 10
     },
     altAuth: {
         paddingBottom: 10

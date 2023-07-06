@@ -20,6 +20,7 @@ const Button = ({ label, onPress = () => { }, dark = false, style = {} }) => {
 const styles = StyleSheet.create({
     button: {
         borderRadius: 50,
+        marginVertical: 20,
         elevation: 5
     },
     label: {
