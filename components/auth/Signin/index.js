@@ -1,16 +1,16 @@
-import { View, ScrollView, StyleSheet } from "react-native"
-import { useDispatch } from "react-redux"
+import { View, StyleSheet } from "react-native"
+import { useDispatch, useSelector } from "react-redux"
 
 import SigninButton from "./SigninButton"
 import Container from "../../ui/Container"
-import Input from "../../ui/Input"
+import Form from "../../ui/Form"
 import HelperText from "../../ui/HelperText"
 
 import { authActions } from "../../../store/authSlice"
 
 const Signin = () => {
     const dispatch = useDispatch()
-
+    const signin = useSelector(state => state.auth.signin)
     const phoneEmailChangeHandler = value => {
         if (isNaN(value)) {
             dispatch(authActions.changeSigninEmail(value))
@@ -20,16 +20,20 @@ const Signin = () => {
             dispatch(authActions.changeSigninEmail(''))
         }
     }
-
     const passwordChangeHandler = value => {
         dispatch(authActions.changeSigninPassword(value))
     }
 
+    const labels = ['Phone / Email', 'Password']
+    const handlers = [phoneEmailChangeHandler, passwordChangeHandler]
+    const validity = [signin.isPhoneValid || signin.isEmailValid, signin.isPasswordValid]
+
     return (<Container style={styles.container}>
-        <ScrollView style={styles.fields}>
-            <Input label={'Phone / Email'} onChange={phoneEmailChangeHandler} />
-            <Input label={'Password'} onChange={passwordChangeHandler} secured />
-        </ScrollView>
+        <Form
+            labels={labels}
+            handlers={handlers}
+            validity={validity}
+        />
         <View style={styles.actions}>
             <SigninButton />
             <HelperText label={'Forgot your password?'} dark />
@@ -40,9 +44,6 @@ const Signin = () => {
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'space-between'
-    },
-    fields: {
-        width: '100%'
     },
     actions: {
         alignItems: 'center'

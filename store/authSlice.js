@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+const phonePattern = /^\d{10}$/
+
 const authSlice = createSlice({
     name: 'authentication',
     initialState: {
@@ -7,7 +10,10 @@ const authSlice = createSlice({
         signin: {
             phone: '',
             email: '',
-            password: ''
+            password: '',
+            isPhoneValid: true,
+            isEmailValid: true,
+            isPasswordValid: true
         },
         signup: {
             name: '',
@@ -17,23 +23,72 @@ const authSlice = createSlice({
             password: '',
             city: '',
             stream: '',
-            tenure: ''
+            tenure: '',
+            isNameValid: true,
+            isEmailValid: true,
+            isEnrollmentvalid: true,
+            isPhoneValid: true,
+            isPasswordValid: true,
+            isCityValid: true,
+            isStreamValid: true,
+            isTenureValid: true
         }
     },
     reducers: {
-        turnToSignin(state) { state.isSigninActive = true },
-        turnToSignup(state) { state.isSigninActive = false },
-        changeSigninPhone(state, action) { state.signin.phone = action.payload },
-        changeSigninEmail(state, action) { state.signin.email = action.payload },
-        changeSigninPassword(state, action) { state.signin.password = action.payload },
-        changeSignupName(state, action) { state.signup.name = action.payload },
-        changeSignupEmail(state, action) { state.signup.email = action.payload },
-        changeSignupEnrollment(state, action) { state.signup.enrollment = action.payload },
-        changeSignupPhone(state, action) { state.signup.phone = action.payload },
-        changeSignupPassword(state, action) { state.signup.password = action.payload },
-        changeSignupCity(state, action) { state.signup.city = action.payload },
-        changeSignupStream(state, action) { state.signup.stream = action.payload },
-        changeSignupTenure(state, action) { state.signup.tenure = action.payload },
+        turnToSignin(state) {
+            state.isSigninActive = true
+        },
+        turnToSignup(state) {
+            state.isSigninActive = false
+        },
+        changeSigninPhone(state, action) {
+            const value = action.payload.trim()
+            state.signin.phone = value
+            state.signin.isPhoneValid = value.match(phonePattern)
+        },
+        changeSigninEmail(state, action) {
+            const value = action.payload.trim()
+            state.signin.email = value
+            state.signin.isEmailValid = value.match(emailPattern)
+        },
+        changeSigninPassword(state, action) {
+            const value = action.payload.trim()
+            state.signin.password = value
+        },
+        changeSignupName(state, action) {
+            const value = action.payload.trim()
+            state.signup.name = value
+        },
+        changeSignupEmail(state, action) {
+            const value = action.payload.trim()
+            state.signup.email = value
+            state.signup.isEmailValid = value.match(emailPattern)
+        },
+        changeSignupEnrollment(state, action) {
+            const value = action.payload.trim()
+            state.signup.enrollment = value
+        },
+        changeSignupPhone(state, action) {
+            const value = action.payload.trim()
+            state.signup.phone = value
+            state.signup.isPhoneValid = value.match(phonePattern)
+        },
+        changeSignupPassword(state, action) {
+            const value = action.payload.trim()
+            state.signup.password = value
+        },
+        changeSignupCity(state, action) {
+            const value = action.payload.trim()
+            state.signup.city = value
+        },
+        changeSignupStream(state, action) {
+            const value = action.payload.trim()
+            state.signup.stream = value
+        },
+        changeSignupTenure(state, action) {
+            const value = action.payload.trim()
+            state.signup.tenure = value
+        }
     }
 })
 

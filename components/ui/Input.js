@@ -2,11 +2,14 @@ import { View, Text, TextInput, StyleSheet } from "react-native"
 
 import colors from "../../public/colors"
 
-const Input = ({ label, onChange, secured = false }) => {
+const Input = ({ label, onChange, isValid = true, secured = false }) => {
     return (<View style={styles.block}>
         <Text style={styles.label}>{label}</Text>
         <TextInput
-            style={styles.input}
+            style={{
+                ...styles.input,
+                borderColor: isValid ? colors.bgSecondary : 'red'
+            }}
             onChangeText={onChange}
             secureTextEntry={secured}
             selectionColor={colors.textDark}
@@ -17,13 +20,12 @@ const Input = ({ label, onChange, secured = false }) => {
 const styles = StyleSheet.create({
     block: {
         width: '100%',
-        padding: 20,
+        padding: 20
     },
     input: {
         fontSize: 20,
         borderBottomWidth: 2,
-        borderColor: colors.bgSecondary,
-        paddingBottom: 7,
+        paddingBottom: 7
     },
     label: {
         fontSize: 17,
