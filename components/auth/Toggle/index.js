@@ -13,18 +13,20 @@ const Toggle = () => {
     return (<View style={styles.toggle}>
         <Text
             style={{
-                ...styles.tab, ...styles.signin,
-                backgroundColor: isSigninActive ? colors.bgSecondary : colors.textBg,
-                color: isSigninActive ? colors.bgPrimary : colors.textDark
+                ...styles.tab,
+                backgroundColor: isSigninActive ? colors.bgSecondary : colors.textBg + '80',
+                color: isSigninActive ? colors.bgPrimary : colors.textDark,
+                opacity: isSigninActive ? 1 : 0.5
             }}
             onPress={signinHandler}>
             Sign In
         </Text>
         <Text
             style={{
-                ...styles.tab, ...styles.signup,
-                backgroundColor: !isSigninActive ? colors.bgSecondary : colors.textBg,
-                color: !isSigninActive ? colors.bgPrimary : colors.textDark
+                ...styles.tab,
+                backgroundColor: !isSigninActive ? colors.bgSecondary : colors.textBg + '80',
+                color: !isSigninActive ? colors.bgPrimary : colors.textDark,
+                opacity: !isSigninActive ? 1 : 0.5
             }}
             onPress={signupHandler}>
             Sign Up
@@ -34,10 +36,9 @@ const Toggle = () => {
 
 const styles = StyleSheet.create({
     toggle: {
-        backgroundColor: colors.textBg,
+        backgroundColor: colors.textBg + '80',
         flexDirection: 'row',
-        borderRadius: 50,
-        padding: 5
+        borderRadius: 50
     },
     tab: {
         fontSize: 25,
@@ -45,14 +46,6 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         paddingHorizontal: 35,
         borderRadius: 50
-    },
-    signin: {
-        borderTopRightRadius: 0,
-        borderBottomRightRadius: 0
-    },
-    signup: {
-        borderTopLeftRadius: 0,
-        borderBottomLeftRadius: 0
     }
 })
 
