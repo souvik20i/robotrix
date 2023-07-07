@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
 import { useRouter } from "expo-router"
 import { useDispatch } from "react-redux"
+import { AntDesign } from "@expo/vector-icons"
 
 import Button from "../../ui/Button"
 import HelperText from "../../ui/HelperText"
@@ -28,8 +29,8 @@ const Auth = () => {
             <HelperText label={"Don't have an account?"} />
             <TouchableOpacity style={styles.altAuth} onPress={signupHandler}>
                 <Text style={styles.altAuthText}>Sign Up</Text>
+                <AntDesign name="arrowright" style={styles.arrow} size={24} color="white" />
             </TouchableOpacity>
-            <View style={styles.bar} />
         </View>
     </View>)
 }
@@ -44,17 +45,17 @@ const styles = StyleSheet.create({
         paddingTop: 10
     },
     altAuth: {
-        paddingBottom: 10
+        flexDirection: 'row',
+        alignItems: 'center',
     },
     altAuthText: {
         fontWeight: 'bold',
         fontSize: 20,
-        color: colors.textLight
+        color: colors.textLight,
+        marginRight: 7
     },
-    bar: {
-        backgroundColor: colors.textLight,
-        height: 2,
-        width: '100%'
+    arrow: {
+        paddingTop: 5
     }
 })
 
