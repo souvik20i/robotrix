@@ -1,12 +1,20 @@
 import { useSelector } from "react-redux"
-import auth from "@react-native-firebase/auth"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { useRouter } from "expo-router"
 
 import Button from "../../ui/Button"
 
+const auth = getAuth()
+
 const SigninButton = () => {
     const { phone, email, password } = useSelector(state => state.auth.signin)
+    const router = useRouter()
+    const emailSignin = async () => {
+        await signInWithEmailAndPassword(auth, email, password)
+        router.replace('/')
+    }
     const signinHandler = () => {
-        auth().signInWithEmailAndPassword(email, password)
+        emailSignin().catch(err => console.error(err))
     }
     return (<Button label={'Signin'} onPress={signinHandler} dark />)
 }

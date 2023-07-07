@@ -1,10 +1,14 @@
 import { ImageBackground, StyleSheet } from "react-native";
 
+import useAuthentication from "../hooks/use-authentication";
+
 import Container from "../components/ui/Container"
 import Title from "../components/home/Title";
 import Auth from "../components/home/Auth";
+import Button from "../components/ui/Button";
 
 const Home = () => {
+    const user = useAuthentication()
     return (<Container style={styles.container}>
         <ImageBackground
             source={require('../public/landingBg.jpg')}
@@ -12,7 +16,7 @@ const Home = () => {
             style={styles.background}
         >
             <Title />
-            <Auth />
+            {user ? <Button label={'Start Learning'} /> : <Auth />}
         </ImageBackground>
     </Container>);
 }

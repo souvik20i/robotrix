@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
-    "@react-native-firebase/auth": "^18.1.0",
     "@reduxjs/toolkit": "^1.9.5",
     "expo": "^48.0.7",
     "expo-constants": "~14.2.1",
@@ -15,6 +14,7 @@
     "expo-router": "^1.2.0",
     "expo-splash-screen": "~0.18.1",
     "expo-status-bar": "~1.4.2",
+    "firebase": "^10.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.71.8",
