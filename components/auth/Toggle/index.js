@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 import Tab from "./Tab"
 
-import { authActions } from "../../../store/authSlice"
+import { authActions } from "../../../store/auth-slice"
 import colors from "../../../public/colors"
 
 const Toggle = () => {

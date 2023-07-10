@@ -1,10 +1,9 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
 
-import Container from "../../ui/Container"
 import colors from "../../../public/colors"
 
 const QuestionBar = ({ questions }) => {
-    return (<Container style={styles.container}>
+    return (<View style={styles.bar}>
         <Text style={styles.header}>Questions</Text>
         <View style={styles.blocks}>
             {questions.map((q, i) => <View key={i} style={styles.block}>
@@ -13,16 +12,18 @@ const QuestionBar = ({ questions }) => {
                 </TouchableOpacity>
             </View>)}
         </View>
-    </Container >)
+    </View >)
 }
 
 const styles = StyleSheet.create({
-    container: {
+    bar: {
         width: '90%',
+        alignItems: 'center',
+        padding: 20
     },
     header: {
         fontSize: 30,
-        padding: 15,
+        paddingBottom: 15,
         color: colors.textDark
     },
     blocks: {
