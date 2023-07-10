@@ -1,12 +1,11 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
 import { useRouter } from "expo-router"
 import { useDispatch } from "react-redux"
+import { authActions } from "../../../store/auth-slice"
 import { AntDesign } from "@expo/vector-icons"
 
 import Button from "../../ui/Button"
 import HelperText from "../../ui/HelperText"
-
-import { authActions } from "../../../store/auth-slice"
 import colors from "../../../public/colors"
 
 const Auth = () => {

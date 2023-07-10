@@ -1,4 +1,5 @@
 import { Text, StyleSheet } from "react-native"
+
 import colors from "../../../public/colors"
 
 const Tab = ({ label, activeState, onPress }) => {

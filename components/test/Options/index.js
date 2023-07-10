@@ -6,12 +6,7 @@ import Radio from "../../ui/Radio"
 const Options = ({ labels }) => {
     return (<Card>
         <Text style={styles.header}>Choose the correct option</Text>
-        {labels.map(label =>
-            <Radio
-                key={label}
-                label={label}
-            />)
-        }
+        {labels.map((label, i) => <Radio key={i} label={label} />)}
     </Card>)
 }
 

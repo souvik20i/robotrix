@@ -1,16 +1,13 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
 
+import Block from "./Block"
 import colors from "../../../public/colors"
 
 const QuestionBar = ({ questions }) => {
     return (<View style={styles.bar}>
         <Text style={styles.header}>Questions</Text>
         <View style={styles.blocks}>
-            {questions.map((q, i) => <View key={i} style={styles.block}>
-                <TouchableOpacity>
-                    <Text style={styles.serial}>{i + 1}</Text>
-                </TouchableOpacity>
-            </View>)}
+            {questions.map((q, i) => <Block key={i} serial={i + 1} question={q} />)}
         </View>
     </View >)
 }
@@ -28,17 +25,6 @@ const styles = StyleSheet.create({
     },
     blocks: {
         flexDirection: 'row'
-    },
-    block: {
-        backgroundColor: colors.bgSecondary,
-        margin: 5,
-        borderRadius: 10
-    },
-    serial: {
-        color: colors.textLight,
-        fontSize: 20,
-        paddingVertical: 5,
-        paddingHorizontal: 10,
     }
 })
 

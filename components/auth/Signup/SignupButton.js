@@ -1,6 +1,6 @@
+import { useRouter } from "expo-router"
 import { useSelector } from "react-redux"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
-import { useRouter } from "expo-router"
 
 import Button from "../../ui/Button"
 

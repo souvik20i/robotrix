@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
+import { authActions } from "../../../store/auth-slice"
 
 import SigninButton from "./SigninButton"
 import Container from "../../ui/Container"
 import Form from "../../ui/Form"
 import HelperText from "../../ui/HelperText"
-
-import { authActions } from "../../../store/auth-slice"
 
 const Signin = () => {
     const dispatch = useDispatch()
