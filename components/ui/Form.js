@@ -10,7 +10,7 @@ const Form = ({ labels, handlers, validity }) => {
                 label={label}
                 onChange={handlers[i]}
                 isValid={validity[i]}
-                secured={i == 1}
+                secured={label === 'Password'}
             />)
         }
     </ScrollView>)

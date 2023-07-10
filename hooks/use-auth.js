@@ -3,7 +3,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 const auth = getAuth()
 
-const useAuthentication = () => {
+const useAuth = () => {
     const [user, setUser] = useState(null)
 
     useEffect(() => {
@@ -16,4 +16,4 @@ const useAuthentication = () => {
     return user
 }
 
-export default useAuthentication
+export default useAuth
