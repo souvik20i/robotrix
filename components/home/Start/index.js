@@ -1,10 +1,15 @@
 import { View, StyleSheet } from "react-native"
+import { useRouter } from "expo-router"
 
 import Button from "../../ui/Button"
 
 const Start = () => {
+    const router = useRouter()
+    const startHandler = () => {
+        router.push('/modules/1/assesment')
+    }
     return (<View style={styles.start}>
-        <Button label={'Start Learning'} />
+        <Button label={'Start Learning'} onPress={startHandler}/>
     </View>)
 }
 

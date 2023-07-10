@@ -1,5 +1,6 @@
 import { View, StyleSheet } from "react-native"
 import { useSelector } from "react-redux"
+import { Stack } from "expo-router"
 
 import Container from "../../components/ui/Container"
 import Toggle from "../../components/auth/Toggle"
@@ -9,6 +10,7 @@ import Signup from "../../components/auth/Signup"
 const Auth = () => {
     const isSigninActive = useSelector(state => state.auth.isSigninActive)
     return (<Container>
+        <Stack.Screen options={{ headerShown: false }} />
         <Toggle />
         <View style={styles.interface}>
             {isSigninActive ? <Signin /> : <Signup />}
@@ -19,7 +21,7 @@ const Auth = () => {
 const styles = StyleSheet.create({
     interface: {
         flex: 0.8,
-        width:'100%'
+        width: '90%'
     }
 })
 

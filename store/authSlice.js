@@ -18,17 +18,17 @@ const authSlice = createSlice({
         signup: {
             name: '',
             email: '',
-            enrollment: '',
-            phone: '',
             password: '',
+            phone: '',
+            enrollment: '',
             city: '',
             stream: '',
             tenure: '',
             isNameValid: true,
             isEmailValid: true,
-            isEnrollmentvalid: true,
-            isPhoneValid: true,
             isPasswordValid: true,
+            isPhoneValid: true,
+            isEnrollmentvalid: true,
             isCityValid: true,
             isStreamValid: true,
             isTenureValid: true
@@ -64,18 +64,18 @@ const authSlice = createSlice({
             state.signup.email = value
             state.signup.isEmailValid = value.match(emailPattern)
         },
-        changeSignupEnrollment(state, action) {
+        changeSignupPassword(state, action) {
             const value = action.payload.trim()
-            state.signup.enrollment = value
+            state.signup.password = value
         },
         changeSignupPhone(state, action) {
             const value = action.payload.trim()
             state.signup.phone = value
             state.signup.isPhoneValid = value.match(phonePattern)
         },
-        changeSignupPassword(state, action) {
+        changeSignupEnrollment(state, action) {
             const value = action.payload.trim()
-            state.signup.password = value
+            state.signup.enrollment = value
         },
         changeSignupCity(state, action) {
             const value = action.payload.trim()

@@ -1,4 +1,5 @@
 import { ImageBackground, StyleSheet } from "react-native";
+import { Stack } from "expo-router";
 
 import useAuth from "../hooks/use-auth";
 
@@ -10,6 +11,7 @@ import Start from "../components/home/Start";
 const Home = () => {
     const user = useAuth()
     return (<Container style={styles.container}>
+        <Stack.Screen options={{ headerShown: false }} />
         <ImageBackground
             source={require('../public/landingBg.jpg')}
             resizeMode='cover'

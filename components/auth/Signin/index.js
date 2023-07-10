@@ -1,4 +1,3 @@
-import { View, StyleSheet } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 
 import SigninButton from "./SigninButton"
@@ -28,26 +27,15 @@ const Signin = () => {
     const handlers = [phoneEmailChangeHandler, passwordChangeHandler]
     const validity = [signin.isPhoneValid || signin.isEmailValid, signin.isPasswordValid]
 
-    return (<Container style={styles.container}>
+    return (<Container>
         <Form
             labels={labels}
             handlers={handlers}
             validity={validity}
         />
-        <View style={styles.actions}>
-            <SigninButton />
-            <HelperText label={'Forgot your password?'} dark />
-        </View>
+        <SigninButton />
+        <HelperText label={'Forgot your password?'} dark />
     </Container>)
 }
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'space-between'
-    },
-    actions: {
-        alignItems: 'center'
-    }
-})
 
 export default Signin

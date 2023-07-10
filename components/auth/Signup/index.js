@@ -16,10 +16,10 @@ const Signup = () => {
         }
     }
 
-    const labels = ['Name', 'Email', 'Enrollment No.', 'Phone', 'Password', 'City', 'Stream', 'Course Tenure']
-    const actions = [authActions.changeSignupName, authActions.changeSignupEmail, authActions.changeSignupEnrollment, authActions.changeSignupPhone, authActions.changeSignupPassword, authActions.changeSignupCity, authActions.changeSignupStream, authActions.changeSignupTenure]
+    const labels = ['Name', 'Email', 'Password', 'Phone', 'Enrollment Number', 'City', 'Stream', 'Course Tenure']
+    const actions = [authActions.changeSignupName, authActions.changeSignupEmail, authActions.changeSignupPassword, authActions.changeSignupPhone, authActions.changeSignupEnrollment, authActions.changeSignupCity, authActions.changeSignupStream, authActions.changeSignupTenure]
     const handlers = actions.map(action => generateChangeHandler(action))
-    const validity = [signup.isNameValid, signup.isEmailValid, signup.isEnrollmentvalid, signup.isPhoneValid, signup.isPasswordValid, signup.isCityValid, signup.isStreamValid, signup.isTenureValid]
+    const validity = [signup.isNameValid, signup.isEmailValid, signup.isPasswordValid, signup.isPhoneValid, signup.isEnrollmentvalid, signup.isCityValid, signup.isStreamValid, signup.isTenureValid]
 
     return (<Container>
         <Form
