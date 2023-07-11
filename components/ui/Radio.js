@@ -5,11 +5,15 @@ import { testActions } from "../../store/test-slice"
 
 const Radio = ({ label }) => {
     const dispatch = useDispatch()
-    const option = useSelector(state => state.test.currentOption)
-    const optionChangeHandler = () => dispatch(testActions.changeCurrentOption(label))
+    const { serial } = useSelector(state => state.test.question)
+    const markedOption = useSelector(state => state.test.answers[serial])
+    const optionChangeHandler = () => dispatch(testActions.changeAnswers({
+        serial,
+        option: label
+    }))
     return (<View key={label} style={styles.option}>
         <RadioButton
-            status={(option === label) ? 'checked' : 'unchecked'}
+            status={(markedOption === label) ? 'checked' : 'unchecked'}
             onPress={optionChangeHandler}
         />
         <Text style={styles.label} onPress={optionChangeHandler}>{label}</Text>

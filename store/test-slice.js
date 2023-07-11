@@ -8,14 +8,18 @@ const testSilce = createSlice({
             content: '',
             options: []
         },
-        currentOption: ''
+        answers: {}
     },
     reducers: {
         changeQuestion(state, action) {
             state.question = action.payload
         },
-        changeCurrentOption(state, action) {2
-            state.currentOption = action.payload
+        changeAnswers(state, action) {
+            const { serial, option } = action.payload
+            state.answers[serial] = option
+        },
+        clearAnswers(state) {
+            state.answers = {}
         }
     }
 })

@@ -18,6 +18,7 @@ const Test = () => {
             serial: 1,
             ...questions[0]
         }))
+        dispatch(testActions.clearAnswers())
     }, [])
 
     const { module } = useLocalSearchParams()

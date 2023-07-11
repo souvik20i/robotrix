@@ -6,10 +6,13 @@ import colors from "../../../public/colors"
 
 const Block = ({ serial, question }) => {
     const dispatch = useDispatch()
-    const questionChangeHandler = () => dispatch(testActions.changeQuestion({
-        serial,
-        ...question
-    }))
+    const questionChangeHandler = () => {
+        dispatch(testActions.changeQuestion({
+            serial,
+            ...question
+        }))
+        
+    }
     return (<View style={styles.block}>
         <TouchableOpacity onPress={questionChangeHandler}>
             <Text style={styles.serial}>{serial}</Text>
