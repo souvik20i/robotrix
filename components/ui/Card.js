@@ -12,7 +12,7 @@ const Card = ({ children, style }) => {
 const styles = StyleSheet.create({
     card: {
         width: '90%',
-        backgroundColor: colors.textBg,
+        backgroundColor: colors.bgPrimary,
         padding: 20,
         marginVertical: 10,
         borderRadius: 20,

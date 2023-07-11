@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
     },
     header: {
         fontSize: 30,
-        paddingBottom: 15,
+        fontWeight: 'bold',
+        paddingBottom: 10,
         color: colors.textDark
     },
     blocks: {

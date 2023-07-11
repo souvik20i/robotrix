@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native"
 import { RadioButton } from "react-native-paper"
 import { useDispatch, useSelector } from "react-redux"
-import { testActions } from "../../store/test-slice"
+import { testActions } from "../../../store/test-slice"
 
 const Radio = ({ label }) => {
     const dispatch = useDispatch()

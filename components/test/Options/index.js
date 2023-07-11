@@ -1,7 +1,7 @@
 import { Text, StyleSheet } from "react-native"
 
 import Card from "../../ui/Card"
-import Radio from "../../ui/Radio"
+import Radio from "./Radio"
 
 const Options = ({ labels }) => {
     return (<Card>

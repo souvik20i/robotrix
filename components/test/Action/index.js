@@ -1,19 +1,19 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
+import { View, StyleSheet } from "react-native"
 import { useSelector } from "react-redux"
 
 import TurnPrev from "./TurnPrev"
 import TurnNext from "./TurnNext"
+import Clear from "./Clear"
+import Submit from "./Submit"
 import colors from "../../../public/colors"
+import questions from "../../../data/questions"
 
 const Action = () => {
-    const { answers } = useSelector(state => state.test)
-    const submitHandler = () => console.log(answers)
-
+    const { serial } = useSelector(state => state.test.question)
     return (<View style={styles.action}>
         <TurnPrev style={styles.turn} />
-        <TouchableOpacity onPress={submitHandler}>
-            <Text>Submit</Text>
-        </TouchableOpacity>
+        <Clear style={styles.actionButton} />
+        {serial === questions.length && <Submit style={styles.actionButton} />}
         <TurnNext style={styles.turn} />
     </View>)
 }
@@ -27,7 +27,13 @@ const styles = StyleSheet.create({
     },
     turn: {
         backgroundColor: colors.bgSecondary,
-        borderRadius: 10
+        borderRadius: 10,
+        elevation: 1
+    },
+    actionButton: {
+        backgroundColor: colors.bgSecondary,
+        borderRadius: 10,
+        elevation: 1
     }
 })
 

@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { StyleSheet } from "react-native"
+import { View, StyleSheet } from "react-native"
 import { Stack, useLocalSearchParams } from "expo-router"
 import { useDispatch, useSelector } from "react-redux"
 import { testActions } from "../../../../store/test-slice"
@@ -27,15 +27,22 @@ const Test = () => {
     return (<Container style={styles.container}>
         <Stack.Screen options={{ title: `Module ${module} Assessment` }} />
         <QuestionBar questions={questions} />
-        <Question serial={serial} content={content} />
-        <Options labels={options} />
+        <View style={styles.interaction}>
+            <Question serial={serial} content={content} />
+            <Options labels={options} />
+        </View>
         <Action />
     </Container>)
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.bgGrey
+        backgroundColor: colors.bgGrey,
+        justifyContent: 'space-between'
+    },
+    interaction: {
+        width: '100%',
+        alignItems: 'center'
     }
 })
 

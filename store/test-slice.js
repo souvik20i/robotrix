@@ -18,6 +18,9 @@ const testSilce = createSlice({
             const { serial, option } = action.payload
             state.answers[serial] = option
         },
+        clearCurrentAnswer(state) {
+            delete state.answers[state.question.serial]
+        },
         clearAnswers(state) {
             state.answers = {}
         }
