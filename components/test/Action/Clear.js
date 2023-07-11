@@ -18,8 +18,8 @@ const Clear = ({ style }) => {
 
 const styles = StyleSheet.create({
     clear: {
-        paddingHorizontal: 20,
-        paddingVertical: 10
+        paddingVertical: 10,
+        alignItems: 'center'
     },
     clearText: {
         fontSize: 20,

@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
         elevation: 1
     },
     actionButton: {
+        width: '35%',
         backgroundColor: colors.bgSecondary,
         borderRadius: 10,
         elevation: 1

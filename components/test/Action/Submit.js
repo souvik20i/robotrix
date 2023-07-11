@@ -17,8 +17,8 @@ const Submit = ({ style }) => {
 
 const styles = StyleSheet.create({
     submit: {
-        paddingHorizontal: 20,
-        paddingVertical: 10
+        paddingVertical: 10,
+        alignItems: 'center'
     },
     submitText: {
         fontSize: 20,
