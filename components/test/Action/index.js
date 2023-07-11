@@ -23,7 +23,9 @@ const styles = StyleSheet.create({
         width: '90%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 20
+        padding: 20,
+        position: 'absolute',
+        bottom: 20
     },
     turn: {
         backgroundColor: colors.bgSecondary,

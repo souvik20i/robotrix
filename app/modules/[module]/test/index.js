@@ -38,7 +38,7 @@ const Test = () => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.bgGrey,
-        justifyContent: 'space-between'
+        justifyContent: 'flex-start'
     },
     interaction: {
         width: '100%',
