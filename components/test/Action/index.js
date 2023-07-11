@@ -1,49 +1,20 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
-import { AntDesign } from '@expo/vector-icons'
-import { useDispatch, useSelector } from "react-redux"
-import { testActions } from "../../../store/test-slice"
+import { useSelector } from "react-redux"
 
-import questions from "../../../data/questions"
+import TurnPrev from "./TurnPrev"
+import TurnNext from "./TurnNext"
+import colors from "../../../public/colors"
 
 const Action = () => {
-    const dispatch = useDispatch()
-    let { serial } = useSelector(state => state.test.question)
     const { answers } = useSelector(state => state.test)
-
-    const prevQuestionHandler = () => {
-        if (serial == 1) serial = questions.length + 1
-        dispatch(testActions.changeQuestion({
-            serial: serial - 1,
-            ...questions[serial - 2]
-        }))
-    }
-
-    const nextQuestionHandler = () => {
-        if (serial == questions.length) serial = 0
-        dispatch(testActions.changeQuestion({
-            serial: serial + 1,
-            ...questions[serial]
-        }))
-    }
-
-    const submitHandler = () => {
-        console.log(answers)
-    }
+    const submitHandler = () => console.log(answers)
 
     return (<View style={styles.action}>
-        <TouchableOpacity onPress={prevQuestionHandler}>
-            <AntDesign name="left"
-                size={24}
-                color="black"
-            />
+        <TurnPrev style={styles.turn} />
+        <TouchableOpacity onPress={submitHandler}>
+            <Text>Submit</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={submitHandler}><Text>Submit</Text></TouchableOpacity>
-        <TouchableOpacity onPress={nextQuestionHandler}>
-            <AntDesign name="right"
-                size={24}
-                color="black"
-            />
-        </TouchableOpacity>
+        <TurnNext style={styles.turn} />
     </View>)
 }
 
@@ -53,6 +24,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         padding: 20
+    },
+    turn: {
+        backgroundColor: colors.bgSecondary,
+        borderRadius: 10
     }
 })
 

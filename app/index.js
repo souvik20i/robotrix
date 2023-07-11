@@ -10,7 +10,7 @@ import Start from "../components/home/Start";
 
 const Home = () => {
     const user = useAuth()
-    return (<Container style={styles.container}>
+    return (<Container>
         <Stack.Screen options={{ headerShown: false }} />
         <ImageBackground
             source={require('../public/landingBg.jpg')}
@@ -24,9 +24,6 @@ const Home = () => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: 0
-    },
     background: {
         width: '100%',
         flex: 1,

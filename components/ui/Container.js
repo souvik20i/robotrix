@@ -1,4 +1,4 @@
-import { View, StyleSheet, StatusBar } from "react-native"
+import { View, StyleSheet } from "react-native"
 
 import colors from "../../public/colors"
 
@@ -14,8 +14,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.bgPrimary,
-        paddingTop: StatusBar.currentHeight
+        backgroundColor: colors.bgPrimary
     }
 })
 

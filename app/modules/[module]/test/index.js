@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { StyleSheet } from "react-native"
 import { Stack, useLocalSearchParams } from "expo-router"
 import { useDispatch, useSelector } from "react-redux"
 import { testActions } from "../../../../store/test-slice"
@@ -9,6 +10,7 @@ import Question from "../../../../components/test/Question"
 import Options from "../../../../components/test/Options"
 import Action from "../../../../components/test/Action"
 import questions from "../../../../data/questions"
+import colors from "../../../../public/colors"
 
 const Test = () => {
     const dispatch = useDispatch()
@@ -22,7 +24,7 @@ const Test = () => {
     }, [])
 
     const { module } = useLocalSearchParams()
-    return (<Container>
+    return (<Container style={styles.container}>
         <Stack.Screen options={{ title: `Module ${module} Assessment` }} />
         <QuestionBar questions={questions} />
         <Question serial={serial} content={content} />
@@ -30,5 +32,11 @@ const Test = () => {
         <Action />
     </Container>)
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: colors.bgGrey
+    }
+})
 
 export default Test

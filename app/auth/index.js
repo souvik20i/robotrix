@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native"
+import { View, StyleSheet, StatusBar } from "react-native"
 import { useSelector } from "react-redux"
 import { Stack } from "expo-router"
 
@@ -19,6 +19,9 @@ const Auth = () => {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        paddingTop: StatusBar.currentHeight
+    },
     interface: {
         flex: 0.8,
         width: '90%'
