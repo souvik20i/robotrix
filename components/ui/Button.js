@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     button: {
         borderRadius: 50,
         marginVertical: 20,
-        elevation: 5
+        elevation: 1
     },
     label: {
         fontWeight: 'bold',

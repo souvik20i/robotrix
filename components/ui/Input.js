@@ -8,7 +8,7 @@ const Input = ({ label, onChange, isValid = true, secured = false }) => {
         <TextInput
             style={{
                 ...styles.input,
-                borderColor: isValid ? colors.bgSecondary : 'red'
+                borderColor: isValid ? colors.bgGrey : 'red'
             }}
             onChangeText={onChange}
             secureTextEntry={secured}

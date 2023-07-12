@@ -23,7 +23,7 @@ const Auth = () => {
     }
 
     return (<View style={styles.auth}>
-        <Button label={'Sign In'} onPress={signinHandler} />
+        <Button label={'Sign In'} onPress={signinHandler} dark/>
         <View style={styles.alternative}>
             <HelperText label={"Don't have an account?"} />
             <TouchableOpacity style={styles.altAuth} onPress={signupHandler}>

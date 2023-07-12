@@ -5,14 +5,7 @@ const auth = getAuth()
 
 const useAuth = () => {
     const [user, setUser] = useState(null)
-
-    useEffect(() => {
-        return onAuthStateChanged(auth, user => {
-            if (user) setUser(user)
-            else setUser(null)
-        })
-    }, [])
-
+    useEffect(() => onAuthStateChanged(auth, user => setUser(user)), [])
     return user
 }
 

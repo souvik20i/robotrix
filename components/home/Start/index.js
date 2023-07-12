@@ -9,7 +9,7 @@ const Start = () => {
         router.push('/modules/1/test')
     }
     return (<View style={styles.start}>
-        <Button label={'Start Learning'} onPress={startHandler}/>
+        <Button label={'Start Learning'} onPress={startHandler} dark/>
     </View>)
 }
 

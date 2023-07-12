@@ -1,24 +1,24 @@
-import { ImageBackground, StyleSheet } from "react-native";
-import { Stack } from "expo-router";
+import { ImageBackground, StyleSheet } from "react-native"
+import { Stack } from "expo-router"
 
-import useAuth from "../hooks/use-auth";
+import useAuth from "../hooks/use-auth"
 
 import Container from "../components/ui/Container"
-import Title from "../components/home/Title";
-import Auth from "../components/home/Auth";
-import Start from "../components/home/Start";
+import Title from "../components/home/Title"
+import Auth from "../components/home/Auth"
+import Start from "../components/home/Start"
 
 const Home = () => {
     const user = useAuth()
     return (<Container>
         <Stack.Screen options={{ headerShown: false }} />
         <ImageBackground
-            source={require('../public/landingBg.jpg')}
+            source={require('../public/bgHome.jpg')}
             resizeMode='cover'
             style={styles.background}
         >
             <Title />
-            {user ? <Start /> : <Auth />}
+            <Auth />
         </ImageBackground>
     </Container>);
 }
