@@ -16,7 +16,12 @@ const SigninButton = () => {
     const signinHandler = () => {
         emailSignin().catch(err => console.error(err))
     }
-    return (<Button label={'Signin'} onPress={signinHandler} dark />)
+    return (<Button
+        label={'Signin'}
+        onPress={signinHandler}
+        dark
+        small
+    />)
 }
 
 export default SigninButton

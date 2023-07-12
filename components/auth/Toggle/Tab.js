@@ -18,7 +18,6 @@ const Tab = ({ label, activeState, onPress }) => {
 const styles = StyleSheet.create({
     tab: {
         fontSize: 25,
-        fontWeight: 'bold',
         paddingVertical: 15,
         paddingHorizontal: 35,
         borderRadius: 50

@@ -24,7 +24,7 @@ const Auth = () => {
 
     return (<View style={styles.auth}>
         <Button label={'Sign In'} onPress={signinHandler} dark/>
-        <View style={styles.alternative}>
+        <View style={styles.alter}>
             <HelperText label={"Don't have an account?"} />
             <TouchableOpacity style={styles.altAuth} onPress={signupHandler}>
                 <Text style={styles.altAuthText}>Sign Up</Text>
@@ -39,16 +39,16 @@ const styles = StyleSheet.create({
         flex: 0.3,
         paddingTop: 20
     },
-    alternative: {
+    alter: {
         alignItems: 'center',
-        paddingTop: 10
+        paddingTop: 20
     },
     altAuth: {
         flexDirection: 'row',
         alignItems: 'center',
+        paddingVertical:10
     },
     altAuthText: {
-        fontWeight: 'bold',
         fontSize: 20,
         color: colors.textLight,
         marginRight: 7

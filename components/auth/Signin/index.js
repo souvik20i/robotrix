@@ -10,18 +10,12 @@ const Signin = () => {
     const dispatch = useDispatch()
     const signin = useSelector(state => state.auth.signin)
     const phoneEmailChangeHandler = value => {
-        if (isNaN(value)) {
-            dispatch(authActions.changeSigninEmail(value))
-            dispatch(authActions.changeSigninPhone(''))
-        } else {
-            dispatch(authActions.changeSigninPhone(value))
-            dispatch(authActions.changeSigninEmail(''))
-        }
+        if (isNaN(value)) dispatch(authActions.changeSigninEmail(value))
+        else dispatch(authActions.changeSigninPhone(value))
     }
     const passwordChangeHandler = value => {
         dispatch(authActions.changeSigninPassword(value))
     }
-
     const labels = ['Phone / Email', 'Password']
     const handlers = [phoneEmailChangeHandler, passwordChangeHandler]
     const validity = [signin.isPhoneValid || signin.isEmailValid, signin.isPasswordValid]

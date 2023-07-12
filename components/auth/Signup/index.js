@@ -14,17 +14,40 @@ const Signup = () => {
             dispatch(action(value))
         }
     }
-
-    const labels = ['Name', 'Email', 'Password', 'Phone', 'Enrollment Number', 'City', 'Stream', 'Course Tenure']
-    const actions = [authActions.changeSignupName, authActions.changeSignupEmail, authActions.changeSignupPassword, authActions.changeSignupPhone, authActions.changeSignupEnrollment, authActions.changeSignupCity, authActions.changeSignupStream, authActions.changeSignupTenure]
+    const labels = ['Name', 'Email', 'Password', 'Phone', 'Enrollment Number', 'Course', 'Stream', 'Section']
+    const actions = [
+        authActions.changeSignupName, authActions.changeSignupEmail, authActions.changeSignupPassword, authActions.changeSignupPhone,
+        authActions.changeSignupEnrollment, authActions.changeSignupCourse, authActions.changeSignupStream, authActions.changeSignupSection
+    ]
+    const validity = [
+        signup.isNameValid, signup.isEmailValid, signup.isPasswordValid, signup.isPhoneValid,
+        signup.isEnrollmentvalid, signup.isCourseValid, signup.isStreamValid, signup.isSectionValid
+    ]
     const handlers = actions.map(action => generateChangeHandler(action))
-    const validity = [signup.isNameValid, signup.isEmailValid, signup.isPasswordValid, signup.isPhoneValid, signup.isEnrollmentvalid, signup.isCityValid, signup.isStreamValid, signup.isTenureValid]
+    const options = {
+        'Course': {
+            current: signup.course,
+            items: ['BSc', 'BTech', 'BCom', 'BA', 'MSc', 'MTech', 'MCom', 'MA']
+        },
+        'Stream': {
+            current: signup.stream,
+            items: [
+                'Computer Science', 'Information Technology', 'Machine Learning', 'Internet of Things',
+                'Botany', 'Zoology', 'Physiology', 'Maths', 'Physics', 'Chemisty', 'Commerce', 'English', 'Geography'
+            ]
+        },
+        'Section': {
+            current: signup.section,
+            items: ['Single', 'Double', 'Triple']
+        }
+    }
 
     return (<Container>
         <Form
             labels={labels}
             handlers={handlers}
             validity={validity}
+            options={options}
         />
         <SignupButton />
         <HelperText label={'Already have an account?'} dark />

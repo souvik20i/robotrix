@@ -18,7 +18,7 @@ const Home = () => {
             style={styles.background}
         >
             <Title />
-            <Auth />
+            {user ? <Start /> : <Auth />}
         </ImageBackground>
     </Container>);
 }

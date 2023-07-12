@@ -12,7 +12,6 @@ const Input = ({ label, onChange, isValid = true, secured = false }) => {
             }}
             onChangeText={onChange}
             secureTextEntry={secured}
-            selectionColor={colors.textDark}
         />
     </View>)
 }
@@ -20,7 +19,8 @@ const Input = ({ label, onChange, isValid = true, secured = false }) => {
 const styles = StyleSheet.create({
     block: {
         width: '100%',
-        padding: 20
+        paddingHorizontal: 20,
+        paddingVertical: 10
     },
     input: {
         fontSize: 20,
@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 17,
-        fontWeight: 'bold',
         paddingVertical: 10,
         color: colors.textDark
     }

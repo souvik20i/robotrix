@@ -2,16 +2,16 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
 
 import colors from "../../public/colors"
 
-const Button = ({ label, onPress = () => { }, dark = false, style = {} }) => {
+const Button = ({ label, onPress, dark = false, small = false, style = {} }) => {
     return (<View style={{
         ...styles.button,
-        backgroundColor: dark ? colors.bgSecondary : colors.textBg,
-        ...style
+        backgroundColor: dark ? colors.bgSecondary : colors.textBg, ...style
     }}>
         <TouchableOpacity onPress={onPress}>
             <Text style={{
                 ...styles.label,
-                color: dark ? colors.textLight : colors.textDark
+                color: dark ? colors.textLight : colors.textDark,
+                fontSize: small ? 25 : 35
             }}>{label}</Text>
         </TouchableOpacity>
     </View>)
@@ -24,11 +24,9 @@ const styles = StyleSheet.create({
         elevation: 1
     },
     label: {
-        fontWeight: 'bold',
-        fontSize: 30,
         textAlign: 'center',
         paddingVertical: 10,
-        paddingHorizontal: 50,
+        paddingHorizontal: 50
     }
 })
 

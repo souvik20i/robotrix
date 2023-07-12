@@ -14,9 +14,8 @@ const HelperText = ({ label, dark = false, style = {} }) => {
 
 const styles = StyleSheet.create({
     helper: {
-        fontWeight: 'bold',
         fontSize: 15,
-        paddingVertical:20
+        paddingVertical: 10
     }
 })
 

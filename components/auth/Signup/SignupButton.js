@@ -16,7 +16,12 @@ const SignupButton = () => {
     const signupHandler = () => {
         emailSignup().catch(err => console.error(err))
     }
-    return (<Button label={'Signup'} onPress={signupHandler} dark />)
+    return (<Button
+        label={'Signup'}
+        onPress={signupHandler}
+        dark
+        small
+    />)
 }
 
 export default SignupButton

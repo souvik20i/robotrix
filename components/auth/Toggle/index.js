@@ -27,7 +27,9 @@ const styles = StyleSheet.create({
     toggle: {
         backgroundColor: colors.textBg + '80',
         flexDirection: 'row',
-        borderRadius: 50
+        borderRadius: 50,
+        marginBottom: '10%',
+        elevation: 1
     }
 })
 

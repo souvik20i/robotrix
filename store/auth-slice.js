@@ -4,7 +4,7 @@ const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 const phonePattern = /^\d{10}$/
 
 const authSlice = createSlice({
-    name: 'authentication',
+    name: 'auth',
     initialState: {
         isSigninActive: true,
         signin: {
@@ -21,17 +21,17 @@ const authSlice = createSlice({
             password: '',
             phone: '',
             enrollment: '',
-            city: '',
+            course: '',
             stream: '',
-            tenure: '',
+            section: '',
             isNameValid: true,
             isEmailValid: true,
             isPasswordValid: true,
             isPhoneValid: true,
             isEnrollmentvalid: true,
-            isCityValid: true,
+            isCourseValid: true,
             isStreamValid: true,
-            isTenureValid: true
+            isSectionValid: true
         }
     },
     reducers: {
@@ -45,11 +45,15 @@ const authSlice = createSlice({
             const value = action.payload.trim()
             state.signin.phone = value
             state.signin.isPhoneValid = value.match(phonePattern)
+            state.signin.email = ''
+            state.signin.isEmailValid = false
         },
         changeSigninEmail(state, action) {
             const value = action.payload.trim()
             state.signin.email = value
             state.signin.isEmailValid = value.match(emailPattern)
+            state.signin.phone = ''
+            state.signin.isPhoneValid = false
         },
         changeSigninPassword(state, action) {
             const value = action.payload.trim()
@@ -77,17 +81,34 @@ const authSlice = createSlice({
             const value = action.payload.trim()
             state.signup.enrollment = value
         },
-        changeSignupCity(state, action) {
-            const value = action.payload.trim()
-            state.signup.city = value
+        changeSignupCourse(state, action) {
+            state.signup.course = action.payload
+            state.signup.isCourseValid = action.payload != ''
         },
         changeSignupStream(state, action) {
-            const value = action.payload.trim()
-            state.signup.stream = value
+            state.signup.stream = action.payload
+            state.signup.isStreamValid = action.payload != ''
         },
-        changeSignupTenure(state, action) {
-            const value = action.payload.trim()
-            state.signup.tenure = value
+        changeSignupSection(state, action) {
+            state.signup.section = action.payload
+            state.signup.isSectionValid = action.payload != ''
+        },
+        clearValidations(state) {
+            state.signin.isPhoneValid = true
+            state.signin.isEmailValid = true
+            state.signin.isPasswordValid = true
+            state.signup.isNameValid = true
+            state.signup.isEmailValid = true
+            state.signup.isPasswordValid = true
+            state.signup.isEnrollmentvalid = true
+            state.signup.isCourseValid = true
+            state.signup.isStreamValid = true
+            state.signup.isSectionValid = true
+        },
+        clearSelections(state) {
+            state.signup.course = ''
+            state.signup.stream = ''
+            state.signup.section = ''
         }
     }
 })
