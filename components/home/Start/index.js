@@ -6,7 +6,7 @@ import Button from "../../ui/Button"
 const Start = () => {
     const router = useRouter()
     const startHandler = () => {
-        router.push('/modules/1/test')
+        router.push('/modules')
     }
     return (<View style={styles.start}>
         <Button label={'Start Learning'} onPress={startHandler} dark/>
