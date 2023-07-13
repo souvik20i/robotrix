@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start'
     },
     video: {
-        height: '60%',
+        height: '23%',
         width: '100%'
     }
 })
