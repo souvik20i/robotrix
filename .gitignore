@@ -10,6 +10,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+public/endgame.mp4
 
 # macOS
 .DS_Store
