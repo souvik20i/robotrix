@@ -16,7 +16,7 @@ const Start = () => {
     }
     return (<View style={styles.start}>
         <Button label={'Start Learning'} onPress={startHandler} dark />
-        <Button label={'Signout'} onPress={signOutHandler} style={styles.signout} small />
+        <Button label={'Signout'} onPress={signOutHandler} small />
     </View>)
 }
 
@@ -25,9 +25,6 @@ const styles = StyleSheet.create({
         flex: 0.3,
         paddingTop: 20,
         alignItems: 'center'
-    },
-    signout: {
-        width: '50%'
     }
 })
 
