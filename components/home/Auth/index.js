@@ -23,12 +23,17 @@ const Auth = () => {
     }
 
     return (<View style={styles.auth}>
-        <Button label={'Sign In'} onPress={signinHandler} dark/>
+        <Button label={'Sign In'} onPress={signinHandler} dark />
         <View style={styles.alter}>
             <HelperText label={"Don't have an account?"} />
             <TouchableOpacity style={styles.altAuth} onPress={signupHandler}>
                 <Text style={styles.altAuthText}>Sign Up</Text>
-                <AntDesign name="arrowright" style={styles.arrow} size={24} color="white" />
+                <AntDesign
+                    name="arrowright"
+                    style={styles.arrow}
+                    size={20}
+                    color={colors.textLight}
+                />
             </TouchableOpacity>
         </View>
     </View>)
@@ -46,7 +51,7 @@ const styles = StyleSheet.create({
     altAuth: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical:10
+        paddingVertical: 10
     },
     altAuthText: {
         fontSize: 20,

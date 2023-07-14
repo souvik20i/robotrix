@@ -1,45 +1,27 @@
-import { useState, useRef } from "react"
 import { StyleSheet } from "react-native"
 import { useRouter, useLocalSearchParams, Stack } from "expo-router"
-import { Video } from "expo-av"
 
 import Container from "../../../../components/ui/Container"
 import Button from "../../../../components/ui/Button"
+import Playback from "../../../../components/topic/Playback"
 
 const Topic = () => {
-    const { topic } = useLocalSearchParams()
-    const [status, setStatus] = useState({})
-    const videoRef = useRef()
     const router = useRouter()
-    const { isPlaying } = status
-    const playbackHandler = () => {
-        if (isPlaying) videoRef.current.pauseAsync()
-        else videoRef.current.playAsync()
-    }
-
+    const { topic } = useLocalSearchParams()
     return (<Container style={styles.container}>
         <Stack.Screen options={{ title: `Topic ${topic}` }} />
-        <Video
-            ref={videoRef}
-            style={styles.video}
-            source={require('../../../../public/endgame.mp4')}
-            resizeMode='contain'
-            onPlaybackStatusUpdate={setStatus}
-            useNativeControls
-            shouldPlay
+        {/* <Playback uri={'https://res.cloudinary.com/duejtqqkp/video/upload/v1689328132/endgame_g8zr1e.mp4'} /> */}
+        <Playback uri={require('../../../../public/endgame.mp4')} />
+        <Button
+            label={'Test'}
+            onPress={() => router.push('/modules/1/1/test')}
         />
-        <Button label={isPlaying ? 'Pause' : 'Play'} onPress={playbackHandler} />
-        <Button label={'Test'} onPress={() => router.push('/modules/1/1/test')} />
     </Container>)
 }
 
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'flex-start'
-    },
-    video: {
-        height: '23%',
-        width: '100%'
     }
 })
 
