@@ -1,18 +1,18 @@
-import { useState, useRef } from "react"
+import { useRef } from "react"
 import { StyleSheet } from "react-native"
 import { Video } from "expo-av"
 
 const Playback = ({ uri }) => {
     const videoRef = useRef()
-    const [status, setStatus] = useState({})
+    const playbackHandler = status => console.log(status)
     return (<Video
         ref={videoRef}
         style={styles.video}
+        // source={{ uri }}
         source={uri}
         resizeMode='contain'
-        onPlaybackStatusUpdate={setStatus}
+        onPlaybackStatusUpdate={playbackHandler}
         useNativeControls
-        shouldPlay
     />)
 }
 
