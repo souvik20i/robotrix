@@ -5,7 +5,6 @@ import { Video } from "expo-av"
 
 import Container from "../../../../components/ui/Container"
 import Button from "../../../../components/ui/Button"
-import content from "../../../../public/endgame.mp4"
 
 const Topic = () => {
     const { topic } = useLocalSearchParams()
@@ -23,7 +22,7 @@ const Topic = () => {
         <Video
             ref={videoRef}
             style={styles.video}
-            source={content}
+            source={require('../../../../public/endgame.mp4')}
             resizeMode='contain'
             onPlaybackStatusUpdate={setStatus}
             useNativeControls
