@@ -1,27 +1,45 @@
-import { useRef } from "react"
-import { StyleSheet } from "react-native"
-import { Video } from "expo-av"
+import { useState, useRef } from "react"
+
+import Video from "./Video"
+import Controls from "./Controls"
 
 const Playback = ({ uri }) => {
     const videoRef = useRef()
-    const playbackHandler = status => console.log(status)
-    return (<Video
-        ref={videoRef}
-        style={styles.video}
-        // source={{ uri }}
-        source={uri}
-        resizeMode='contain'
-        onPlaybackStatusUpdate={playbackHandler}
-        useNativeControls
-    />)
-}
+    const [status, setStatus] = useState({})
+    const changeStatusHandler = status => setStatus(status)
 
-const styles = StyleSheet.create({
-    video: {
-        height: '25%',
-        width: '100%',
-        backgroundColor: 'black'
+    const [isControlsActive, setIsControlsActive] = useState(false)
+    const showControlsHandler = () => {
+        setIsControlsActive(true)
+        videoRef.current.pauseAsync()
     }
-})
+    const hideControlsHandler = () => setIsControlsActive(false)
+
+    const { isPlaying } = status
+    const toggleVideo = () => {
+        if (isPlaying) {
+            videoRef.current.pauseAsync()
+        }
+        else {
+            videoRef.current.playAsync()
+            setTimeout(() => hideControlsHandler(), 1000)
+        }
+    }
+
+    return (<>
+        <Video
+            ref={videoRef}
+            uri={uri}
+            onPress={showControlsHandler}
+            onChange={changeStatusHandler}
+        />
+        <Controls
+            isActive={isControlsActive}
+            isPlaying={isPlaying}
+            onPress={hideControlsHandler}
+            onChange={toggleVideo}
+        />
+    </>)
+}
 
 export default Playback
