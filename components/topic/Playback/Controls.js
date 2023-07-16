@@ -1,23 +1,31 @@
 import { View, TouchableWithoutFeedback, StyleSheet } from "react-native"
-import { FontAwesome } from '@expo/vector-icons';
 
+import Play from "./Play"
+import ProgressBar from "./ProgressBar"
+import TopBar from "./TopBar"
 import colors from "../../../public/colors"
 
-const Controls = ({ isActive, isPlaying, onPress, onChange }) => {
-    return (<>{isActive &&
-        <TouchableWithoutFeedback onPress={onPress}>
-            <View style={styles.controls}>
-                <TouchableWithoutFeedback onPress={onChange}>
-                    {isPlaying
-                        ?
-                        <FontAwesome name="pause" size={40} color={colors.textLight} />
-                        :
-                        <FontAwesome name="play" size={40} color={colors.textLight} />
-                    }
-                </TouchableWithoutFeedback>
-            </View>
-        </TouchableWithoutFeedback>
-    }</>)
+const Controls = ({ isLoading, status, onPress, onToggle, onChangePosition, onChangeSpeed }) => {
+    const {
+        isPlaying, isBuffering, rate, positionMillis, playableDurationMillis,
+        durationMillis, didJustFinish
+    } = status
+
+    return (<TouchableWithoutFeedback onPress={onPress}>
+        <View style={styles.controls}>
+            <TopBar />
+            <Play
+                isPlaying={isPlaying}
+                isBuffering={isBuffering}
+                onPress={onToggle}
+            />
+            <ProgressBar
+                current={positionMillis}
+                length={durationMillis}
+                onChange={onChangePosition}
+            />
+        </View>
+    </TouchableWithoutFeedback>)
 }
 
 const styles = StyleSheet.create({
@@ -26,8 +34,9 @@ const styles = StyleSheet.create({
         height: '25%',
         width: '100%',
         backgroundColor: colors.textDark + '80',
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingVertical: 10
     }
 })
 

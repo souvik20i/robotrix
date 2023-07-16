@@ -1,10 +1,11 @@
 import { ActivityIndicator, StyleSheet } from "react-native"
+
 import colors from "../../public/colors"
 
-const Loader = () => {
+const Loader = ({ color = colors.bgSecondary }) => {
     return (<ActivityIndicator
         style={styles.loader}
-        color={colors.bgSecondary}
+        color={color}
         size={"large"}
     />)
 }

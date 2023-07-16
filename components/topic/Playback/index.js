@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 
 import Video from "./Video"
 import Controls from "./Controls"
@@ -8,23 +8,25 @@ const Playback = ({ uri }) => {
     const [status, setStatus] = useState({})
     const changeStatusHandler = status => setStatus(status)
 
-    const [isControlsActive, setIsControlsActive] = useState(false)
-    const showControlsHandler = () => {
-        setIsControlsActive(true)
-        videoRef.current.pauseAsync()
-    }
+    const [isControlsActive, setIsControlsActive] = useState(true)
+    const showControlsHandler = () => setIsControlsActive(true)
     const hideControlsHandler = () => setIsControlsActive(false)
 
-    const { isPlaying } = status
-    const toggleVideo = () => {
-        if (isPlaying) {
+    const hideControlsAfterDelay = () => setTimeout(() => hideControlsHandler(), 1000)
+    useEffect(() => { hideControlsAfterDelay() }, [])
+
+    const togglePlaybackHandler = () => {
+        if (status.isPlaying) {
             videoRef.current.pauseAsync()
         }
         else {
             videoRef.current.playAsync()
-            setTimeout(() => hideControlsHandler(), 1000)
+            hideControlsAfterDelay()
         }
     }
+
+    const changePositionHandler = position => videoRef.current.playFromPositionAsync(position)
+    const changePlaybackSpeedHandler = rate => videoRef.current.setRateAsync(rate, true)
 
     return (<>
         <Video
@@ -33,12 +35,15 @@ const Playback = ({ uri }) => {
             onPress={showControlsHandler}
             onChange={changeStatusHandler}
         />
-        <Controls
-            isActive={isControlsActive}
-            isPlaying={isPlaying}
-            onPress={hideControlsHandler}
-            onChange={toggleVideo}
-        />
+        {isControlsActive &&
+            <Controls
+                status={status}
+                onPress={hideControlsHandler}
+                onToggle={togglePlaybackHandler}
+                onChangePosition={changePositionHandler}
+                onChangeSpeed={changePlaybackSpeedHandler}
+            />
+        }
     </>)
 }
 
