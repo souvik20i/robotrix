@@ -1,19 +1,15 @@
-import { ActivityIndicator, StyleSheet } from "react-native"
+import { ActivityIndicator } from "react-native"
 
 import colors from "../../public/colors"
 
-const Loader = ({ color = colors.bgSecondary }) => {
+const Loader = ({ color = colors.bgSecondary, raw = false }) => {
     return (<ActivityIndicator
-        style={styles.loader}
+        style={{
+            padding: raw ? 0 : 20
+        }}
         color={color}
         size={"large"}
     />)
 }
-
-const styles = StyleSheet.create({
-    loader: {
-        padding: 20
-    }
-})
 
 export default Loader

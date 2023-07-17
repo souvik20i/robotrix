@@ -19,7 +19,10 @@ const Controls = ({ status, onPress, onToggle, onChangePosition, onChangeSpeed }
             <Play
                 isPlaying={isPlaying}
                 isBuffering={isBuffering}
-                onPress={onToggle}
+                current={positionMillis}
+                length={durationMillis}
+                onToggle={onToggle}
+                onChange={onChangePosition}
             />
             <ProgressBar
                 current={positionMillis}
