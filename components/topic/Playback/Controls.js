@@ -19,6 +19,7 @@ const Controls = ({ status, onPress, onToggle, onChangePosition, onChangeSpeed }
             <Play
                 isPlaying={isPlaying}
                 isBuffering={isBuffering}
+                isFinished={didJustFinish}
                 current={positionMillis}
                 length={durationMillis}
                 onToggle={onToggle}
