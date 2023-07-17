@@ -26,7 +26,7 @@ const Playback = ({ uri }) => {
     }
 
     const changePositionHandler = position => videoRef.current.playFromPositionAsync(position)
-    const changePlaybackSpeedHandler = rate => videoRef.current.setRateAsync(rate, true)
+    const changeSpeedHandler = rate => videoRef.current.setRateAsync(rate, true)
 
     return (<>
         <Video
@@ -41,7 +41,7 @@ const Playback = ({ uri }) => {
                 onPress={hideControlsHandler}
                 onToggle={togglePlaybackHandler}
                 onChangePosition={changePositionHandler}
-                onChangeSpeed={changePlaybackSpeedHandler}
+                onChangeSpeed={changeSpeedHandler}
             />
         }
     </>)
