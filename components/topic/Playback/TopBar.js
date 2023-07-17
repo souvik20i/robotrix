@@ -12,16 +12,19 @@ const TopBar = ({ rate, onChangeRate }) => {
 
     return (<TouchableWithoutFeedback>
         <View style={styles.topBar}>
-            <TouchableOpacity onPress={toggleSpeedBox}>
-                <Text style={styles.rate}>{(rate == 1 ? 'Normal' : `${rate}x`)}</Text>
-            </TouchableOpacity>
-            <Speed
-                isActive={isSpeedActive}
-                current={rate}
-                rates={rates}
-                onChange={onChangeRate}
-                onToggle={toggleSpeedBox}
-            />
+            <View style={styles.speed}>
+                <TouchableOpacity onPress={toggleSpeedBox}>
+                    <Text style={styles.rate}>{(rate == 1 ? 'Normal' : `${rate}x`)}</Text>
+                </TouchableOpacity>
+                {isSpeedActive &&
+                    <Speed
+                        current={rate}
+                        rates={rates}
+                        onChange={onChangeRate}
+                        onToggle={toggleSpeedBox}
+                    />
+                }
+            </View>
             <TouchableOpacity>
                 <Entypo name="dots-three-vertical" size={24} color={colors.textLight} />
             </TouchableOpacity>
@@ -34,6 +37,9 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'flex-end'
+    },
+    speed: {
+        alignItems: 'center'
     },
     rate: {
         color: colors.textLight,
