@@ -8,7 +8,7 @@ const Certificate = () => {
     return (<Container>
         <Stack.Screen options={{ title: 'Course Certificate' }} />
         <Progress completed={5} expected={32} />
-        <Template />
+        <Template name={'Souvik Sarkar'} course={'Robotics'} date={'20 July 2023'} />
     </Container>)
 }
 

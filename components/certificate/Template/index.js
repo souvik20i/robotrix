@@ -1,19 +1,18 @@
 import { View } from "react-native"
+import { printToFileAsync } from "expo-print"
+import { shareAsync } from "expo-sharing"
 
-import * as Print from "expo-print"
-import * as MediaLibrary from "expo-media-library"
+import useTemplate from "../../../hooks/use-template"
 import Button from "../../ui/Button"
 
-const Template = () => {
-
+const Template = (props) => {
+    const html = useTemplate(props)
     const createAndSavePdf = async (html) => {
-        const { uri } = Print.printToFileAsync({ html })
-        const permit = await MediaLibrary.requestPermissionsAsync()
-        if (permit.granted) await MediaLibrary.createAssetAsync(uri)
+        const { uri } = await printToFileAsync({ html })
+        await shareAsync(uri)
     }
-
     const downloadCertificate = () => {
-        createAndSavePdf().catch(err => console.log(err))
+        createAndSavePdf(html).catch(err => console.log(err))
     }
 
     return (<View>
