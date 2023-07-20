@@ -8,6 +8,7 @@ const Modules = () => {
     return (<Container>
         <Stack.Screen options={{ title: 'Course Modules' }} />
         <Button label={'Module 1'} onPress={() => router.push('/modules/1')} />
+        <Button label={'Certificate'} onPress={() => router.push('/certificate')} dark />
     </Container>)
 }
 

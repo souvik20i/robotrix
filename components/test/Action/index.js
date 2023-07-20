@@ -20,7 +20,7 @@ const Action = () => {
 
 const styles = StyleSheet.create({
     action: {
-        width: '90%',
+        width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         padding: 20,
