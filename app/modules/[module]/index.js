@@ -9,6 +9,7 @@ const Module = () => {
     return (<Container>
         <Stack.Screen options={{ title: `Module ${module}` }} />
         <Button label={'Topic 1'} onPress={() => router.push('/modules/1/1')} />
+        <Button label={'Test'} onPress={() => router.push('/modules/1/1/test')} dark />
     </Container>)
 }
 

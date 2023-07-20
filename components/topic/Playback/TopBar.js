@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
     topBar: {
         width: '100%',
         flexDirection: 'row',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
+        zIndex: 10
     },
     speed: {
         alignItems: 'center'

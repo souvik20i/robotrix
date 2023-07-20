@@ -9,8 +9,8 @@ const Video = forwardRef(({ uri, onPress, onChange }, ref) => {
         <ExpoVideo
             ref={ref}
             style={styles.video}
-            source={{ uri }}
-            // source={uri}
+            // source={{ uri }}
+            source={uri}
             resizeMode='contain'
             onPlaybackStatusUpdate={onChange}
             shouldPlay
