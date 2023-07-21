@@ -5,11 +5,11 @@ import { shareAsync } from "expo-sharing"
 import useTemplate from "../../../hooks/use-template"
 import Button from "../../ui/Button"
 
-const Template = (props) => {
-    const html = useTemplate(props)
+const Template = ({ name }) => {
+    const html = useTemplate(name)
     const createAndSavePdf = async (html) => {
-        const { uri } = await printToFileAsync({ html })
-        await shareAsync(uri)
+        const { uri } = await printToFileAsync({ html, height: 710, width: 1000 })
+        await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' })
     }
     const downloadCertificate = () => {
         createAndSavePdf(html).catch(err => console.log(err))
