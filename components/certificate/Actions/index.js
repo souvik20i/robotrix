@@ -1,5 +1,5 @@
 import { printToFileAsync } from "expo-print"
-// import { downloadAsync, documentDirectory } from "expo-file-system"
+import { moveAsync } from "expo-file-system"
 import { shareAsync } from "expo-sharing"
 import { AntDesign } from "@expo/vector-icons"
 
@@ -11,8 +11,12 @@ const Actions = ({ name }) => {
     const html = useTemplate(name)
     const generatePdf = async (html) => {
         const { uri } = await printToFileAsync({ html, height: 710, width: 1000 })
-        // const { uri } = await downloadAsync(cachedUri, documentDirectory + `${name} Robotics Certification.pdf`)
-        await shareAsync(uri)
+        const renamedUri = `${uri.slice(0, uri.lastIndexOf('/') + 1)}${name.replace(' ', '_')}_Robotics.pdf`
+        await moveAsync({
+            from: uri,
+            to: renamedUri
+        })
+        await shareAsync(renamedUri)
     }
     const downloadCertificate = () => {
         generatePdf(html).catch(err => console.log(err))
