@@ -5,6 +5,14 @@
       "bundler": "metro"
     },
     "name": "robotrix",
-    "slug": "robotrix"
+    "slug": "robotrix",
+    "extra": {
+      "eas": {
+        "projectId": "e0dc3e74-bde6-47c4-a098-15551f68bcef"
+      }
+    },
+    "android": {
+      "package": "com.souvik720i.robotrix"
+    }
   }
 }
