@@ -11,6 +11,8 @@ const Progress = ({ completed, expected }) => {
             radius={80}
             duration={1000}
             valueSuffix={'%'}
+            title={'Completed'}
+            titleStyle={styles.annot}
             progressValueColor={colors.bgSecondary}
             activeStrokeColor={colors.bgSecondary}
             inActiveStrokeColor={colors.bgGrey}
@@ -22,6 +24,9 @@ const Progress = ({ completed, expected }) => {
 const styles = StyleSheet.create({
     progress: {
         padding: 20
+    },
+    annot: {
+        fontSize: 15
     }
 })
 

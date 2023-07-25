@@ -1,24 +1,36 @@
-import { View } from "react-native"
-import { printToFileAsync } from "expo-print"
-import { shareAsync } from "expo-sharing"
+import { View, Text, Image, StyleSheet } from "react-native"
 
-import useTemplate from "../../../hooks/use-template"
-import Button from "../../ui/Button"
+import colors from "../../../public/colors"
 
-const Template = ({ name }) => {
-    const html = useTemplate(name)
-    const createAndSavePdf = async (html) => {
-        const { uri } = await printToFileAsync({ html, height: 710, width: 1000 })
-        await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' })
-    }
-    const downloadCertificate = () => {
-        createAndSavePdf(html).catch(err => console.log(err))
-    }
-
-    return (<View>
-        <Button label={'Template'} onPress={() => { }} />
-        <Button label={'Download'} onPress={downloadCertificate} />
+const Template = () => {
+    return (<View style={styles.block}>
+        <Text style={styles.annnot}>You will get a certificate like this</Text>
+        <View style={styles.templateWrapper}>
+            <Image
+                source={require('../../../public/certificate.png')}
+                style={styles.template}
+            />
+        </View>
     </View>)
 }
+
+const styles = StyleSheet.create({
+    block: {
+        alignItems: 'center'
+    },
+    template: {
+        width: 300,
+        height: 200,
+    },
+    templateWrapper: {
+        backgroundColor: colors.bgPrimary,
+        elevation: 3
+    },
+    annnot: {
+        fontSize: 15,
+        paddingBottom: 25,
+        color: colors.textGrey
+    }
+})
 
 export default Template
