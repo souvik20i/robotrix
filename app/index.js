@@ -17,9 +17,9 @@ const Home = () => {
             style={styles.background}
         >
             <Title />
-            {username ? <Start /> : <Auth />}
+            <Start />
         </ImageBackground>
-    </Container>);
+    </Container>)
 }
 
 const styles = StyleSheet.create({

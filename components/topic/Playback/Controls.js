@@ -5,13 +5,17 @@ import ProgressBar from "./ProgressBar"
 import TopBar from "./TopBar"
 import colors from "../../../public/colors"
 
-const Controls = ({ status, onPress, onToggle, onChangePosition, onChangeSpeed }) => {
+const Controls = ({ status, orientation, onPress, onToggle, onChangePosition, onChangeSpeed }) => {
     const {
         isPlaying, isBuffering, rate, positionMillis, durationMillis, didJustFinish
     } = status
 
     return (<TouchableWithoutFeedback onPress={onPress}>
-        <View style={styles.controls}>
+        <View style={{
+            ...styles.controls,
+            height: orientation.isFullscreen ? '100%' : '25%',
+            padding: orientation.isFullscreen ? 25 : 10
+        }}>
             <TopBar
                 rate={rate}
                 onChangeRate={onChangeSpeed}
@@ -28,6 +32,7 @@ const Controls = ({ status, onPress, onToggle, onChangePosition, onChangeSpeed }
             <ProgressBar
                 current={positionMillis}
                 length={durationMillis}
+                orientation={orientation}
                 onChange={onChangePosition}
             />
         </View>
@@ -37,12 +42,10 @@ const Controls = ({ status, onPress, onToggle, onChangePosition, onChangeSpeed }
 const styles = StyleSheet.create({
     controls: {
         position: 'absolute',
-        height: '25%',
         width: '100%',
         backgroundColor: colors.textDark + '80',
         justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: 5
+        alignItems: 'center'
     }
 })
 

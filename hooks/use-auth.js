@@ -6,7 +6,6 @@ const useAuth = () => {
     useEffect(() => {
         (async () => setUsername(await AsyncStorage.getItem('username')))()
     }, [])
-    console.log(username)
     return username
 }
 

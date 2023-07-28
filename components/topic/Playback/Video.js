@@ -4,11 +4,14 @@ import { Video as ExpoVideo } from "expo-av"
 
 import colors from "../../../public/colors"
 
-const Video = forwardRef(({ uri, onPress, onChange }, ref) => {
+const Video = forwardRef(({ uri, isFullscreen, onPress, onChange }, ref) => {
     return (<TouchableWithoutFeedback onPress={onPress}>
         <ExpoVideo
             ref={ref}
-            style={styles.video}
+            style={{
+                ...styles.video,
+                height: isFullscreen ? '100%' : '25%'
+            }}
             // source={{ uri }}
             source={uri}
             resizeMode='contain'
@@ -20,7 +23,6 @@ const Video = forwardRef(({ uri, onPress, onChange }, ref) => {
 
 const styles = StyleSheet.create({
     video: {
-        height: '25%',
         width: '100%',
         backgroundColor: colors.textDark
     }

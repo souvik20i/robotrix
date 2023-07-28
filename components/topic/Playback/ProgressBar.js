@@ -1,14 +1,15 @@
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 import { View, Text, TouchableWithoutFeedback, TouchableOpacity, StyleSheet } from "react-native"
 import { MaterialIcons } from "@expo/vector-icons"
 
+import useConversion from "../../../hooks/use-conversion"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import Slider from "@react-native-community/slider"
 import colors from "../../../public/colors"
 
-const ProgressBar = ({ current, length, onChange }) => {
-    const currentTimestamp = convertMillis(current)
-    const totalDuration = convertMillis(length)
+const ProgressBar = ({ current, length, orientation, onChange }) => {
+    const currentTimestamp = useConversion(current)
+    const totalDuration = useConversion(length)
 
     useEffect(() => {
         const setMaxReached = async () => {
@@ -28,7 +29,10 @@ const ProgressBar = ({ current, length, onChange }) => {
             <View style={styles.progressBar}>
                 <Text style={styles.time}>{currentTimestamp}</Text>
                 <Slider
-                    style={styles.slider}
+                    style={{
+                        ...styles.slider,
+                        width: orientation.isFullscreen ? '90%' : '75%'
+                    }}
                     value={current}
                     minimumValue={0}
                     maximumValue={length}
@@ -40,7 +44,12 @@ const ProgressBar = ({ current, length, onChange }) => {
                 <Text style={styles.time}>{totalDuration}</Text>
             </View>
             <TouchableOpacity>
-                <MaterialIcons name="fullscreen" size={24} color={colors.textLight} />
+                {!orientation.isFullscreen
+                    ?
+                    <MaterialIcons name="fullscreen" size={24} color={colors.textLight} onPress={orientation.enterFullscreenHandler} />
+                    :
+                    <MaterialIcons name="fullscreen-exit" size={24} color={colors.textLight} onPress={orientation.exitFullscreenHandler} />
+                }
             </TouchableOpacity>
         </View>
     </TouchableWithoutFeedback>)
@@ -61,21 +70,8 @@ const styles = StyleSheet.create({
         color: colors.textLight
     },
     slider: {
-        height: 10,
-        width: '75%'
+        height: 10
     }
 })
-
-const convertMillis = millis => {
-    const totalSeconds = Math.round(millis / 1000)
-    const seconds = totalSeconds % 60
-    const totalMinutes = Math.floor(totalSeconds / 60)
-    const minutes = totalMinutes % 60
-    const hours = Math.floor(totalMinutes / 60)
-
-    const makeDoubleDigits = value => (value < 10) ? `0${value}` : value
-    if (!hours) return `${makeDoubleDigits(minutes)}:${makeDoubleDigits(seconds)}`
-    return `${makeDoubleDigits(hours)}:${makeDoubleDigits(minutes)}:${makeDoubleDigits(seconds)}`
-}
 
 export default ProgressBar

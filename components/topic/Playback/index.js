@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react"
 import Video from "./Video"
 import Controls from "./Controls"
 
-const Playback = ({ uri }) => {
+const Playback = ({ uri, orientation }) => {
     const videoRef = useRef()
     const [status, setStatus] = useState({})
     const changeStatusHandler = status => setStatus(status)
@@ -32,12 +32,14 @@ const Playback = ({ uri }) => {
         <Video
             ref={videoRef}
             uri={uri}
+            isFullscreen={orientation.isFullscreen}
             onPress={showControlsHandler}
             onChange={changeStatusHandler}
         />
         {isControlsActive &&
             <Controls
                 status={status}
+                orientation={orientation}
                 onPress={hideControlsHandler}
                 onToggle={togglePlaybackHandler}
                 onChangePosition={changePositionHandler}
