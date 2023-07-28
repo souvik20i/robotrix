@@ -4,6 +4,7 @@ import { useRouter, Stack } from "expo-router"
 import Container from "../../components/ui/Container"
 import Button from "../../components/ui/Button"
 import Module from "../../components/modules/Module"
+import Space from "../../components/ui/Space"
 import modules from "../../data/modules"
 
 const Modules = () => {
@@ -20,6 +21,7 @@ const Modules = () => {
                 />)
             }
             <Button label={'Find Your Certificate'} onPress={() => router.push('/certificate')} small />
+            <Space />
         </ScrollView>
     </Container>)
 }

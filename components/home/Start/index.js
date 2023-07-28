@@ -1,12 +1,10 @@
 import { View, StyleSheet } from "react-native"
 import { useRouter } from "expo-router"
-import { getAuth, signOut } from "firebase/auth"
 import { FontAwesome } from '@expo/vector-icons';
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Button from "../../ui/Button"
 import colors from "../../../public/colors";
-
-const auth = getAuth()
 
 const Start = () => {
     const router = useRouter()
@@ -14,7 +12,8 @@ const Start = () => {
         router.push('/modules')
     }
     const signOutHandler = async () => {
-        await signOut(auth)
+        await AsyncStorage.removeItem('username')
+        await AsyncStorage.removeItem('password')
     }
     return (<View style={styles.start}>
         <Button

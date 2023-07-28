@@ -1,19 +1,14 @@
-import { useState, useEffect } from "react"
 import { ImageBackground, StyleSheet } from "react-native"
-import { getAuth, onAuthStateChanged } from "firebase/auth"
 import { Stack } from "expo-router"
 
+import useAuth from "../hooks/use-auth"
 import Container from "../components/ui/Container"
 import Title from "../components/home/Title"
 import Auth from "../components/home/Auth"
 import Start from "../components/home/Start"
 
-const auth = getAuth()
-
 const Home = () => {
-    const [user, setUser] = useState()
-    useEffect(() => onAuthStateChanged(auth, user => setUser(user)), [])
-
+    const username = useAuth()
     return (<Container>
         <Stack.Screen options={{ headerShown: false }} />
         <ImageBackground
@@ -22,7 +17,7 @@ const Home = () => {
             style={styles.background}
         >
             <Title />
-            {user ? <Start /> : <Auth />}
+            {username ? <Start /> : <Auth />}
         </ImageBackground>
     </Container>);
 }

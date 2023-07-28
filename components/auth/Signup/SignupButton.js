@@ -1,46 +1,33 @@
-import { useState } from "react"
 import { useRouter } from "expo-router"
 import { useSelector } from "react-redux"
-import { getAuth, createUserWithEmailAndPassword, linkWithPhoneNumber } from "firebase/auth"
 
+import useHttp from "../../../hooks/use-http"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import Button from "../../ui/Button"
 import Loader from "../../ui/Loader"
 
-const auth = getAuth()
-
 const SignupButton = () => {
     const router = useRouter()
-    const [isLoading, setIsLoading] = useState(false)
+    const { httpRequest, isLoading, error } = useHttp()
     const {
-        phone, email, password, isNameValid, isEmailValid, isPasswordValid,
-        isPhoneValid, isEnrollmentvalid, isCourseValid, isStreamValid, isSectionValid
+        name, email, password, phone, enrollment, course, stream, section, isNameValid, isEmailValid,
+        isPasswordValid, isPhoneValid, isEnrollmentvalid, isCourseValid, isStreamValid, isSectionValid
     } = useSelector(state => state.auth.signup)
 
-    const emailPhoneSignup = async () => {
-        setIsLoading(true)
-        const res1 = await createUserWithEmailAndPassword(auth, email, password)
-        console.log(res1)
-        // const res2 = await linkWithPhoneNumber(auth, phone, password)
-        // console.log(res2)
+    const signupHandler = async () => {
+        const isSignupValid = isNameValid && isEmailValid && isPasswordValid && isPhoneValid && isEnrollmentvalid && isCourseValid && isStreamValid && isSectionValid
+        if (!isSignupValid) return
+        const res = httpRequest('http://192.168.56.1:3000/auth/register', {
+            name, email, password, phone, enrollmentno: enrollment, course, stream, section
+        })
+        console.log(res)
+        await AsyncStorage.setItem('username', email)
+        await AsyncStorage.setItem('password', password)
         router.replace('/')
-        setIsLoading(false)
-    }
-
-    const signupHandler = () => {
-        const isSignupValid = isNameValid && isEmailValid && isPasswordValid && isPhoneValid
-            && isEnrollmentvalid && isCourseValid && isStreamValid && isSectionValid
-        if (isSignupValid) {
-            emailPhoneSignup().catch(err => console.error(err))
-        }
     }
 
     return (<>{isLoading ? <Loader /> :
-        <Button
-            label={'Signup'}
-            onPress={signupHandler}
-            dark
-            small
-        />
+        <Button label={'Signup'} onPress={signupHandler} dark small />
     }</>)
 }
 

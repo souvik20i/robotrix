@@ -22,11 +22,11 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         marginHorizontal: 5,
         borderRadius: 10,
-        elevation: 5
+        elevation: 3
     },
     header: {
         color: colors.textDark,
-        fontSize: 20,
+        fontSize: 17,
         textAlign: 'center'
     },
     image: {
@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: colors.textDark,
-        fontSize: 20
+        fontSize: 20,
+        lineHeight: 30
     }
 })
 

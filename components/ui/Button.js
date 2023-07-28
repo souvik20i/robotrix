@@ -11,7 +11,7 @@ const Button = ({ label, onPress, style, dark = false, small = false }) => {
             <Text style={{
                 ...styles.label,
                 color: dark ? colors.textLight : colors.textDark,
-                fontSize: small ? 25 : 35,
+                fontSize: small ? 20 : 30,
                 ...style
             }}>{label}</Text>
         </TouchableOpacity>
