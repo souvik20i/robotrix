@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     label: {
         textAlign: 'center',
         paddingVertical: 10,
-        paddingHorizontal: 50
+        paddingHorizontal: 35
     }
 })
 
