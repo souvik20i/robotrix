@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 const phonePattern = /^\d{10}$/
+const enrollmentPattern = /^\d{14}$/
 
 const authSlice = createSlice({
     name: 'auth',
@@ -58,10 +59,12 @@ const authSlice = createSlice({
         changeSigninPassword(state, action) {
             const value = action.payload.trim()
             state.signin.password = value
+            state.signin.isPasswordValid = value.length() >= 6
         },
         changeSignupName(state, action) {
             const value = action.payload.trim()
             state.signup.name = value
+            state.signup.isNameValid = value.length() >= 4
         },
         changeSignupEmail(state, action) {
             const value = action.payload.trim()
@@ -71,6 +74,7 @@ const authSlice = createSlice({
         changeSignupPassword(state, action) {
             const value = action.payload.trim()
             state.signup.password = value
+            state.signup.isPasswordValid = value.length() >= 6
         },
         changeSignupPhone(state, action) {
             const value = action.payload.trim()
@@ -80,6 +84,7 @@ const authSlice = createSlice({
         changeSignupEnrollment(state, action) {
             const value = action.payload.trim()
             state.signup.enrollment = value
+            state.signup.isEnrollmentvalid = value.match(enrollmentPattern)
         },
         changeSignupCourse(state, action) {
             state.signup.course = action.payload
