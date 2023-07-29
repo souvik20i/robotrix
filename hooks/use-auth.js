@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react"
+import { useGet, catchAsync } from "../hooks/use-http"
+
+import jwtDecode from "jwt-decode"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
 const useAuth = () => {
-    const [token, setToken] = useState()
+    const { getRequest } = useGet()
+    const [user, setUser] = useState()
     useEffect(() => {
-        (async () => {
-            setToken(await AsyncStorage.getItem('token'))
-        })()
+        (catchAsync(async () => {
+            const token = await AsyncStorage.getItem('token')
+            if (!token) return
+            const { _id } = jwtDecode(token)
+            const { name } = await getRequest(`http://192.168.56.1:3000/user/${_id}`, token)
+            setUser(name)
+        }))()
     }, [])
-    return token
+    return user
 }
 
 export default useAuth

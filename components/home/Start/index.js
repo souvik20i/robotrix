@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
 import { useRouter } from "expo-router"
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -6,7 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Button from "../../ui/Button"
 import colors from "../../../public/colors";
 
-const Start = () => {
+const Start = ({ name }) => {
     const router = useRouter()
 
     const startHandler = () => {
@@ -17,8 +17,9 @@ const Start = () => {
         await AsyncStorage.removeItem('token')
         router.replace('/')
     }
-    
+
     return (<View style={styles.start}>
+        <Text style={styles.welcome}>Welcome, {name.split(' ')[0]}</Text>
         <Button
             style={styles.startLearning}
             label={'Start Learning'}
@@ -39,6 +40,10 @@ const styles = StyleSheet.create({
         flex: 0.3,
         paddingTop: 20,
         alignItems: 'center'
+    },
+    welcome: {
+        color: colors.textLight,
+        fontSize: 20
     },
     startLearning: {
         fontSize: 25,

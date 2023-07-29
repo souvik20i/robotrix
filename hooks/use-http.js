@@ -2,12 +2,14 @@ import { useState } from "react"
 
 export const useGet = () => {
     const [isLoading, setIsLoading] = useState(false)
-    const getRequest = async (url) => {
+    const getRequest = async (url, token) => {
         setIsLoading(true)
-        const response = await fetch(url)
-        const { success, message, data } = await response.json()
+        const response = await fetch(url, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        const { status, message, data } = await response.json()
         setIsLoading(false)
-        if (!success) throw new Error(message)
+        if (status === 'error') throw new Error(message)
         return data
     }
     return { getRequest, isLoading }
