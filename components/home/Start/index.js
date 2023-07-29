@@ -8,13 +8,16 @@ import colors from "../../../public/colors";
 
 const Start = () => {
     const router = useRouter()
+
     const startHandler = () => {
         router.push('/modules')
     }
+
     const signOutHandler = async () => {
-        await AsyncStorage.removeItem('username')
-        await AsyncStorage.removeItem('password')
+        await AsyncStorage.removeItem('token')
+        router.replace('/')
     }
+    
     return (<View style={styles.start}>
         <Button
             style={styles.startLearning}

@@ -8,7 +8,7 @@ import Auth from "../components/home/Auth"
 import Start from "../components/home/Start"
 
 const Home = () => {
-    const username = useAuth()
+    const user = useAuth()
     return (<Container>
         <Stack.Screen options={{ headerShown: false }} />
         <ImageBackground
@@ -17,7 +17,7 @@ const Home = () => {
             style={styles.background}
         >
             <Title />
-            <Start />
+            {user ? <Start /> : <Auth />}
         </ImageBackground>
     </Container>)
 }

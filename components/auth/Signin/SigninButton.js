@@ -1,26 +1,23 @@
 import { useRouter } from "expo-router"
 import { useSelector } from "react-redux"
+import { usePost, catchAsync } from "../../../hooks/use-http"
 
-import useHttp from "../../../hooks/use-http"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import Button from "../../ui/Button"
 import Loader from "../../ui/Loader"
 
 const SigninButton = () => {
     const router = useRouter()
-    const { httpRequest, isLoading, error } = useHttp()
-    const {
-        phone, email, password, isPhoneValid, isEmailValid, isPasswordValid
-    } = useSelector(state => state.auth.signin)
+    const { postRequest, isLoading } = usePost()
+    const { email, phone, password } = useSelector(state => state.auth.signin)
 
-    const signinHandler = () => {
-        const isSiginValid = (isEmailValid || isPhoneValid) && isPasswordValid
-        if (!isSiginValid) return
-        const res = httpRequest('http://192.168.56.1:3000/auth/login', {
+    const signinHandler = catchAsync(async () => {
+        const data = await postRequest('http://192.168.56.1:3000/auth/login', {
             emailOrPhone: email | phone, password
         })
-        console.log(res)
+        await AsyncStorage.setItem('token', data.token)
         router.replace('/')
-    }
+    })
 
     return (<>{isLoading ? <Loader /> :
         <Button label={'Signin'} onPress={signinHandler} dark small />

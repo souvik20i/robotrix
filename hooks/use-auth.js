@@ -2,11 +2,13 @@ import { useState, useEffect } from "react"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
 const useAuth = () => {
-    const [username, setUsername] = useState()
+    const [token, setToken] = useState()
     useEffect(() => {
-        (async () => setUsername(await AsyncStorage.getItem('username')))()
+        (async () => {
+            setToken(await AsyncStorage.getItem('token'))
+        })()
     }, [])
-    return username
+    return token
 }
 
 export default useAuth

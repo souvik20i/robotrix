@@ -1,34 +1,37 @@
 import { useState } from "react"
 
-const useHttp = () => {
-    const [data, setData] = useState()
+export const useGet = () => {
     const [isLoading, setIsLoading] = useState(false)
-    const [error, setError] = useState(null)
-
     const getRequest = async (url) => {
+        setIsLoading(true)
         const response = await fetch(url)
-        setData(await response.json())
+        const { success, message, data } = await response.json()
+        setIsLoading(false)
+        if (!success) throw new Error(message)
+        return data
     }
+    return { getRequest, isLoading }
+}
 
+export const usePost = () => {
+    const [isLoading, setIsLoading] = useState(false)
     const postRequest = async (url, body) => {
+        setIsLoading(true)
         const response = await fetch(url, {
             method: 'post',
             body: JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' }
         })
-        setData(await response.json())
-    }
-
-    const httpRequest = (url, config = null) => {
-        setIsLoading(true)
-        if (!config) getRequest(url).catch(setError)
-        else postRequest(url, config).catch(setError)
+        const { success, message, data } = await response.json()
         setIsLoading(false)
-        setError(null)
+        if (!success) throw new Error(message)
         return data
     }
-
-    return { httpRequest, isLoading, error }
+    return { postRequest, isLoading }
 }
 
-export default useHttp
+export const catchAsync = func => {
+    return () => {
+        func().catch(console.error)
+    }
+}
