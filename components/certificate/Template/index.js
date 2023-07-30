@@ -2,16 +2,21 @@ import { View, Text, Image, StyleSheet } from "react-native"
 
 import colors from "../../../public/colors"
 
-const Template = () => {
+const Template = ({ isCompleted }) => {
     return (<View style={styles.block}>
-        <Text style={styles.annnot}>You will get a certificate like this</Text>
+        {isCompleted && <Text style={styles.annnot}>Download your certificate</Text>}
         <View style={styles.templateWrapper}>
             <Image
                 source={require('../../../public/certificate.png')}
                 style={styles.template}
             />
         </View>
-    </View>)
+        {!isCompleted && <Text style={{
+            ...styles.annnot,
+            fontSize: 30,
+            padding: 50
+        }}>Get a certificate of completion</Text>}
+    </View >)
 }
 
 const styles = StyleSheet.create({
@@ -27,8 +32,9 @@ const styles = StyleSheet.create({
         elevation: 3
     },
     annnot: {
-        fontSize: 15,
-        paddingBottom: 25,
+        fontSize: 20,
+        textAlign: 'center',
+        padding: 20,
         color: colors.textGrey
     }
 })

@@ -15,14 +15,14 @@ const Module = ({ id, name, onPress = () => { } }) => {
 
 const styles = StyleSheet.create({
     module: {
-        backgroundColor: colors.bgPrimary,
         justifyContent: 'space-between',
         paddingVertical: 20,
         paddingHorizontal: 10,
         marginVertical: 10,
         marginHorizontal: 5,
         borderRadius: 10,
-        elevation: 3
+        backgroundColor: colors.bgPrimary,
+        elevation: 2
     },
     header: {
         color: colors.textDark,

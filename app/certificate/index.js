@@ -7,11 +7,12 @@ import Template from "../../components/certificate/Template"
 import Actions from "../../components/certificate/Actions"
 
 const Certificate = () => {
+    const completed = 11, expected = 32
     return (<Container style={styles.container}>
         <Stack.Screen options={{ title: 'Course Certificate' }} />
-        <Progress completed={5} expected={32} />
-        <Template />
-        <Actions name={'S S'} />
+        <Progress completed={completed} expected={expected} />
+        <Template isCompleted={completed == expected} />
+        {completed == expected && <Actions name={'Souvik Sarkar'} />}
     </Container>)
 }
 

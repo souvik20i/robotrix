@@ -1,7 +1,7 @@
 import { View } from "react-native"
 
-const Space = () => {
-    return (<View style={{ height: 100 }} />)
+const Space = ({ height = 50 }) => {
+    return (<View style={{ height }} />)
 }
 
 export default Space

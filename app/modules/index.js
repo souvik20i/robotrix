@@ -20,7 +20,13 @@ const Modules = () => {
                     onPress={() => router.push(`/modules/${id}`)}
                 />)
             }
-            <Button label={'Find Your Certificate'} onPress={() => router.push('/certificate')} small />
+            <Button
+                style={styles.certificate}
+                label={'Find Your Certificate'}
+                onPress={() => router.push('/certificate')}
+                dark
+                small
+            />
             <Space />
         </ScrollView>
     </Container>)
@@ -33,6 +39,9 @@ const styles = StyleSheet.create({
     modules: {
         width: '100%',
         padding: 20
+    },
+    certificate: {
+        fontSize: 15
     }
 })
 
