@@ -5,7 +5,7 @@ import { moduleActions } from "../../../store/module-slice"
 
 import colors from "../../../public/colors"
 
-const Module = ({ id, name, topics}) => {
+const Module = ({ id, name, topics }) => {
     const dispatch = useDispatch()
     const router = useRouter()
 

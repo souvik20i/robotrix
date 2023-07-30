@@ -1,10 +1,7 @@
 {
   "expo": {
     "scheme": "acme",
-    "web": {
-      "bundler": "metro"
-    },
-    "name": "robotrix",
+    "name": "Robotrix",
     "slug": "robotrix",
     "extra": {
       "eas": {

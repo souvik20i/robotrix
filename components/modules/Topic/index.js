@@ -24,7 +24,7 @@ const Topic = ({ id, title }) => {
             <FontAwesome5 name="video" size={12} color={colors.textGrey} />
             <Text style={styles.time}>{duration}</Text>
         </View>
-    </TouchableOpacity >)
+    </TouchableOpacity>)
 }
 
 const styles = StyleSheet.create({
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         padding: 20,
         margin: 10,
         borderRadius: 10,
-        elevation: 1
+        elevation: 2
     },
     title: {
         color: colors.textDark,

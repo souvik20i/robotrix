@@ -13,7 +13,7 @@ const Controls = ({ status, orientation, onPress, onToggle, onChangePosition, on
     return (<TouchableWithoutFeedback onPress={onPress}>
         <View style={{
             ...styles.controls,
-            height: orientation.isFullscreen ? '100%' : '25%',
+            height: orientation.isFullscreen ? '100%' : '33%',
             padding: orientation.isFullscreen ? 25 : 10
         }}>
             <TopBar

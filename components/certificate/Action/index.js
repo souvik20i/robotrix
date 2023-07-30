@@ -7,7 +7,7 @@ import useTemplate from "../../../hooks/use-template"
 import Button from "../../ui/Button"
 import colors from "../../../public/colors"
 
-const Actions = ({ name }) => {
+const Action = ({ name }) => {
     const html = useTemplate(name)
 
     const generatePdf = async (html) => {
@@ -30,4 +30,4 @@ const Actions = ({ name }) => {
     />)
 }
 
-export default Actions
+export default Action

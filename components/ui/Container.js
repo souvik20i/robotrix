@@ -1,12 +1,17 @@
-import { View, StyleSheet } from "react-native"
+import { StyleSheet } from "react-native"
+import Animated, { FadeInDown } from "react-native-reanimated"
 
 import colors from "../../public/colors"
 
 const Container = ({ style = {}, children }) => {
-    return (<View style={{
-        ...styles.container,
-        ...style
-    }}>{children}</View>)
+    return (<Animated.View
+        entering={FadeInDown.delay(100)}
+        style={{
+            ...styles.container,
+            ...style
+        }}>
+        {children}
+    </Animated.View>)
 }
 
 const styles = StyleSheet.create({
