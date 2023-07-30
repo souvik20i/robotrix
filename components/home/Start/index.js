@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
     },
     welcome: {
         color: colors.textLight,
-        fontSize: 20
+        fontSize: 17,
+        paddingBottom: 10
     },
     startLearning: {
         fontSize: 25,

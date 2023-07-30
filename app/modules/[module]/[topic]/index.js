@@ -1,14 +1,15 @@
 import { useState } from "react"
 import { StyleSheet } from "react-native"
-import { useLocalSearchParams, Stack } from "expo-router"
+import { Stack } from "expo-router"
 import { lockAsync, OrientationLock } from "expo-screen-orientation"
+import { useSelector } from "react-redux"
 
 import Container from "../../../../components/ui/Container"
 import Playback from "../../../../components/topic/Playback"
 import Resources from "../../../../components/topic/Resources"
 
 const Topic = () => {
-    const { topic } = useLocalSearchParams()
+    const { currentTopic } = useSelector(state => state.module)
     const [isFullscreen, setIsFullscreen] = useState(false)
 
     const enterFullscreenHandler = async () => {
@@ -22,7 +23,7 @@ const Topic = () => {
     }
     return (<Container style={styles.container}>
         <Stack.Screen options={{
-            title: `Topic ${topic}`,
+            title: currentTopic,
             headerShown: !isFullscreen,
             statusBarHidden: isFullscreen
         }} />

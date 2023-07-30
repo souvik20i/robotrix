@@ -1,8 +1,21 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native"
+import { Text, Image, TouchableOpacity, StyleSheet } from "react-native"
+import { useRouter } from "expo-router"
+import { useDispatch } from "react-redux"
+import { moduleActions } from "../../../store/module-slice"
+
 import colors from "../../../public/colors"
 
-const Module = ({ id, name, onPress = () => { } }) => {
-    return (<TouchableOpacity style={styles.module} onPress={onPress}>
+const Module = ({ id, name, topics}) => {
+    const dispatch = useDispatch()
+    const router = useRouter()
+
+    const changeModuleHandler = () => {
+        dispatch(moduleActions.changeCurrentModule(name))
+        dispatch(moduleActions.changeModule(topics))
+        router.push(`/modules/${id}`)
+    }
+
+    return (<TouchableOpacity style={styles.module} onPress={changeModuleHandler}>
         <Text style={styles.header}>Module {id}</Text>
         <Image
             style={styles.image}
