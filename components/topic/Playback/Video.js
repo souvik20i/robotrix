@@ -12,8 +12,7 @@ const Video = forwardRef(({ uri, isFullscreen, onPress, onChange }, ref) => {
                 ...styles.video,
                 height: isFullscreen ? '100%' : '25%'
             }}
-            // source={{ uri }}
-            source={uri}
+            source={{ uri }}
             resizeMode='contain'
             onPlaybackStatusUpdate={onChange}
             shouldPlay

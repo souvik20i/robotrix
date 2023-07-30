@@ -27,9 +27,8 @@ const Topic = () => {
             headerShown: !isFullscreen,
             statusBarHidden: isFullscreen
         }} />
-        {/* <Playback uri={'https://res.cloudinary.com/duejtqqkp/video/upload/v1689328132/endgame_g8zr1e.mp4'} /> */}
         <Playback
-            uri={require('../../../../public/endgame.mp4')}
+            uri={'https://daus-one.s3.ap-south-1.amazonaws.com/robotic+sensor.mp4'}
             orientation={{
                 isFullscreen, enterFullscreenHandler, exitFullscreenHandler
             }}

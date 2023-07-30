@@ -1,4 +1,3 @@
-import { StyleSheet } from "react-native"
 import { useRouter, Stack } from "expo-router"
 
 import Module from "../../components/modules/Module"
@@ -21,20 +20,13 @@ const Modules = () => {
                     topics={topics}
                 />)
             }
-            <Button
-                style={styles.certificate}
-                label={'Find Your Certificate'}
-                onPress={() => router.push('/certificate')} dark small
-            />
             <Space />
         </Scroll>
+        <Button
+            label={'Certificate Progress'}
+            onPress={() => router.push('/certificate')} dark small
+        />
     </Container>)
 }
-
-const styles = StyleSheet.create({
-    certificate: {
-        fontSize: 15
-    }
-})
 
 export default Modules

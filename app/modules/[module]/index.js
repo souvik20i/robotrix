@@ -1,5 +1,4 @@
-import { StyleSheet } from "react-native"
-import { useRouter, Stack } from "expo-router"
+import { useRouter, usePathname, Stack } from "expo-router"
 import { useSelector } from "react-redux"
 
 import Topic from "../../../components/modules/Topic"
@@ -10,6 +9,7 @@ import Space from "../../../components/ui/Space"
 
 const Module = () => {
     const router = useRouter()
+    const pathname = usePathname()
     const { currentModule, topics } = useSelector(state => state.module)
     return (<Container>
         <Stack.Screen options={{ title: currentModule }} />
@@ -23,14 +23,11 @@ const Module = () => {
             }
             <Space />
         </Scroll>
-        <Button label={'Test'} onPress={() => router.push('/modules/1/test')} dark />
+        <Button
+            label={'Take Assessment'}
+            onPress={() => router.push(`${pathname}/test`)} dark small
+        />
     </Container>)
 }
-
-const styles = StyleSheet.create({
-    test: {
-
-    }
-})
 
 export default Module

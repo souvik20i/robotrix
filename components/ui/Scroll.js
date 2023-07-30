@@ -1,10 +1,11 @@
 import { ScrollView, StyleSheet } from "react-native"
 
 const Scroll = ({ style, children }) => {
-    return (<ScrollView style={{
-        ...styles.scroll,
-        ...style
-    }}
+    return (<ScrollView
+        style={{
+            ...styles.scroll,
+            ...style
+        }}
         showsVerticalScrollIndicator={false}
     >
         {children}
