@@ -2,9 +2,11 @@ import { forwardRef } from "react"
 import { TouchableWithoutFeedback, StyleSheet } from "react-native"
 import { Video as ExpoVideo } from "expo-av"
 
+import useAuth from "../../../hooks/use-auth"
 import colors from "../../../public/colors"
 
 const Video = forwardRef(({ uri, isFullscreen, onPress, onChange }, ref) => {
+    const { token } = useAuth()
     return (<TouchableWithoutFeedback onPress={onPress}>
         <ExpoVideo
             ref={ref}
@@ -12,7 +14,7 @@ const Video = forwardRef(({ uri, isFullscreen, onPress, onChange }, ref) => {
                 ...styles.video,
                 height: isFullscreen ? '100%' : '33%'
             }}
-            source={{ uri }}
+            source={{ uri, headers: { 'Authorization': `Bearer ${token}` } }}
             resizeMode='contain'
             onPlaybackStatusUpdate={onChange}
             shouldCorrectPitch

@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native"
 import { Stack } from "expo-router"
 import { lockAsync, OrientationLock } from "expo-screen-orientation"
 import { useSelector } from "react-redux"
+import { DOMAIN } from "../../../../domain"
 
 import Container from "../../../../components/ui/Container"
 import Playback from "../../../../components/topic/Playback"
@@ -28,7 +29,7 @@ const Topic = () => {
             statusBarHidden: isFullscreen
         }} />
         <Playback
-            uri={'https://daus-one.s3.ap-south-1.amazonaws.com/robotic+sensor.mp4'}
+            uri={`${DOMAIN}/stream/robotic-sensor.mp4`}
             orientation={{
                 isFullscreen, enterFullscreenHandler, exitFullscreenHandler
             }}
