@@ -15,6 +15,7 @@ const Video = forwardRef(({ uri, isFullscreen, onPress, onChange }, ref) => {
             source={{ uri }}
             resizeMode='contain'
             onPlaybackStatusUpdate={onChange}
+            shouldCorrectPitch
             shouldPlay
         />
     </TouchableWithoutFeedback>)

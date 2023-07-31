@@ -7,7 +7,7 @@ import colors from "../../../public/colors"
 
 const Controls = ({ status, orientation, onPress, onToggle, onChangePosition, onChangeSpeed }) => {
     const {
-        isPlaying, isBuffering, rate, positionMillis, durationMillis, didJustFinish
+        isPlaying, rate, positionMillis, playableDurationMillis, durationMillis, didJustFinish
     } = status
 
     return (<TouchableWithoutFeedback onPress={onPress}>
@@ -22,7 +22,7 @@ const Controls = ({ status, orientation, onPress, onToggle, onChangePosition, on
             />
             <Play
                 isPlaying={isPlaying}
-                isBuffering={isBuffering}
+                isBuffering={positionMillis === playableDurationMillis}
                 isFinished={didJustFinish}
                 current={positionMillis}
                 length={durationMillis}

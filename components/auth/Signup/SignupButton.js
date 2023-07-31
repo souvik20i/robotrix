@@ -14,7 +14,7 @@ const SignupButton = () => {
     } = useSelector(state => state.auth.signup)
 
     const signupHandler = catchAsync(async () => {
-        const data = await postRequest('http://192.168.56.1:3000/auth/register', {
+        const data = await postRequest('http://192.168.90.8:3000/auth/register', {
             name, email, password, phone, enrollmentno: enrollment, course, stream, section
         })
         await AsyncStorage.setItem('token', data.token)

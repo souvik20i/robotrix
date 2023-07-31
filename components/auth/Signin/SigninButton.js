@@ -12,7 +12,7 @@ const SigninButton = () => {
     const { email, phone, password } = useSelector(state => state.auth.signin)
 
     const signinHandler = catchAsync(async () => {
-        const data = await postRequest('http://192.168.56.1:3000/auth/login', {
+        const data = await postRequest('http://192.168.90.8:3000/auth/login', {
             emailOrPhone: email | phone, password
         })
         await AsyncStorage.setItem('token', data.token)

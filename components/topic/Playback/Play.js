@@ -21,10 +21,11 @@ const Play = ({ isPlaying, isBuffering, isFinished, current, length, onToggle, o
                     <MaterialIcons name="replay-10" size={40} color={colors.textLight} />
                 </TouchableOpacity>
                 <TouchableWithoutFeedback onPress={onToggle}>
-                    {isPlaying ?
+                    {isBuffering ? <Loader color={colors.textLight} raw /> : isPlaying
+                        ?
                         <FontAwesome name="pause" size={40} color={colors.textLight} />
-                        : isBuffering ? <Loader color={colors.textLight} raw /> :
-                            <FontAwesome name="play" size={40} color={colors.textLight} />
+                        :
+                        <FontAwesome name="play" size={40} color={colors.textLight} />
                     }
                 </TouchableWithoutFeedback>
                 <TouchableOpacity onPress={forwardHandler}>

@@ -12,7 +12,7 @@ const useAuth = () => {
             const token = await AsyncStorage.getItem('token')
             if (!token) return
             const { _id } = jwtDecode(token)
-            const { name } = await getRequest(`http://192.168.56.1:3000/user/${_id}`, token)
+            const { name } = await getRequest(`http://192.168.90.8:3000/user/${_id}`, token)
             setUser(name)
         }))()
     }, [])
