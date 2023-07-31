@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router"
 import { useSelector } from "react-redux"
 import { usePost, catchAsync } from "../../../hooks/use-http"
+import { DOMAIN } from "../../../domain"
 
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import Button from "../../ui/Button"
@@ -12,7 +13,7 @@ const SigninButton = () => {
     const { email, phone, password } = useSelector(state => state.auth.signin)
 
     const signinHandler = catchAsync(async () => {
-        const data = await postRequest('http://192.168.90.8:3000/auth/login', {
+        const data = await postRequest(`${DOMAIN}/auth/login`, {
             emailOrPhone: email | phone, password
         })
         await AsyncStorage.setItem('token', data.token)
