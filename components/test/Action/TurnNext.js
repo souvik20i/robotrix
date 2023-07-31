@@ -3,11 +3,12 @@ import { AntDesign } from '@expo/vector-icons'
 import { useDispatch, useSelector } from "react-redux"
 import { testActions } from "../../../store/test-slice"
 
-import questions from "../../../data/questions"
-
 const TurnNext = ({ style }) => {
     const dispatch = useDispatch()
     let { serial } = useSelector(state => state.test.question)
+    const { modules, currentModule } = useSelector(state => state.module)
+    const { questions } = modules[currentModule]
+
     const nextQuestionHandler = () => {
         if (serial == questions.length) serial = 0
         dispatch(testActions.changeQuestion({

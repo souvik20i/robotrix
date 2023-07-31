@@ -6,10 +6,12 @@ import TurnNext from "./TurnNext"
 import Clear from "./Clear"
 import Submit from "./Submit"
 import colors from "../../../public/colors"
-import questions from "../../../data/questions"
 
 const Action = () => {
     const { serial } = useSelector(state => state.test.question)
+    const { modules, currentModule } = useSelector(state => state.module)
+    const { questions } = modules[currentModule]
+
     return (<View style={styles.action}>
         <TurnPrev style={styles.turn} />
         <Clear style={styles.actionButton} />

@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { View, Text, TouchableWithoutFeedback, TouchableOpacity, StyleSheet } from "react-native"
+import { useSelector } from "react-redux"
 import { MaterialIcons } from "@expo/vector-icons"
 
 import useConversion from "../../../hooks/use-conversion"
@@ -10,17 +11,20 @@ import colors from "../../../public/colors"
 const ProgressBar = ({ current, length, orientation, onChange }) => {
     const currentTimestamp = useConversion(current)
     const totalDuration = useConversion(length)
+    
+    const { currentModule, currentTopic } = useSelector(state => state.module)
+    const key = `max-reached-${currentModule}-${currentTopic}`
 
     useEffect(() => {
         const setMaxReached = async () => {
-            const stored = await AsyncStorage.getItem('max-reached') || 0;
-            if (current > stored) await AsyncStorage.setItem('max-reached', current.toString())
+            const stored = await AsyncStorage.getItem(key) || 0;
+            if (current > stored) await AsyncStorage.setItem(key, current.toString())
         }
         setMaxReached().catch(err => console.log(err))
     }, [current])
 
     const slidingHandler = async (value) => {
-        const stored = await AsyncStorage.getItem('max-reached');
+        const stored = await AsyncStorage.getItem(key);
         if (value < stored) onChange(value)
     }
 

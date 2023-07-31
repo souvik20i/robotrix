@@ -10,7 +10,7 @@ import Playback from "../../../../components/topic/Playback"
 import Resources from "../../../../components/topic/Resources"
 
 const Topic = () => {
-    const { currentTopic } = useSelector(state => state.module)
+    const { modules, currentModule, currentTopic } = useSelector(state => state.module)
     const [isFullscreen, setIsFullscreen] = useState(false)
 
     const enterFullscreenHandler = async () => {
@@ -24,7 +24,7 @@ const Topic = () => {
     }
     return (<Container style={styles.container}>
         <Stack.Screen options={{
-            title: currentTopic,
+            title: modules[currentModule].topics[currentTopic].title,
             headerShown: !isFullscreen,
             statusBarHidden: isFullscreen
         }} />

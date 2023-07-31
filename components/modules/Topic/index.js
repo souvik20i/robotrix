@@ -14,7 +14,7 @@ const Topic = ({ id, title }) => {
     const duration = useConversion(Math.floor(Math.random() * 600000))
 
     const changeTopicHandler = () => {
-        dispatch(moduleActions.changeCurrentTopic(title))
+        dispatch(moduleActions.changeCurrentTopic(id))
         router.push(`${pathname}/${id}`)
     }
 

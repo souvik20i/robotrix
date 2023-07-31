@@ -10,14 +10,15 @@ import Space from "../../../components/ui/Space"
 const Module = () => {
     const router = useRouter()
     const pathname = usePathname()
-    const { currentModule, topics } = useSelector(state => state.module)
+    const { modules, currentModule } = useSelector(state => state.module)
+    const { name, topics } = modules[currentModule]
     return (<Container>
-        <Stack.Screen options={{ title: currentModule }} />
+        <Stack.Screen options={{ title: name }} />
         <Scroll>
-            {topics.map(({ id, title }) =>
+            {topics.map(({ title }, i) =>
                 <Topic
-                    key={id}
-                    id={id}
+                    key={i}
+                    id={i}
                     title={title}
                 />)
             }

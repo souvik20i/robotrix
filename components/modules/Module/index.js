@@ -5,18 +5,17 @@ import { moduleActions } from "../../../store/module-slice"
 
 import colors from "../../../public/colors"
 
-const Module = ({ id, name, topics }) => {
+const Module = ({ id, name }) => {
     const dispatch = useDispatch()
     const router = useRouter()
 
     const changeModuleHandler = () => {
-        dispatch(moduleActions.changeCurrentModule(name))
-        dispatch(moduleActions.changeModule(topics))
+        dispatch(moduleActions.changeCurrentModule(id))
         router.push(`/modules/${id}`)
     }
 
     return (<TouchableOpacity style={styles.module} onPress={changeModuleHandler}>
-        <Text style={styles.header}>Module {id}</Text>
+        <Text style={styles.header}>Module {id + 1}</Text>
         <Image
             style={styles.image}
             source={require('../../../public/module.jpg')}

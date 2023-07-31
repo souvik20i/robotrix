@@ -7,9 +7,9 @@ export const useGet = () => {
         const response = await fetch(url, {
             headers: { 'Authorization': `Bearer ${token}` }
         })
-        const { status, message, data } = await response.json()
+        const { success, message, data } = await response.json()
         setIsLoading(false)
-        if (status === 'error') throw new Error(message)
+        if (!success) throw new Error(message)
         return data
     }
     return { getRequest, isLoading }

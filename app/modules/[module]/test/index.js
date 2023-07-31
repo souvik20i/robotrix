@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { View, StyleSheet } from "react-native"
-import { Stack, useLocalSearchParams } from "expo-router"
+import { Stack } from "expo-router"
 import { useDispatch, useSelector } from "react-redux"
 import { testActions } from "../../../../store/test-slice"
 
@@ -9,12 +9,14 @@ import QuestionBar from "../../../../components/test/QuestionBar"
 import Question from "../../../../components/test/Question"
 import Options from "../../../../components/test/Options"
 import Action from "../../../../components/test/Action"
-import questions from "../../../../data/questions"
 import colors from "../../../../public/colors"
 
 const Test = () => {
     const dispatch = useDispatch()
+    const { modules, currentModule } = useSelector(state => state.module)
     const { serial, content, options } = useSelector(state => state.test.question)
+    const { questions } = modules[currentModule]
+
     useEffect(() => {
         dispatch(testActions.changeQuestion({
             serial: 1,
@@ -23,9 +25,8 @@ const Test = () => {
         dispatch(testActions.clearAnswers())
     }, [])
 
-    const { module } = useLocalSearchParams()
     return (<Container style={styles.container}>
-        <Stack.Screen options={{ title: `Module ${module} Assessment` }} />
+        <Stack.Screen options={{ title: `Module ${currentModule + 1} Assessment` }} />
         <QuestionBar questions={questions} />
         <View style={styles.interaction}>
             <Question serial={serial} content={content} />

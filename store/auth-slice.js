@@ -9,6 +9,7 @@ const enrollmentPattern = /^\d{14}$/
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
+        token: '',
         isSigninActive: true,
         signin: {
             phone: '',
@@ -38,6 +39,9 @@ const authSlice = createSlice({
         }
     },
     reducers: {
+        changeToken(state, action) {
+            state.token = action.payload
+        },
         turnToSignin(state) {
             state.isSigninActive = true
         },
