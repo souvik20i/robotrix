@@ -3,11 +3,6 @@
     "scheme": "acme",
     "name": "Robotrix",
     "slug": "robotrix",
-    "extra": {
-      "eas": {
-        "projectId": "e0dc3e74-bde6-47c4-a098-15551f68bcef"
-      }
-    },
     "android": {
       "package": "com.souvik720i.robotrix"
     },
@@ -26,6 +21,11 @@
           }
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "2ebbe59f-8447-4957-a839-2b20c15abfae"
+      }
+    }
   }
 }
