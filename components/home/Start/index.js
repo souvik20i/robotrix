@@ -1,13 +1,16 @@
 import { View, Text, StyleSheet } from "react-native"
 import { useRouter } from "expo-router"
-import { FontAwesome } from '@expo/vector-icons';
+import { useDispatch } from "react-redux"
+import { authActions } from "../../../store/auth-slice"
+import { FontAwesome } from '@expo/vector-icons'
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import Button from "../../ui/Button"
-import colors from "../../../public/colors";
+import colors from "../../../public/colors"
 
 const Start = ({ name }) => {
     const router = useRouter()
+    const dispatch = useDispatch()
 
     const startHandler = () => {
         router.push('/modules')
@@ -15,6 +18,7 @@ const Start = ({ name }) => {
 
     const signOutHandler = async () => {
         await AsyncStorage.removeItem('token')
+        dispatch(authActions.clearToken())
         router.replace('/')
     }
 

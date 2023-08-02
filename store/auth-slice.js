@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const namePattern = /^[a-zA-Z0-9-]{4,20}\b$/
+const namePattern = /^[a-zA-Z0-9-\ ]{4,20}\b$/
 const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 const phonePattern = /^\d{10}$/
 const passwordPattern = /^[a-zA-Z0-9-]{6,}\b$/
@@ -9,7 +9,7 @@ const enrollmentPattern = /^\d{14}$/
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        token: '',
+        token: null,
         isSigninActive: true,
         signin: {
             phone: '',
@@ -41,6 +41,9 @@ const authSlice = createSlice({
     reducers: {
         changeToken(state, action) {
             state.token = action.payload
+        },
+        clearToken(state) {
+            state.token = null
         },
         turnToSignin(state) {
             state.isSigninActive = true

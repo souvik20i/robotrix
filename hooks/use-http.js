@@ -19,12 +19,14 @@ export const usePost = () => {
     const [isLoading, setIsLoading] = useState(false)
     const postRequest = async (url, body) => {
         setIsLoading(true)
+        console.log(body)
         const response = await fetch(url, {
             method: 'post',
             body: JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' }
         })
         const { success, message, data } = await response.json()
+        console.log(data)
         setIsLoading(false)
         if (!success) throw new Error(message)
         return data
