@@ -1,6 +1,5 @@
 import { useRouter } from "expo-router"
-import { useDispatch, useSelector } from "react-redux"
-import { authActions } from "../../../store/auth-slice"
+import { useSelector } from "react-redux"
 import { usePost, catchAsync } from "../../../hooks/use-http"
 import { DOMAIN } from "../../../domain"
 
@@ -10,17 +9,14 @@ import Loader from "../../ui/Loader"
 
 const SigninButton = () => {
     const router = useRouter()
-    const dispatch = useDispatch()
     const { postRequest, isLoading } = usePost()
     const { email, phone, password } = useSelector(state => state.auth.signin)
 
     const signinHandler = catchAsync(async () => {
         const { token } = await postRequest(`${DOMAIN}/auth/login`, {
-            emailOrPhone: email | phone, password
+            emailOrPhone: email || phone, password
         })
-        console.log(token)
         await AsyncStorage.setItem('token', token)
-        dispatch(authActions.changeToken(token))
         router.replace('/')
     })
 

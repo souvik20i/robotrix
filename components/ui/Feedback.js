@@ -1,37 +1,33 @@
-import { useState, useEffect } from "react"
-import { Text, StyleSheet } from "react-native"
+import { View, Text, Modal, StyleSheet } from "react-native"
+import { useDispatch, useSelector } from "react-redux"
+import { feedbackActions } from "../../store/feedback-slice"
 
-import Animated, { SlideInUp, SlideOutDown } from "react-native-reanimated"
 import colors from "../../public/colors"
 
-const Feedback = ({ message, success }) => {
-    const [show, setShow] = useState(true)
-    useEffect(() => {
-        setTimeout(() => setShow(false), 2000)
-    }, [])
+const Feedback = () => {
+    const dispatch = useDispatch()
+    const { isShown, message } = useSelector(state => state.feedback)
+    const dismissHandler = () => {
+        dispatch(feedbackActions.dismissFeedback())
+    }
 
-    return (<>
-        {show &&
-            <Animated.View
-                style={{
-                    ...styles.feedback,
-                    backgroundColor: success ? 'green' : 'red'
-                }}
-                entering={SlideInUp}
-                exiting={SlideOutDown}
-            >
-                <Text style={styles.message}>{message}</Text>
-            </Animated.View>
-        }
-    </>)
+    return (<Modal transparent={true} visible={isShown}>
+        <View style={styles.feedback}>
+            <Text>{message}</Text>
+            <Text onPress={dismissHandler}>Dismiss</Text>
+        </View>
+    </Modal>)
 }
 
 const styles = StyleSheet.create({
     feedback: {
-        width: '100%',
         position: 'absolute',
         zIndex: 10,
-        bottom: 80
+        width: '100%',
+        height: '100%',
+        backgroundColor: colors.textDark + '80',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     message: {
         color: colors.textLight,

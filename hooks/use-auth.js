@@ -14,11 +14,13 @@ const useAuth = () => {
     useEffect(() => {
         (catchAsync(async () => {
             const token = await AsyncStorage.getItem('token')
-            if (!token) return
-            dispatch(authActions.changeToken(token))
-            const { _id } = jwtDecode(token)
-            const { name } = await getRequest(`${DOMAIN}/user/${_id}`, token)
-            setUser(name)
+            console.log(token)
+            if (token) {
+                dispatch(authActions.changeToken(token))
+                const { _id } = jwtDecode(token)
+                const { name } = await getRequest(`${DOMAIN}/user/${_id}`, token)
+                setUser(name)
+            }
         }))()
     }, [])
     return { user }
