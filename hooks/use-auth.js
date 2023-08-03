@@ -14,7 +14,6 @@ const useAuth = () => {
     useEffect(() => {
         (catchAsync(async () => {
             const token = await AsyncStorage.getItem('token')
-            console.log(token)
             if (token) {
                 dispatch(authActions.changeToken(token))
                 const { _id } = jwtDecode(token)

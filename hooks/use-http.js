@@ -16,7 +16,10 @@ export const useGet = () => {
             if (!success) throw new Error(message)
             return data
         } catch (err) {
-            dispatch(feedbackActions.sendFeedback(err.message))
+            dispatch(feedbackActions.sendFeedback({
+                message: err.message,
+                status: 'error'
+            }))
         }
     }
     return { getRequest, isLoading }
@@ -38,7 +41,10 @@ export const usePost = () => {
             if (!success) throw new Error(message)
             return data
         } catch (err) {
-            dispatch(feedbackActions.sendFeedback(err.message))
+            dispatch(feedbackActions.sendFeedback({
+                message: err.message,
+                status: 'error'
+            }))
         }
     }
     return { postRequest, isLoading }
