@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     feedback: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.textLight + 'cc',
+        backgroundColor: colors.textLight,
         padding: 20,
         borderRadius: 10
     },
