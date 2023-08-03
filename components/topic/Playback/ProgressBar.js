@@ -11,7 +11,7 @@ import colors from "../../../public/colors"
 const ProgressBar = ({ current, length, orientation, onChange }) => {
     const currentTimestamp = useConversion(current)
     const totalDuration = useConversion(length)
-    
+
     const { currentModule, currentTopic } = useSelector(state => state.module)
     const key = `max-reached-${currentModule}-${currentTopic}`
 
@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
     bottomBar: {
         width: '100%',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        paddingRight: 10
     },
     progressBar: {
         flexDirection: 'row',

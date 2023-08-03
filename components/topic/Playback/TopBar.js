@@ -26,7 +26,7 @@ const TopBar = ({ rate, onChangeRate }) => {
                 }
             </View>
             <TouchableOpacity>
-                <Entypo name="dots-three-vertical" size={24} color={colors.textLight} />
+                <Entypo name="dots-three-vertical" size={17} color={colors.textLight} />
             </TouchableOpacity>
         </View>
     </TouchableWithoutFeedback>)

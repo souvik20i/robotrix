@@ -26,7 +26,8 @@ const Topic = () => {
         <Stack.Screen options={{
             title: modules[currentModule].topics[currentTopic].title,
             headerShown: !isFullscreen,
-            statusBarHidden: isFullscreen
+            statusBarHidden: isFullscreen,
+            navigationBarHidden: isFullscreen
         }} />
         <Playback
             uri={`${DOMAIN}/stream/robotic-sensor.mp4`}
