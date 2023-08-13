@@ -16,11 +16,15 @@ const ProgressBar = ({ current, length, orientation, onChange }) => {
     const key = `max-reached-${currentModule}-${currentTopic}`
 
     useEffect(() => {
-        const setMaxReached = async () => {
-            const stored = await AsyncStorage.getItem(key) || 0;
-            if (current > stored) await AsyncStorage.setItem(key, current.toString())
+        const changeProgress = async () => {
+            const maxReached = await AsyncStorage.getItem(key) || 0;
+            if (current > maxReached) await AsyncStorage.setItem(key, current.toString())
+            if (length - current < 20000) {
+                const completedTopics = parseInt(await AsyncStorage.getItem('completed-topics') || 0) + 1
+                await AsyncStorage.setItem('completed-topics', completedTopics.toString())
+            }
         }
-        setMaxReached().catch(console.error)
+        changeProgress().catch(console.error)
         const exitFullscreenByBackHandler = () => {
             if (orientation.isFullscreen) {
                 orientation.exitFullscreenHandler()

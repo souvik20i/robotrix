@@ -11,17 +11,18 @@ const useAuth = () => {
     const dispatch = useDispatch()
     const { getRequest } = useGet()
     const [user, setUser] = useState()
+
     useEffect(() => {
         (catchAsync(async () => {
             const token = await AsyncStorage.getItem('token')
-            if (token) {
-                dispatch(authActions.changeToken(token))
-                const { _id } = jwtDecode(token)
-                const { name } = await getRequest(`${DOMAIN}/user/${_id}`, token)
-                setUser(name)
-            }
+            if (!token) return
+            dispatch(authActions.changeToken(token))
+            const { _id } = jwtDecode(token)
+            const { name } = await getRequest(`${DOMAIN}/user/${_id}`, token)
+            setUser(name)
         }))()
     }, [])
+    
     return { user }
 }
 

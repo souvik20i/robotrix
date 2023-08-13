@@ -13,7 +13,7 @@ const Template = ({ isCompleted }) => {
         </View>
         {!isCompleted && <Text style={{
             ...styles.annnot,
-            fontSize: 30,
+            fontSize: 20,
             padding: 50
         }}>Get a certificate of completion</Text>}
     </View >)
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         elevation: 3
     },
     annnot: {
-        fontSize: 20,
+        fontSize: 15,
         textAlign: 'center',
         padding: 20,
         color: colors.textGrey

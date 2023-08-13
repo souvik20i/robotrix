@@ -3,8 +3,7 @@ import { View, StyleSheet } from "react-native"
 import CircularProgress from "react-native-circular-progress-indicator"
 import colors from "../../../public/colors"
 
-const Progress = ({ completed, expected }) => {
-    const percent = Math.floor((completed / expected) * 100)
+const Progress = ({ percent }) => {
     return (<View style={styles.progress}>
         <CircularProgress
             value={percent}

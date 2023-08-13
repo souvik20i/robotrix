@@ -1,9 +1,9 @@
 const modulesInfo = [
-    {
-        image: 'https://images.unsplash.com/photo-1625633605176-7a8b6b491eb4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=786&q=80',
-        topics: [
-            {
-                content: `
+   {
+      image: 'https://images.unsplash.com/photo-1625633605176-7a8b6b491eb4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=786&q=80',
+      topics: [
+         {
+            content: `
 Robotics is a multidisciplinary field of technology and engineering that involves the design, creation, operation, and application of robots. Robots are mechanical or virtual devices that are capable of performing tasks autonomously or semi-autonomously, often with the goal of replacing or assisting human activities. Robotics draws upon various branches of science and engineering, including mechanical engineering, electrical engineering, computer science, and artificial intelligence.
 
 The key components of robotics include:
@@ -23,9 +23,9 @@ The key components of robotics include:
 7. **Autonomy:** One of the main goals of robotics is to achieve varying degrees of autonomy, where robots can operate without continuous human intervention. Some robots are teleoperated, meaning they are controlled by humans remotely, while others are designed to operate autonomously, making decisions and performing tasks without human input.
                 
 Robotics has a wide range of applications across industries such as manufacturing, healthcare, agriculture, space exploration, entertainment, transportation, and more. Robots are used to perform tasks that are dangerous, repetitive, precise, or beyond human capabilities. The field continues to evolve rapidly as technological advancements in areas like AI, materials science, and control systems enable the creation of increasingly sophisticated and capable robotic systems.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 Here's a historical overview of robotics, highlighting key milestones and developments:
 
 1. **Ancient Automata:** The concept of mechanical beings dates back to ancient times. In ancient Greece, engineers like Hero of Alexandria created mechanical devices and automata that demonstrated basic movement and interactions.
@@ -53,9 +53,9 @@ Here's a historical overview of robotics, highlighting key milestones and develo
 12. **Future Prospects:** The future of robotics holds promises of even more advanced AI-driven robots that can interact with humans seamlessly, assist in various daily tasks, and explore environments beyond Earth. Ethical and societal considerations, as well as regulatory challenges, will play a significant role in shaping the trajectory of robotics.
 
 Overall, the history of robotics is marked by a gradual evolution from basic mechanized devices to highly sophisticated and intelligent machines that are becoming increasingly integrated into our daily lives.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 Robotics has a profound impact on various fields due to its ability to automate tasks, enhance efficiency, improve safety, and even explore new frontiers. Here are some important fields where robotics finds applications:
 
 1. **Manufacturing and Industrial Automation:**
@@ -105,9 +105,9 @@ Robotics has a profound impact on various fields due to its ability to automate 
     - **Search and Rescue Robots:** Robots equipped with sensors and cameras can aid in locating and rescuing people in disaster-stricken areas.
 
 The importance of robotics in these fields lies in its potential to improve efficiency, safety, accuracy, and cost-effectiveness. As technology continues to advance, robotics is likely to play an increasingly significant role in shaping various industries and improving our quality of life.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 Robots come in various types, each designed for specific tasks and environments. Here are some common types of robots:
 
 1. **Industrial Robots:**
@@ -154,14 +154,14 @@ Robots come in various types, each designed for specific tasks and environments.
     - These robots are designed to locate and assist humans in hazardous or hard-to-reach environments during disasters or emergencies.
 
 These are just a few examples of the many types of robots that exist. Robotics is a rapidly evolving field, and as technology advances, new types of robots continue to be developed to meet a wide range of needs across various industries and applications.`
-            }
-        ]
-    },
-    {
-        image: 'https://images.unsplash.com/photo-1676764589917-e1e659bd9774?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=786&q=80',
-        topics: [
-            {
-                content: `
+         }
+      ]
+   },
+   {
+      image: 'https://images.unsplash.com/photo-1676764589917-e1e659bd9774?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=786&q=80',
+      topics: [
+         {
+            content: `
 Robotics involves a combination of mechanical, electronic, and software components that work together to create functional robots. Here are the basic components typically found in robotics:
 
 1. **Mechanical Components:**
@@ -194,9 +194,9 @@ Robotics involves a combination of mechanical, electronic, and software componen
    - **Safety Sensors:** Devices that detect the presence of humans or obstacles to prevent collisions and ensure safe interactions.
 
 These components work together to create robots capable of performing various tasks autonomously or under human control. The specific components used depend on the type of robot and its intended application, whether it's an industrial robot on a factory floor, a medical robot assisting in surgery, an autonomous vehicle navigating roads, or a robot designed for entertainment purposes.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 Microcontrollers and microprocessors are fundamental components of modern electronics, playing a pivotal role in controlling and executing tasks in a wide range of devices. They are at the heart of many technological advancements, from everyday devices to complex systems. Here's an introduction to microcontrollers and microprocessors:
 
 **Microcontrollers:**
@@ -231,9 +231,9 @@ Key features of microprocessors include:
 The main difference between microcontrollers and microprocessors lies in their intended use. Microcontrollers are designed for embedded systems and specific applications, focusing on real-time control and interaction with external devices. Microprocessors are designed for general-purpose computing and are found in computers, smartphones, tablets, and other devices where software versatility is important.
 
 Both microcontrollers and microprocessors contribute significantly to the advancement of technology, enabling the creation of smart devices, automation systems, communication networks, and more.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 Arduino is an open-source electronics platform that provides both hardware and software tools for building a wide variety of electronic projects. It's popular among hobbyists, students, artists, and professionals due to its user-friendly nature and versatility. Arduino allows users to create interactive and programmable electronic devices without extensive electronics knowledge.
 
 Key components of the Arduino platform include:
@@ -270,9 +270,9 @@ Arduino is widely used for a range of projects, such as:
 - Interactive art installations and kinetic sculptures.
 
 Arduino's open-source nature has led to a large community of users who share code, projects, and knowledge. This collaborative environment makes it easy for individuals to learn, experiment, and create innovative electronic devices and systems.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 Arduino offers a variety of boards tailored for different purposes, each with its own features and capabilities. Here are some of the most common types of Arduino boards:
 
 1. **Arduino Uno:**
@@ -312,14 +312,14 @@ Arduino offers a variety of boards tailored for different purposes, each with it
     The Arduino Esplora is a unique board that comes with built-in sensors and actuators, making it easy to create interactive projects without external components.
 
 These are just a few examples of the Arduino boards available. The choice of board depends on the specific requirements of your project, such as the number of I/O pins needed, processing power, size constraints, and communication capabilities.`
-            }
-        ]
-    },
-    {
-        image: 'https://images.unsplash.com/photo-1532186773960-85649e5cb70b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=786&q=80',
-        topics: [
-            {
-                content: `
+         }
+      ]
+   },
+   {
+      image: 'https://images.unsplash.com/photo-1532186773960-85649e5cb70b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=786&q=80',
+      topics: [
+         {
+            content: `
 Sensors are devices that detect and measure physical properties or changes in the environment and convert them into electrical signals or data that can be interpreted and used for various purposes. Sensors are essential components in a wide range of applications, from consumer electronics to industrial automation. Here's an introduction to some common types of sensors:
 
 1. **Proximity Sensors:**
@@ -352,14 +352,14 @@ Sensors are devices that detect and measure physical properties or changes in th
    - **Dynamic Microphones:** Convert sound waves into electrical signals through electromagnetic induction.
 
 Sensors play a crucial role in modern technology, enabling devices to interact with the physical world and provide valuable data for analysis and decision-making. Their versatility makes them essential components in fields like robotics, environmental monitoring, medical devices, home automation, and more.`
-            }
-        ]
-    },
-    {
-        image: 'https://images.unsplash.com/photo-1527612820672-5b56351f7346?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=786&q=80',
-        topics: [
-            {
-                content: `
+         }
+      ]
+   },
+   {
+      image: 'https://images.unsplash.com/photo-1527612820672-5b56351f7346?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=786&q=80',
+      topics: [
+         {
+            content: `
 Arduino programming for robotics typically involves writing code to control and coordinate the behavior of your robot using the Arduino IDE (Integrated Development Environment). The primary programming language used with Arduino boards is a simplified version of C and C++. Here's an introduction to the programming languages and concepts you'll encounter when programming robotics with Arduino:
 
 1. **Arduino Programming Language (C/C++ Subset):**
@@ -387,9 +387,9 @@ Arduino programming for robotics typically involves writing code to control and 
    Arduino programming also involves debugging and testing your code to identify and fix errors. The Arduino IDE provides tools for monitoring variables, printing messages to the Serial Monitor, and stepping through code to trace the flow of execution.
 
 As you progress in your robotics projects, you'll likely delve into more advanced topics, like PID control, sensor calibration, and implementing custom libraries. Arduino's user-friendly programming environment and extensive online resources make it an excellent platform for both beginners and experienced programmers working on robotics applications.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 Let's dive into the basics of Arduino programming, including control structures, variables, and functions:
 
 **Control Structures:**
@@ -498,9 +498,9 @@ void loop() {
 In this example, the program reads an analog sensor value and turns on an LED connected to pin 13 if the sensor value is above 500.
 
 These basics provide a foundation for programming Arduino boards. As you gain more experience, you can explore more advanced topics, such as arrays, structures, pointers, and working with libraries.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 Programming environments and tools for robotics provide the necessary software infrastructure to develop, simulate, and control robots effectively. These tools help engineers, researchers, and hobbyists create, test, and deploy robotic systems. Here are some popular programming environments and tools used in robotics:
 
 1. **Robot Operating System (ROS):**
@@ -534,14 +534,14 @@ Programming environments and tools for robotics provide the necessary software i
     These are reinforcement learning toolkits that provide a range of simulated environments for training and testing machine learning algorithms on robotic tasks.
 
 The choice of programming environment and tools depends on the specific requirements of your robotic project, whether you're developing algorithms, testing behaviors, or simulating complex interactions. Depending on your skill level, project complexity, and goals, you might choose a combination of these tools to achieve the best results.`
-            }
-        ]
-    },
-    {
-        image: 'https://images.unsplash.com/photo-1553901767-12be7b9840e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=786&q=80',
-        topics: [
-            {
-                content: `
+         }
+      ]
+   },
+   {
+      image: 'https://images.unsplash.com/photo-1553901767-12be7b9840e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=786&q=80',
+      topics: [
+         {
+            content: `
 A laser security and alarming system is designed to detect and deter unauthorized access to a protected area by using lasers to create a virtual perimeter. When the laser beam is interrupted, the system triggers an alarm or activates a security response. This type of system finds applications in home security, industrial facilities, museums, and other sensitive areas. Here's how you can create a basic laser security and alarming system:
 
 **Components Needed:**
@@ -606,9 +606,9 @@ void loop() {
    - Ensure the laser beam is properly aligned to minimize false alarms triggered by other objects.
 
 Remember that this is a basic example, and for a robust security system, you might want to consider more advanced sensors, redundancies, and additional security measures. Always follow safety guidelines when working with lasers.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 An automatic street light control system is designed to automatically turn street lights on at dusk and turn them off at dawn, thereby conserving energy and ensuring that the lights are only active when needed. This system typically uses light sensors (photocells) to detect ambient light levels and control the operation of the street lights. Here's how you can create a basic automatic street light on/off system using an Arduino:
 
 **Components Needed:**
@@ -666,9 +666,9 @@ void loop() {
    - If you want to make the system more robust, you can add features like time delays or hysteresis to avoid flickering during light level transitions.
 
 Keep in mind that this is a basic example, and in a real-world scenario, you would need to consider factors such as power supply, weatherproofing, and safety regulations when implementing an automatic street light control system.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 An object level measurement system is used to determine the level or height of an object or substance within a container or environment. This type of system finds applications in various industries, including manufacturing, agriculture, logistics, and more. It allows you to monitor and control the quantity of a substance in a container or space. Here's how you can create a basic object level measurement system using an ultrasonic distance sensor and an Arduino:
 
 **Components Needed:**
@@ -726,9 +726,9 @@ void loop() {
    - Depending on your application, you might want to implement additional features, such as alarms when the object level reaches a certain threshold.
 
 This basic example provides a starting point for creating an object level measurement system. Depending on your specific requirements, you can incorporate more advanced sensors, communication options, and data processing techniques for a more robust and versatile solution.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 A motion, shock, and vibration sensing and alerting system is designed to detect physical movements, shocks, or vibrations and trigger an alert or response. Such systems find applications in various fields, including security, industrial monitoring, transportation, and more. Here's how you can create a basic sensing and alerting system using an accelerometer sensor and an Arduino:
 
 **Components Needed:**
@@ -792,9 +792,9 @@ void loop() {
    - Implement power-saving techniques to extend the system's battery life, especially in battery-operated applications.
 
 This basic example provides a foundation for creating a motion, shock, and vibration sensing and alerting system. Depending on your requirements, you might want to explore other sensors, such as gyroscope sensors or specialized shock sensors, to enhance the accuracy and capabilities of your system.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 A gas leak alerting system is designed to detect the presence of gas leaks in an environment and provide timely alerts to prevent potential hazards. These systems are crucial for safety in industrial settings, homes, and commercial spaces where the release of certain gases can be harmful or flammable. Here's how you can create a basic gas leak alerting system using a gas sensor and an Arduino:
 
 **Components Needed:**
@@ -857,9 +857,9 @@ void loop() {
    - For industrial applications, consider integrating the system with a central monitoring station.
 
 Safety is of paramount importance when dealing with potentially hazardous gases. Ensure that you follow safety guidelines and recommendations while setting up and testing the gas leak alerting system.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 A face detection and alarm system uses image processing techniques to identify human faces in images or video streams and triggers an alarm or alert when a face is detected. Such systems have applications in security, surveillance, access control, and more. Here's how you can create a basic face detection and alarm system using a webcam, OpenCV library, and Python:
 
 **Components Needed:**
@@ -925,9 +925,9 @@ cv2.destroyAllWindows()
    - If you're using this system for security or access control, make sure to implement user authentication and secure communication.
 
 Remember that this is a basic example. More complex systems might involve training custom face recognition models, integrating with databases, and optimizing performance for real-time detection on various platforms.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 A smoke detection and alerting system is designed to detect the presence of smoke in an environment and trigger an alert to warn occupants or authorities about a potential fire hazard. These systems are crucial for fire safety in homes, offices, industrial facilities, and other places. Here's how you can create a basic smoke detection and alerting system using a smoke sensor and an Arduino:
 
 **Components Needed:**
@@ -991,9 +991,9 @@ void loop() {
    - For industrial or larger-scale applications, consider integrating the system with a central monitoring station.
 
 Fire safety is of paramount importance. Ensure that you follow safety guidelines and recommendations when setting up and testing the smoke detection and alerting system.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 An alcohol detection and drink-and-drive safety system is designed to detect the presence of alcohol in a driver's breath and prevent the vehicle from starting if alcohol is detected above a certain threshold. These systems are crucial for reducing accidents caused by drunk driving. Here's how you can create a basic alcohol detection and safety system using an alcohol sensor and an Arduino:
 
 **Components Needed:**
@@ -1051,9 +1051,9 @@ void loop() {
    - Depending on regulations and safety requirements, consult legal guidelines before implementing such a system in a vehicle.
 
 Safety is paramount when creating a system that prevents drunk driving. Always prioritize safety guidelines and legal regulations while developing and implementing an alcohol detection and drink-and-drive safety system.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 An automatic room light control system is designed to automatically turn the lights on or off based on the ambient light level in the room. This system helps save energy by ensuring that lights are only active when needed. Here's how you can create a basic automatic room light control system using a light sensor and an Arduino:
 
 **Components Needed:**
@@ -1111,9 +1111,9 @@ void loop() {
    - Implement power-saving features by incorporating a real-time clock module to control the lights based on the time of day.
 
 Keep in mind that this is a basic example, and for a complete room lighting control system, you might need to consider more advanced features, such as multiple light sources, user preferences, and integration with home automation platforms.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 A fire detection and alarm system is designed to detect the presence of fire or smoke in an environment and trigger an alarm to alert occupants and authorities. These systems are crucial for early detection and timely response to fire emergencies. Here's how you can create a basic fire detection and alarm system using a smoke sensor and an Arduino:
 
 **Components Needed:**
@@ -1177,9 +1177,9 @@ void loop() {
    - For larger-scale applications, consider integrating the system with a central monitoring station.
 
 Fire safety is paramount. Always prioritize safety guidelines and legal regulations when setting up and testing a fire detection and alarm system.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 An air quality monitoring system is designed to measure and assess the quality of the air in a specific environment by detecting various pollutants, gases, and particulates. These systems are important for ensuring the health and well-being of individuals in indoor and outdoor spaces. Here's how you can create a basic air quality monitoring system using various sensors and an Arduino:
 
 **Components Needed:**
@@ -1263,9 +1263,9 @@ void loop() {
    - Incorporate wireless communication to send data to a monitoring platform or smartphone app.
 
 Keep in mind that this is a basic example. For a comprehensive air quality monitoring system, consider using high-accuracy sensors, integrating with IoT platforms, and implementing data analysis techniques to provide insights into air quality trends.`
-            },
-            {
-                content: `
+         },
+         {
+            content: `
 A smart weather monitoring system is designed to collect, analyze, and display weather-related data from various sensors. These systems are useful for tracking weather conditions in real-time and providing insights into temperature, humidity, pressure, and other weather parameters. Here's how you can create a basic smart weather monitoring system using sensors and an Arduino:
 
 **Components Needed:**
@@ -1362,9 +1362,9 @@ void loop() {
    - Implement wireless communication to send weather data to remote servers or apps.
 
 This basic example provides a starting point for creating a smart weather monitoring system. Depending on your requirements and the complexity of the system, you can expand and enhance its capabilities as needed.`
-            }
-        ]
-    }
+         }
+      ]
+   }
 ]
 
 export default modulesInfo
