@@ -23,7 +23,7 @@ const Auth = () => {
     }
 
     return (<View style={styles.auth}>
-        <Button label={'Sign In'} onPress={signinHandler} dark />
+        <Button label={'Sign In'} onPress={signinHandler} />
         <View style={styles.alter}>
             <HelperText label={"Don't have an account?"} />
             <TouchableOpacity style={styles.altAuth} onPress={signupHandler}>
@@ -31,7 +31,7 @@ const Auth = () => {
                 <AntDesign
                     name="arrowright"
                     style={styles.arrow}
-                    size={20}
+                    size={17}
                     color={colors.textLight}
                 />
             </TouchableOpacity>
@@ -54,9 +54,9 @@ const styles = StyleSheet.create({
         paddingVertical: 10
     },
     altAuthText: {
-        fontSize: 20,
+        fontSize: 17,
         color: colors.textLight,
-        marginRight: 7
+        marginRight: 5
     },
     arrow: {
         paddingTop: 5

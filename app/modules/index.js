@@ -32,7 +32,7 @@ const Modules = () => {
                 </Scroll>
                 <Button
                     label={'Certificate Progress'}
-                    onPress={() => router.push('/certificate')} dark small
+                    onPress={() => router.push('/certificate')}
                 />
             </>
         }

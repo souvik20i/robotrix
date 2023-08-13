@@ -26,7 +26,7 @@ const Module = () => {
         </Scroll>
         <Button
             label={'Take Assessment'}
-            onPress={() => router.push(`${pathname}/test`)} dark small
+            onPress={() => router.push(`${pathname}/test`)}
         />
     </Container>)
 }

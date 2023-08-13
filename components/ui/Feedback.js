@@ -6,7 +6,7 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import colors from "../../public/colors"
 
 const Feedback = () => {
-    const { isShown, message, status } = useSelector(state => state.feedback)
+    const { isShown, message, success } = useSelector(state => state.feedback)
     const dispatch = useDispatch()
     const dismissHandler = () => {
         dispatch(feedbackActions.dismissFeedback())
@@ -16,9 +16,9 @@ const Feedback = () => {
         <Pressable style={styles.modal} onPress={dismissHandler}>
             <View style={styles.feedback}>
                 <>
-                    {status === 'error'
-                        ? <FontAwesome name="warning" size={50} color='red' />
-                        : <Ionicons name="shield-checkmark" size={50} color='green' />
+                    {success
+                        ? <Ionicons name="shield-checkmark" size={50} color='green' />
+                        : <FontAwesome name="warning" size={50} color='red' />
                     }
                     <Text style={styles.message}>{message}</Text>
                 </>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     message: {
         color: colors.textDark,
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 15,
         padding: 20
     }
 })

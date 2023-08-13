@@ -21,7 +21,7 @@ const SigninButton = () => {
     })
 
     return (<>{isLoading ? <Loader /> :
-        <Button label={'Signin'} onPress={signinHandler} dark small />
+        <Button label={'Sign In'} onPress={signinHandler} />
     }</>)
 }
 

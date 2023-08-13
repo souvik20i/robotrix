@@ -2,9 +2,9 @@ import { Text, StyleSheet } from "react-native"
 
 import Card from "../../ui/Card"
 
-const Question = ({ serial, content }) => {
+const Question = ({ id, content }) => {
     return (<Card>
-        <Text style={styles.header}>{`Question #${serial}`}</Text>
+        <Text style={styles.header}>{`Question #${id}`}</Text>
         <Text style={styles.content}>{content}</Text>
     </Card>)
 }

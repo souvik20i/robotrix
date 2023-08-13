@@ -3,26 +3,21 @@ import { createSlice } from "@reduxjs/toolkit"
 const testSilce = createSlice({
     name: 'test',
     initialState: {
-        question: {
-            serial: 0,
-            content: '',
-            options: []
-        },
-        answers: {}
+        currentQuestion: 0,
+        givenAnswers: {}
     },
     reducers: {
         changeQuestion(state, action) {
-            state.question = action.payload
+            state.currentQuestion = action.payload
         },
         changeAnswers(state, action) {
-            const { serial, option } = action.payload
-            state.answers[serial] = option
+            state.givenAnswers[state.currentQuestion] = action.payload
         },
         clearCurrentAnswer(state) {
-            delete state.answers[state.question.serial]
+            delete state.givenAnswers[state.currentQuestion]
         },
         clearAnswers(state) {
-            state.answers = {}
+            state.givenAnswers = {}
         }
     }
 })

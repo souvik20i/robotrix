@@ -25,16 +25,13 @@ const Start = ({ name }) => {
     return (<View style={styles.start}>
         <Text style={styles.welcome}>Welcome, {name.split(' ')[0]}</Text>
         <Button
-            style={styles.startLearning}
             label={'Start Learning'}
             onPress={startHandler}
-            dark
         />
         <Button
-            style={styles.signout}
-            label={<FontAwesome name="sign-out" size={30} color={colors.textLight} />}
+            label={<FontAwesome name="sign-out" size={20} color={colors.textLight} />}
             onPress={signOutHandler}
-            dark
+            textStyle={styles.signout}
         />
     </View>)
 }
@@ -50,12 +47,8 @@ const styles = StyleSheet.create({
         fontSize: 17,
         paddingBottom: 10
     },
-    startLearning: {
-        fontSize: 25,
-        paddingVertical: 15
-    },
     signout: {
-        paddingHorizontal: 30
+        paddingVertical: 10
     }
 })
 

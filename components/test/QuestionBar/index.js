@@ -7,7 +7,7 @@ const QuestionBar = ({ questions }) => {
     return (<View style={styles.bar}>
         <Text style={styles.header}>Questions</Text>
         <View style={styles.blocks}>
-            {questions.map((q, i) => <Block key={i} serial={i + 1} question={q} />)}
+            {questions.map(q => <Block key={q.id} question={q} />)}
         </View>
     </View >)
 }

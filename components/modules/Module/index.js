@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     },
     header: {
         color: colors.textDark,
-        fontSize: 17,
+        fontSize: 15,
         textAlign: 'center'
     },
     image: {
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: colors.textDark,
-        fontSize: 20,
+        fontSize: 17,
         lineHeight: 30
     }
 })

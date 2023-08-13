@@ -8,20 +8,18 @@ import Container from "../../../../components/ui/Container"
 import QuestionBar from "../../../../components/test/QuestionBar"
 import Question from "../../../../components/test/Question"
 import Options from "../../../../components/test/Options"
-import Action from "../../../../components/test/Action"
+import Actions from "../../../../components/test/Actions"
 import colors from "../../../../public/colors"
 
 const Test = () => {
     const dispatch = useDispatch()
     const { modules, currentModule } = useSelector(state => state.module)
-    const { serial, content, options } = useSelector(state => state.test.question)
     const { questions } = modules[currentModule]
+    const { currentQuestion } = useSelector(state => state.test)
+    const { id, content, options } = questions[currentQuestion]
 
     useEffect(() => {
-        dispatch(testActions.changeQuestion({
-            serial: 1,
-            ...questions[0]
-        }))
+        dispatch(testActions.changeQuestion(0))
         dispatch(testActions.clearAnswers())
     }, [])
 
@@ -29,10 +27,10 @@ const Test = () => {
         <Stack.Screen options={{ title: `Module ${currentModule + 1} Assessment` }} />
         <QuestionBar questions={questions} />
         <View style={styles.interaction}>
-            <Question serial={serial} content={content} />
+            <Question id={id} content={content} />
             <Options labels={options} />
         </View>
-        <Action />
+        <Actions />
     </Container>)
 }
 

@@ -4,24 +4,22 @@ import { testActions } from "../../../store/test-slice"
 
 import colors from "../../../public/colors"
 
-const Block = ({ serial, question }) => {
+const Block = ({ question }) => {
     const dispatch = useDispatch()
-    const { serial: currentSerial } = useSelector(state => state.test.question)
-    const questionChangeHandler = () => {
-        dispatch(testActions.changeQuestion({
-            serial,
-            ...question
-        }))
-    }
+    const { id } = question
+    const { currentQuestion } = useSelector(state => state.test)
+    const isActive = id === currentQuestion + 1
+    const questionChangeHandler = () => dispatch(testActions.changeQuestion(id - 1))
+
     return (<View style={{
         ...styles.block,
-        backgroundColor: (currentSerial === serial) ? colors.bgSecondary : colors.bgPrimary
+        backgroundColor: isActive ? colors.bgSecondary : colors.bgPrimary
     }}>
         <TouchableOpacity onPress={questionChangeHandler}>
             <Text style={{
                 ...styles.serial,
-                color: (currentSerial === serial) ? colors.textLight : colors.textDark
-            }}>{serial}</Text>
+                color: isActive ? colors.textLight : colors.textDark
+            }}>{id}</Text>
         </TouchableOpacity>
     </View>)
 }

@@ -23,7 +23,7 @@ const SignupButton = () => {
     })
 
     return (<>{isLoading ? <Loader /> :
-        <Button label={'Signup'} onPress={signupHandler} dark small />
+        <Button label={'Sign Up'} onPress={signupHandler} />
     }</>)
 }
 

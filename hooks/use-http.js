@@ -18,7 +18,7 @@ export const useGet = () => {
         } catch (err) {
             dispatch(feedbackActions.sendFeedback({
                 message: err.message,
-                status: 'error'
+                success: false
             }))
         }
     }
@@ -43,7 +43,7 @@ export const usePost = () => {
         } catch (err) {
             dispatch(feedbackActions.sendFeedback({
                 message: err.message,
-                status: 'error'
+                success: false
             }))
         }
     }
