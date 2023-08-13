@@ -8,7 +8,6 @@ import Scroll from "../../components/ui/Scroll"
 import Button from "../../components/ui/Button"
 import Space from "../../components/ui/Space"
 import Loader from "../../components/ui/Loader"
-import modulesInfo from "../../data/modulesInfo"
 
 const Modules = () => {
     const router = useRouter()
@@ -20,12 +19,12 @@ const Modules = () => {
         {isLoading ? <Loader /> :
             <>
                 <Scroll>
-                    {modules.map(({ name }, i) =>
+                    {modules.map(({ id, name, image }) =>
                         <Module
-                            key={i}
-                            id={i}
+                            key={id}
+                            id={id - 1}
                             name={name}
-                            image={modulesInfo[i].image}
+                            image={image}
                         />)
                     }
                     <Space />

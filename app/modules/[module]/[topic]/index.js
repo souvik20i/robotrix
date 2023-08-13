@@ -8,11 +8,11 @@ import { DOMAIN } from "../../../../domain"
 import Container from "../../../../components/ui/Container"
 import Playback from "../../../../components/topic/Playback"
 import Resources from "../../../../components/topic/Resources"
-import modulesInfo from "../../../../data/modulesInfo"
 
 const Topic = () => {
     const { modules, currentModule, currentTopic } = useSelector(state => state.module)
     const [isFullscreen, setIsFullscreen] = useState(false)
+    const { content } = modules[currentModule].topics[currentTopic]
 
     const enterFullscreenHandler = async () => {
         await lockAsync(OrientationLock.LANDSCAPE)
@@ -36,7 +36,7 @@ const Topic = () => {
                 isFullscreen, enterFullscreenHandler, exitFullscreenHandler
             }}
         />
-        {!isFullscreen && < Resources content={modulesInfo[currentModule].topics[currentTopic].content}/>}
+        {!isFullscreen && <Resources content={content} />}
     </Container>)
 }
 
