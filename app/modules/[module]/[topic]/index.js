@@ -8,6 +8,7 @@ import { DOMAIN } from "../../../../domain"
 import Container from "../../../../components/ui/Container"
 import Playback from "../../../../components/topic/Playback"
 import Resources from "../../../../components/topic/Resources"
+import modulesInfo from "../../../../data/modulesInfo"
 
 const Topic = () => {
     const { modules, currentModule, currentTopic } = useSelector(state => state.module)
@@ -35,7 +36,7 @@ const Topic = () => {
                 isFullscreen, enterFullscreenHandler, exitFullscreenHandler
             }}
         />
-        {!isFullscreen && < Resources />}
+        {!isFullscreen && < Resources content={modulesInfo[currentModule].topics[currentTopic].content}/>}
     </Container>)
 }
 

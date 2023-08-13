@@ -1,14 +1,19 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, ScrollView, Text, StyleSheet } from "react-native"
 
+import Space from "../../ui/Space"
 import colors from "../../../public/colors"
 
-const Resources = () => {
+const Resources = ({ content }) => {
     return (<View style={styles.resources}>
         <View style={styles.header}>
             <View style={styles.tab}>
                 <Text style={styles.label}>Resources</Text>
             </View>
         </View>
+        <ScrollView style={styles.content}>
+            <Text >{content}</Text>
+            <Space height={400}/>
+        </ScrollView>
     </View>)
 }
 
@@ -29,6 +34,9 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 20,
         textAlign: 'center'
+    },
+    content: {
+        padding: 20
     }
 })
 
