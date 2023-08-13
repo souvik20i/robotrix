@@ -18,7 +18,7 @@ const Module = ({ id, name }) => {
         <Text style={styles.header}>Module {id + 1}</Text>
         <Image
             style={styles.image}
-            source={require('../../../public/module.jpg')}
+            source={{ uri: 'https://images.unsplash.com/photo-1625633605176-7a8b6b491eb4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=786&q=80' }}
             resizeMode='contain'
         />
         <Text style={styles.title}>{name}</Text>

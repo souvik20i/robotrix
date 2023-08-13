@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { View, Text, TouchableWithoutFeedback, TouchableOpacity, StyleSheet } from "react-native"
+import { View, Text, TouchableWithoutFeedback, TouchableOpacity, StyleSheet, BackHandler } from "react-native"
 import { useSelector } from "react-redux"
 import { MaterialIcons } from "@expo/vector-icons"
 
@@ -20,7 +20,15 @@ const ProgressBar = ({ current, length, orientation, onChange }) => {
             const stored = await AsyncStorage.getItem(key) || 0;
             if (current > stored) await AsyncStorage.setItem(key, current.toString())
         }
-        setMaxReached().catch(err => console.log(err))
+        setMaxReached().catch(console.error)
+        const exitFullscreenByBackHandler = () => {
+            if (orientation.isFullscreen) {
+                orientation.exitFullscreenHandler()
+                return true
+            }
+        }
+        BackHandler.addEventListener('hardwareBackPress', exitFullscreenByBackHandler)
+        return () => BackHandler.removeEventListener('hardwareBackPress', exitFullscreenByBackHandler)
     }, [current])
 
     const slidingHandler = async (value) => {
