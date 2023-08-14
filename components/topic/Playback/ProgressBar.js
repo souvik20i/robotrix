@@ -9,34 +9,38 @@ import Slider from "@react-native-community/slider"
 import colors from "../../../public/colors"
 
 const ProgressBar = ({ current, length, orientation, onChange }) => {
+    const { currentModule, currentTopic } = useSelector(state => state.module)
+    const maxReachedKey = `max-reached-${currentModule}-${currentTopic}`
+    const isFinishedKey = `is-finished-${currentModule}-${currentTopic}`
     const currentTimestamp = useConversion(current)
     const totalDuration = useConversion(length)
 
-    const { currentModule, currentTopic } = useSelector(state => state.module)
-    const key = `max-reached-${currentModule}-${currentTopic}`
+    const changeProgress = async () => {
+        const maxReached = parseInt(await AsyncStorage.getItem(maxReachedKey) || 0)
+        if (current > maxReached) await AsyncStorage.setItem(maxReachedKey, current.toString())
+        const isFinished = parseInt(await AsyncStorage.getItem(isFinishedKey) || 0)
+        if (!isFinished && length - maxReached < 20000) {
+            await AsyncStorage.setItem(isFinishedKey, '1')
+            const completedTopics = parseInt(await AsyncStorage.getItem('completed-topics') || 0) + 1
+            await AsyncStorage.setItem('completed-topics', completedTopics.toString())
+        }
+    }
+
+    const exitFullscreenByBackHandler = () => {
+        if (orientation.isFullscreen) {
+            orientation.exitFullscreenHandler()
+            return true
+        }
+    }
 
     useEffect(() => {
-        const changeProgress = async () => {
-            const maxReached = await AsyncStorage.getItem(key) || 0;
-            if (current > maxReached) await AsyncStorage.setItem(key, current.toString())
-            if (length - current < 20000) {
-                const completedTopics = parseInt(await AsyncStorage.getItem('completed-topics') || 0) + 1
-                await AsyncStorage.setItem('completed-topics', completedTopics.toString())
-            }
-        }
         changeProgress().catch(console.error)
-        const exitFullscreenByBackHandler = () => {
-            if (orientation.isFullscreen) {
-                orientation.exitFullscreenHandler()
-                return true
-            }
-        }
         BackHandler.addEventListener('hardwareBackPress', exitFullscreenByBackHandler)
         return () => BackHandler.removeEventListener('hardwareBackPress', exitFullscreenByBackHandler)
     }, [current])
 
     const slidingHandler = async (value) => {
-        const stored = await AsyncStorage.getItem(key);
+        const stored = await AsyncStorage.getItem(maxReachedKey);
         if (value < stored) onChange(value)
     }
 

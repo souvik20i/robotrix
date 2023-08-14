@@ -2,20 +2,23 @@ import { View, Text, Image, StyleSheet } from "react-native"
 
 import colors from "../../../public/colors"
 
-const Template = ({ isCompleted }) => {
+const Template = ({ user = '', isCompleted }) => {
+    const firstname = user.split(' ')[0]
     return (<View style={styles.block}>
-        {isCompleted && <Text style={styles.annnot}>Download your certificate</Text>}
+        {isCompleted && <>
+            <Text style={styles.annnot}>{firstname}, You Finally Did It!</Text>
+            <Text style={styles.annnot}>Download Your Achievement</Text>
+        </>}
         <View style={styles.templateWrapper}>
             <Image
                 source={require('../../../public/certificate.png')}
                 style={styles.template}
             />
         </View>
-        {!isCompleted && <Text style={{
-            ...styles.annnot,
-            fontSize: 20,
-            padding: 50
-        }}>Get a certificate of completion</Text>}
+        {!isCompleted && <>
+            <Text style={styles.annnot}>{firstname}, Complete The Full Course</Text>
+            <Text style={styles.annnot}>And Unlock Your Certificate</Text>
+        </>}
     </View >)
 }
 
@@ -29,13 +32,14 @@ const styles = StyleSheet.create({
     },
     templateWrapper: {
         backgroundColor: colors.bgPrimary,
+        marginVertical: 30,
         elevation: 3
     },
     annnot: {
         fontSize: 15,
         textAlign: 'center',
-        padding: 20,
-        color: colors.textGrey
+        paddingBottom: 10,
+        color: colors.textDark
     }
 })
 

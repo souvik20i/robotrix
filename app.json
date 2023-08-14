@@ -24,8 +24,9 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "2ebbe59f-8447-4957-a839-2b20c15abfae"
-      }
+        "projectId": "e0dc3e74-bde6-47c4-a098-15551f68bcef"
+      },
+      "domain": "http://robotrix-backend-env.eba-f4dbha2k.ap-south-1.elasticbeanstalk.com"
     }
   }
 }

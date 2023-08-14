@@ -9,7 +9,6 @@ import colors from "../../../public/colors"
 
 const Action = ({ name }) => {
     const html = useTemplate(name)
-
     const generatePdf = async (html) => {
         const { uri } = await printToFileAsync({ html, height: 710, width: 1000 })
         const renamedUri = `${uri.slice(0, uri.lastIndexOf('/') + 1)}${name.replace(' ', '_')}_Robotics.pdf`
@@ -19,7 +18,6 @@ const Action = ({ name }) => {
         })
         await shareAsync(renamedUri)
     }
-
     const downloadCertificate = () => {
         generatePdf(html).catch(err => console.log(err))
     }

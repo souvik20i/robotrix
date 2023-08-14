@@ -2,16 +2,18 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { moduleActions } from "../store/module-slice"
 import { useGet, catchAsync } from "./use-http"
-import { DOMAIN } from "../domain"
+
+import Constants from "expo-constants"
 
 const useModules = () => {
     const { token } = useSelector(state => state.auth)
     const { getRequest, isLoading } = useGet()
     const dispatch = useDispatch()
+    const { domain } = Constants.expoConfig.extra
 
     useEffect(() => {
         (catchAsync(async () => {
-            const modules = await getRequest(`${DOMAIN}/modules`, token)
+            const modules = await getRequest(`${domain}/modules`, token)
             dispatch(moduleActions.changeModules(modules))
         }))()
     }, [])
