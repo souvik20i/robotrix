@@ -13,7 +13,7 @@ const Topic = () => {
     const { domain } = Constants.expoConfig.extra
     const { modules, currentModule, currentTopic } = useSelector(state => state.module)
     const [isFullscreen, setIsFullscreen] = useState(false)
-    const { content } = modules[currentModule].topics[currentTopic]
+    const { video, content } = modules[currentModule].topics[currentTopic]
 
     const enterFullscreenHandler = async () => {
         await lockAsync(OrientationLock.LANDSCAPE)
@@ -32,7 +32,7 @@ const Topic = () => {
             navigationBarHidden: isFullscreen
         }} />
         <Playback
-            uri={`${domain}/stream/robotic-sensor.mp4`}
+            uri={`${domain}/stream/${video.slug}`}
             orientation={{
                 isFullscreen, enterFullscreenHandler, exitFullscreenHandler
             }}

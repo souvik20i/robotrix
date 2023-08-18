@@ -7,11 +7,11 @@ import { FontAwesome5 } from '@expo/vector-icons'
 import useConversion from "../../../hooks/use-conversion"
 import colors from "../../../public/colors"
 
-const Topic = ({ id, title }) => {
+const Topic = ({ id, title, length }) => {
     const router = useRouter()
     const pathname = usePathname()
     const dispatch = useDispatch()
-    const duration = useConversion(Math.floor(Math.random() * 600000))
+    const duration = useConversion(length)
 
     const changeTopicHandler = () => {
         dispatch(moduleActions.changeCurrentTopic(id))

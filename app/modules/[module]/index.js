@@ -15,11 +15,12 @@ const Module = () => {
     return (<Container>
         <Stack.Screen options={{ title: name }} />
         <Scroll>
-            {topics.map(({ title }, i) =>
+            {topics.map(({ id, title, video }) =>
                 <Topic
-                    key={i}
-                    id={i}
+                    key={id}
+                    id={id - 1}
                     title={title}
+                    length={video.duration}
                 />)
             }
             <Space />
