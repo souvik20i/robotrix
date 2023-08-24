@@ -7,12 +7,14 @@ import Constants from "expo-constants"
 
 const useModules = () => {
     const { token } = useSelector(state => state.auth)
+    const { modules: persistedModules } = useSelector(state => state.module)
     const { getRequest, isLoading } = useGet()
     const dispatch = useDispatch()
     const { domain } = Constants.expoConfig.extra
 
     useEffect(() => {
         (catchAsync(async () => {
+            if (persistedModules.length) return
             const modules = await getRequest(`${domain}/modules`, token)
             dispatch(moduleActions.changeModules(modules))
         }))()

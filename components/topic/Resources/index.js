@@ -1,7 +1,7 @@
-import { View, ScrollView, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
 import { colors } from "../../../colors"
 
-import Space from "../../ui/Space"
+import Scroll from "../../ui/Scroll"
 
 const Resources = ({ content }) => {
     return (<View style={styles.resources}>
@@ -10,10 +10,9 @@ const Resources = ({ content }) => {
                 <Text style={styles.label}>Resources</Text>
             </View>
         </View>
-        <ScrollView style={styles.content}>
+        <Scroll style={styles.content} space={400}>
             <Text >{content}</Text>
-            <Space height={400}/>
-        </ScrollView>
+        </Scroll>
     </View>)
 }
 

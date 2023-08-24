@@ -1,6 +1,6 @@
-import { ScrollView, StyleSheet } from "react-native"
+import { View, ScrollView, StyleSheet } from "react-native"
 
-const Scroll = ({ style, children }) => {
+const Scroll = ({ style, space = 150, children }) => {
     return (<ScrollView
         style={{
             ...styles.scroll,
@@ -9,6 +9,7 @@ const Scroll = ({ style, children }) => {
         showsVerticalScrollIndicator={false}
     >
         {children}
+        <View style={{ height: space }} />
     </ScrollView>)
 }
 
