@@ -61,14 +61,15 @@ const styles = StyleSheet.create({
         bottom: 0,
         zIndex: 10,
         padding: 20,
-        paddingBottom: 0
+        paddingBottom: 30
     },
     interaction: {
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
     frame: {
-        borderRadius: 10
+        borderRadius: 10,
+        marginHorizontal: 0
     },
     text: {
         paddingHorizontal: 15,

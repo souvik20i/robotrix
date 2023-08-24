@@ -19,7 +19,7 @@ const ProgressBar = ({ current, length, orientation, onChange }) => {
         const maxReached = parseInt(await AsyncStorage.getItem(maxReachedKey) || 0)
         if (current > maxReached) await AsyncStorage.setItem(maxReachedKey, current.toString())
         const isFinished = parseInt(await AsyncStorage.getItem(isFinishedKey) || 0)
-        if (!isFinished && length - maxReached < 20000) {
+        if (!isFinished && length - maxReached < 5000) {
             await AsyncStorage.setItem(isFinishedKey, '1')
             const completedTopics = parseInt(await AsyncStorage.getItem('completed-topics') || 0) + 1
             await AsyncStorage.setItem('completed-topics', completedTopics.toString())
@@ -40,7 +40,7 @@ const ProgressBar = ({ current, length, orientation, onChange }) => {
     }, [current])
 
     const slidingHandler = async (value) => {
-        const stored = await AsyncStorage.getItem(maxReachedKey);
+        const stored = parseInt(await AsyncStorage.getItem(maxReachedKey) || 0)
         if (value < stored) onChange(value)
     }
 

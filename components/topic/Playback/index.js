@@ -12,7 +12,7 @@ const Playback = ({ uri, orientation }) => {
     const showControlsHandler = () => setIsControlsActive(true)
     const hideControlsHandler = () => setIsControlsActive(false)
 
-    const hideControlsAfterDelay = () => setTimeout(() => hideControlsHandler(), 1000)
+    const hideControlsAfterDelay = () => setTimeout(() => hideControlsHandler(), 5000)
     useEffect(() => { hideControlsAfterDelay() }, [])
 
     const togglePlaybackHandler = () => {

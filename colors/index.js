@@ -6,5 +6,6 @@ export const colors = {
     textDark: '#0f0f0f',
     textBg: '#efd3f8',
     textGrey: '#54626F',
-    error: '#d21404'
+    error: '#d21404',
+    success: '#028a0f'
 }

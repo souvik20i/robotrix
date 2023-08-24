@@ -16,8 +16,8 @@ const Feedback = () => {
             <View style={styles.feedback}>
                 <>
                     {success
-                        ? <Ionicons name="shield-checkmark" size={50} color='green' />
-                        : <FontAwesome name="warning" size={50} color='red' />
+                        ? <Ionicons name="shield-checkmark" size={50} color={colors.success} />
+                        : <FontAwesome name="warning" size={50} color={colors.error} />
                     }
                     <Text style={styles.message}>{message}</Text>
                 </>
@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
         color: colors.textDark,
         textAlign: 'center',
         fontSize: 15,
-        padding: 20
+        padding: 20,
+        lineHeight: 25
     }
 })
 
