@@ -25,7 +25,7 @@ const Submit = ({ frameStyle, textStyle }) => {
     const changeProgress = async (hasPassed) => {
         const hasPassedEverKey = `has-passed-${currentModule}`
         const hasPassedEver = parseInt(await AsyncStorage.getItem(hasPassedEverKey) || 0)
-        if (!hasPassedEver) {
+        if (hasPassedEver !== 1) {
             if (hasPassed) {
                 await AsyncStorage.setItem(hasPassedEverKey, '1')
                 const completedTopics = parseInt(await AsyncStorage.getItem('completed-topics') || 0) + 1
