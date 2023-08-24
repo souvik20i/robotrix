@@ -1,6 +1,5 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
-
-import colors from "../../public/colors"
+import { colors } from "../../colors"
 
 const Button = ({ label, onPress, frameStyle, textStyle }) => {
     return (<View style={{ ...styles.button, ...frameStyle }}>

@@ -1,6 +1,5 @@
 import { View, Text, Image, StyleSheet } from "react-native"
-
-import colors from "../../../public/colors"
+import { colors } from "../../../colors"
 
 const Title = () => {
     return (<View style={styles.top}>

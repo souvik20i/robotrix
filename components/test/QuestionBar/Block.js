@@ -1,8 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { testActions } from "../../../store/test-slice"
-
-import colors from "../../../public/colors"
+import { colors } from "../../../colors"
 
 const Block = ({ question }) => {
     const dispatch = useDispatch()

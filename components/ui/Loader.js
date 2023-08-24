@@ -1,6 +1,5 @@
 import { ActivityIndicator } from "react-native"
-
-import colors from "../../public/colors"
+import { colors } from "../../colors"
 
 const Loader = ({ color = colors.bgSecondary, raw = false }) => {
     return (<ActivityIndicator

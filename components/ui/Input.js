@@ -1,6 +1,5 @@
 import { View, Text, TextInput, StyleSheet } from "react-native"
-
-import colors from "../../public/colors"
+import { colors } from "../../colors"
 
 const Input = ({ label, onChange, isValid = true, secured = false }) => {
     return (<View style={styles.block}>

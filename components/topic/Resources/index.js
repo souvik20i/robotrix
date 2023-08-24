@@ -1,7 +1,7 @@
 import { View, ScrollView, Text, StyleSheet } from "react-native"
+import { colors } from "../../../colors"
 
 import Space from "../../ui/Space"
-import colors from "../../../public/colors"
 
 const Resources = ({ content }) => {
     return (<View style={styles.resources}>

@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
     bgPrimary: '#ffffff',
     bgSecondary: '#4d74d1',
     bgGrey: '#f1f1f1',
@@ -7,5 +7,3 @@ const colors = {
     textBg: '#efd3f8',
     textGrey: '#54626F'
 }
-
-export default colors

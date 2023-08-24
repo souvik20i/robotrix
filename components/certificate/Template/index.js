@@ -1,6 +1,5 @@
 import { View, Text, Image, StyleSheet } from "react-native"
-
-import colors from "../../../public/colors"
+import { colors } from "../../../colors"
 
 const Template = ({ user = '', isCompleted }) => {
     const firstname = user.split(' ')[0]

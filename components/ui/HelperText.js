@@ -1,6 +1,5 @@
 import { Text, StyleSheet } from "react-native"
-
-import colors from "../../public/colors"
+import { colors } from "../../colors"
 
 const HelperText = ({ label, dark = false, style = {} }) => {
     return (<Text style={{

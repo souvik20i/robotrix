@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet } from "react-native"
-
-import colors from "../../../public/colors"
+import { colors } from "../../../colors"
 
 const Speed = ({ current, rates, onChange, onToggle }) => {
     const rateChangeHandler = rate => {

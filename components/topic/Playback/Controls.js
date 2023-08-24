@@ -1,9 +1,9 @@
 import { View, TouchableWithoutFeedback, StyleSheet } from "react-native"
+import { colors } from "../../../colors"
 
 import Play from "./Play"
 import ProgressBar from "./ProgressBar"
 import TopBar from "./TopBar"
-import colors from "../../../public/colors"
 
 const Controls = ({ status, orientation, onPress, onToggle, onChangePosition, onChangeSpeed }) => {
     const {

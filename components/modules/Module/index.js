@@ -2,8 +2,7 @@ import { Text, Image, TouchableOpacity, StyleSheet } from "react-native"
 import { useRouter } from "expo-router"
 import { useDispatch } from "react-redux"
 import { moduleActions } from "../../../store/module-slice"
-
-import colors from "../../../public/colors"
+import { colors } from "../../../colors"
 
 const Module = ({ id, name, image }) => {
     const dispatch = useDispatch()

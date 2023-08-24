@@ -3,9 +3,9 @@ import { useRouter, usePathname } from "expo-router"
 import { useDispatch } from "react-redux"
 import { moduleActions } from "../../../store/module-slice"
 import { FontAwesome5 } from '@expo/vector-icons'
+import { colors } from "../../../colors"
 
 import useConversion from "../../../hooks/use-conversion"
-import colors from "../../../public/colors"
 
 const Topic = ({ id, title, length }) => {
     const router = useRouter()

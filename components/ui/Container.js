@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native"
 import Animated, { FadeInDown } from "react-native-reanimated"
-
-import colors from "../../public/colors"
+import { colors } from "../../colors"
 
 const Container = ({ style = {}, children }) => {
     return (<Animated.View

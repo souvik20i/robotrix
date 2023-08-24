@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const namePattern = /^[a-zA-Z0-9-\ ]{4,20}\b$/
 const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 const phonePattern = /^\d{10}$/
-const passwordPattern = /^[a-zA-Z0-9-]{6,}\b$/
+const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 const enrollmentPattern = /^\d{14}$/
 
 const authSlice = createSlice({
@@ -55,14 +55,14 @@ const authSlice = createSlice({
             const value = action.payload.trim()
             state.signin.phone = value
             state.signin.isPhoneValid = value.match(phonePattern)
-            state.signin.email = ''
+            state.signin.email = null
             state.signin.isEmailValid = false
         },
         changeSigninEmail(state, action) {
             const value = action.payload.trim()
             state.signin.email = value
             state.signin.isEmailValid = value.match(emailPattern)
-            state.signin.phone = ''
+            state.signin.phone = null
             state.signin.isPhoneValid = false
         },
         changeSigninPassword(state, action) {
@@ -97,15 +97,15 @@ const authSlice = createSlice({
         },
         changeSignupCourse(state, action) {
             state.signup.course = action.payload
-            state.signup.isCourseValid = action.payload != ''
+            state.signup.isCourseValid = action.payload != null;
         },
         changeSignupStream(state, action) {
             state.signup.stream = action.payload
-            state.signup.isStreamValid = action.payload != ''
+            state.signup.isStreamValid = action.payload != null
         },
         changeSignupSection(state, action) {
             state.signup.section = action.payload
-            state.signup.isSectionValid = action.payload != ''
+            state.signup.isSectionValid = action.payload != null
         },
         clearValidations(state) {
             state.signin.isPhoneValid = true
@@ -120,9 +120,9 @@ const authSlice = createSlice({
             state.signup.isSectionValid = true
         },
         clearSelections(state) {
-            state.signup.course = ''
-            state.signup.stream = ''
-            state.signup.section = ''
+            state.signup.course = null
+            state.signup.stream = null
+            state.signup.section = null
         }
     }
 })

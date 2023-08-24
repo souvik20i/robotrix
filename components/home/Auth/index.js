@@ -3,10 +3,10 @@ import { useRouter } from "expo-router"
 import { useDispatch } from "react-redux"
 import { authActions } from "../../../store/auth-slice"
 import { AntDesign } from "@expo/vector-icons"
+import { colors } from "../../../colors"
 
 import Button from "../../ui/Button"
 import HelperText from "../../ui/HelperText"
-import colors from "../../../public/colors"
 
 const Auth = () => {
     const router = useRouter()

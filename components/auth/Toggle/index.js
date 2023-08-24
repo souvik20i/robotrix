@@ -1,9 +1,9 @@
 import { View, StyleSheet } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { authActions } from "../../../store/auth-slice"
+import { colors } from "../../../colors"
 
 import Tab from "./Tab"
-import colors from "../../../public/colors"
 
 const Toggle = () => {
     const dispatch = useDispatch()

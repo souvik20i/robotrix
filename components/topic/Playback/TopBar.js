@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { View, Text, TouchableOpacity, TouchableWithoutFeedback, StyleSheet } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
+import { useState } from 'react'
+import { View, Text, TouchableOpacity, TouchableWithoutFeedback, StyleSheet } from 'react-native'
+import { Entypo } from '@expo/vector-icons'
+import { colors } from "../../../colors"
 
-import Speed from './Speed';
-import colors from '../../../public/colors';
+import Speed from './Speed'
 
 const TopBar = ({ rate, onChangeRate }) => {
     const [isSpeedActive, setIsSpeedActive] = useState(false)

@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native"
+import { colors } from "../../../colors"
 
 // import CircularProgress from "react-native-circular-progress-indicator"
-import colors from "../../../public/colors"
 
 const Progress = ({ percent }) => {
     return (<View style={styles.progress}>

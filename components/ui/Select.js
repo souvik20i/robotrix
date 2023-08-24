@@ -1,7 +1,7 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import { View, Text, StyleSheet } from 'react-native'
+import { Picker } from '@react-native-picker/picker'
+import { colors } from "../../colors"
 
-import colors from '../../public/colors';
 
 const Select = ({ label, value, options, isValid, onChange }) => {
     return (<View style={styles.selction}>
@@ -11,7 +11,7 @@ const Select = ({ label, value, options, isValid, onChange }) => {
             borderColor: isValid ? colors.bgGrey : 'red'
         }}>
             <Picker selectedValue={value} onValueChange={onChange}>
-                <Picker.Item label='Select' value='' />
+                <Picker.Item label='Select' value={null} />
                 {options.map(item => <Picker.Item key={item} label={item} value={item} />)}
             </Picker>
         </View >

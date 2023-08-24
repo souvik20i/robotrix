@@ -1,8 +1,8 @@
 import { View, TouchableWithoutFeedback, TouchableOpacity, StyleSheet } from "react-native"
-import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons'
+import { colors } from "../../../colors"
 
 import Loader from "../../ui/Loader"
-import colors from "../../../public/colors";
 
 const Play = ({ isPlaying, isBuffering, isFinished, current, length, onToggle, onChange }) => {
     const replayHandler = () => onChange(Math.max(current - 10000, 0))

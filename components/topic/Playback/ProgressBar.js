@@ -2,11 +2,11 @@ import { useEffect } from "react"
 import { View, Text, TouchableWithoutFeedback, TouchableOpacity, StyleSheet, BackHandler } from "react-native"
 import { useSelector } from "react-redux"
 import { MaterialIcons } from "@expo/vector-icons"
+import { colors } from "../../../colors"
 
 import useConversion from "../../../hooks/use-conversion"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import Slider from "@react-native-community/slider"
-import colors from "../../../public/colors"
 
 const ProgressBar = ({ current, length, orientation, onChange }) => {
     const { currentModule, currentTopic } = useSelector(state => state.module)

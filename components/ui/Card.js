@@ -1,6 +1,5 @@
 import { View, StyleSheet } from "react-native"
-
-import colors from "../../public/colors"
+import { colors } from "../../colors"
 
 const Card = ({ children, style }) => {
     return (<View style={{

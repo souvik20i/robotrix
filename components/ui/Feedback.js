@@ -2,8 +2,7 @@ import { View, Text, Modal, Pressable, StyleSheet } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { feedbackActions } from "../../store/feedback-slice"
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
-
-import colors from "../../public/colors"
+import { colors } from "../../colors"
 
 const Feedback = () => {
     const { isShown, message, success } = useSelector(state => state.feedback)

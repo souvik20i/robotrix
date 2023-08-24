@@ -3,10 +3,10 @@ import { useRouter } from "expo-router"
 import { useDispatch } from "react-redux"
 import { authActions } from "../../../store/auth-slice"
 import { FontAwesome } from '@expo/vector-icons'
+import { colors } from "../../../colors"
 
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import Button from "../../ui/Button"
-import colors from "../../../public/colors"
 
 const Start = ({ name }) => {
     const router = useRouter()

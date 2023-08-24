@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native"
+import { colors } from "../../../colors"
 
 import Block from "./Block"
-import colors from "../../../public/colors"
 
 const QuestionBar = ({ questions }) => {
     return (<View style={styles.bar}>

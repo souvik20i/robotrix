@@ -2,10 +2,10 @@ import { printToFileAsync } from "expo-print"
 import { moveAsync } from "expo-file-system"
 import { shareAsync } from "expo-sharing"
 import { AntDesign } from "@expo/vector-icons"
+import { colors } from "../../../colors"
 
 import useTemplate from "../../../hooks/use-template"
 import Button from "../../ui/Button"
-import colors from "../../../public/colors"
 
 const Action = ({ name }) => {
     const html = useTemplate(name)

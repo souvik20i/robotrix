@@ -1,9 +1,9 @@
 import { Stack } from "expo-router"
 import { Provider } from "react-redux"
+import { colors } from "../colors"
 
 import Feedback from "../components/ui/Feedback"
 import store from "../store"
-import colors from "../public/colors"
 
 const Layout = () => {
     return (<Provider store={store}>
