@@ -15,7 +15,7 @@ const Auth = () => {
     useEffect(() => {
         dispatch(authActions.clearValidations())
         dispatch(authActions.clearSelections())
-    }, [])
+    }, [isSigninActive])
 
     return (<Container style={styles.container}>
         <Stack.Screen options={{ headerShown: false }} />

@@ -3,18 +3,19 @@ import { Picker } from '@react-native-picker/picker'
 import { colors } from "../../colors"
 
 
-const Select = ({ label, value, options, isValid, onChange }) => {
+const Select = ({ label, value, options, error, onChange }) => {
     return (<View style={styles.selction}>
         <Text style={styles.label}>{label}</Text>
         <View style={{
             ...styles.select,
-            borderColor: isValid ? colors.bgGrey : 'red'
+            borderColor: !error ? colors.bgGrey : colors.error
         }}>
             <Picker selectedValue={value} onValueChange={onChange}>
-                <Picker.Item label='Select' value={null} />
+                <Picker.Item label='Select' value='' />
                 {options.map(item => <Picker.Item key={item} label={item} value={item} />)}
             </Picker>
         </View >
+        {error && <Text style={styles.error}>{error}</Text>}
     </View >)
 }
 
@@ -32,6 +33,9 @@ const styles = StyleSheet.create({
         fontSize: 17,
         paddingVertical: 10,
         color: colors.textDark
+    },
+    error: {
+        color: colors.error
     }
 })
 

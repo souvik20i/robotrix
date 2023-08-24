@@ -11,7 +11,7 @@ const Form = ({ labels, handlers, validity, options }) => {
                 key={i}
                 label={label}
                 onChange={handlers[i]}
-                isValid={validity[i]}
+                error={validity[i]}
                 secured={label === 'Password'}
             />
             :
@@ -21,7 +21,7 @@ const Form = ({ labels, handlers, validity, options }) => {
                 value={options[label].current}
                 options={options[label].items}
                 onChange={handlers[i]}
-                isValid={validity[i]}
+                error={validity[i]}
             />
         )}
     </ScrollView>)

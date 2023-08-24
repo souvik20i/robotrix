@@ -15,14 +15,8 @@ const Signup = () => {
         }
     }
     const labels = ['Name', 'Email', 'Password', 'Phone', 'Enrollment Number', 'Course', 'Stream', 'Section']
-    const actions = [
-        authActions.changeSignupName, authActions.changeSignupEmail, authActions.changeSignupPassword, authActions.changeSignupPhone,
-        authActions.changeSignupEnrollment, authActions.changeSignupCourse, authActions.changeSignupStream, authActions.changeSignupSection
-    ]
-    const validity = [
-        signup.isNameValid, signup.isEmailValid, signup.isPasswordValid, signup.isPhoneValid,
-        signup.isEnrollmentvalid, signup.isCourseValid, signup.isStreamValid, signup.isSectionValid
-    ]
+    const actions = [authActions.changeSignupName, authActions.changeSignupEmail, authActions.changeSignupPassword, authActions.changeSignupPhone, authActions.changeSignupEnrollment, authActions.changeSignupCourse, authActions.changeSignupStream, authActions.changeSignupSection]
+    const validity = [signup.nameError, signup.emailError, signup.passwordError, signup.phoneError, signup.enrollmentError, signup.courseError, signup.streamError, signup.sectionError]
     const handlers = actions.map(action => generateChangeHandler(action))
     const options = {
         'Course': {
@@ -31,10 +25,7 @@ const Signup = () => {
         },
         'Stream': {
             current: signup.stream,
-            items: [
-                'Computer Science', 'Information Technology', 'Machine Learning', 'Internet of Things',
-                'Botany', 'Zoology', 'Physiology', 'Maths', 'Physics', 'Chemisty', 'Commerce', 'English', 'Geography'
-            ]
+            items: ['Computer Science', 'Information Technology', 'Machine Learning', 'Internet of Things', 'Botany', 'Zoology', 'Physiology', 'Maths', 'Physics', 'Chemisty', 'Commerce', 'English', 'Geography']
         },
         'Section': {
             current: signup.section,

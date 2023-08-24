@@ -9,16 +9,16 @@ import HelperText from "../../ui/HelperText"
 const Signin = () => {
     const dispatch = useDispatch()
     const signin = useSelector(state => state.auth.signin)
-    const phoneEmailChangeHandler = value => {
+    const emailPhoneChangeHandler = value => {
         if (isNaN(value)) dispatch(authActions.changeSigninEmail(value))
         else dispatch(authActions.changeSigninPhone(value))
     }
     const passwordChangeHandler = value => {
         dispatch(authActions.changeSigninPassword(value))
     }
-    const labels = ['Phone / Email', 'Password']
-    const handlers = [phoneEmailChangeHandler, passwordChangeHandler]
-    const validity = [signin.isPhoneValid || signin.isEmailValid, signin.isPasswordValid]
+    const labels = ['Email / Phone', 'Password']
+    const handlers = [emailPhoneChangeHandler, passwordChangeHandler]
+    const validity = [signin.emailError || signin.phoneError, signin.passwordError]
 
     return (<Container>
         <Form
