@@ -15,8 +15,8 @@ const Template = ({ user = '', isCompleted }) => {
             />
         </View>
         {!isCompleted && <>
-            <Text style={styles.annnot}>{firstname}, Complete The Full Course</Text>
-            <Text style={styles.annnot}>And Unlock Your Certificate</Text>
+            <Text style={styles.annnot}>{firstname}, unlock your certificate</Text>
+            <Text style={styles.annnot}>by completing the full course</Text>
         </>}
     </View >)
 }

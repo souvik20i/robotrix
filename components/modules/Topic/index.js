@@ -21,7 +21,7 @@ const Topic = ({ id, title, length }) => {
     const changeTopicHandler = () => {
         dispatch(moduleActions.changeCurrentTopic(id))
         if (isLocked) dispatch(feedbackActions.sendFeedback({
-            message: 'Please watch previous videos to\nunlock this topic',
+            message: `Unlock '${title}' by watching the previous videos left behind`,
             success: false
         }))
         else router.push(`${pathname}/${id}`)

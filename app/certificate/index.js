@@ -27,7 +27,7 @@ const Certificate = () => {
 
     return (<Container style={styles.container}>
         <Stack.Screen options={{ title: 'Course Certificate' }} />
-        <Progress percent={Math.floor((completedTopics / totalTopics) * 100)} />
+        <Progress portion={completedTopics / totalTopics} />
         <Template user={user} isCompleted={isFinished} />
         {isFinished && <Action name={user} />}
     </Container>)

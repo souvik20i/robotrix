@@ -43,7 +43,7 @@ const Module = () => {
         <FloatButton
             label={'Take Assessment'}
             href={`${pathname}/test`}
-            resist={!isEligible ? 'Complete the module to\ntake assessment' : null}
+            resist={!isEligible ? `Check your skills on '${modules[currentModule].name}' after completing the whole module` : null}
         >
             {!isEligible ? <FontAwesome5 name="lock" size={18} color={colors.textLight} /> :
                 status === 1 ? <Ionicons name="shield-checkmark" size={18} color={colors.textLight} /> :

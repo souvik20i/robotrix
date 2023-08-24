@@ -1,34 +1,32 @@
 import { View, Text, StyleSheet } from "react-native"
+import { Circle } from "react-native-progress"
 import { colors } from "../../../colors"
 
-// import CircularProgress from "react-native-circular-progress-indicator"
-
-const Progress = ({ percent }) => {
+const Progress = ({ portion }) => {
     return (<View style={styles.progress}>
-        <Text style={styles.annot}>{percent}% Completed</Text>
-        {/* <CircularProgress
-            value={percent}
-            radius={80}
-            duration={1000}
-            valueSuffix={'%'}
-            title={'Completed'}
-            titleStyle={styles.annot}
-            progressValueColor={colors.bgSecondary}
-            activeStrokeColor={colors.bgSecondary}
-            inActiveStrokeColor={colors.bgGrey}
-            activeStrokeWidth={20}
-        /> */}
+        <Circle
+            progress={portion}
+            size={150}
+            color={colors.bgSecondary}
+            textStyle={styles.annot}
+            showsText
+        />
+        <Text style={styles.label}>Completed</Text>
     </View>)
 }
 
 const styles = StyleSheet.create({
     progress: {
-        padding: 10
+        padding: 10,
+        alignItems: 'center'
     },
     annot: {
-        fontSize: 20,
+        color: colors.bgSecondary
+    },
+    label: {
         color: colors.bgSecondary,
-        fontWeight: 'bold'
+        fontSize: 20,
+        padding: 10
     }
 })
 
