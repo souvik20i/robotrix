@@ -6,6 +6,7 @@ import Container from "../components/ui/Container"
 import Title from "../components/home/Title"
 import Auth from "../components/home/Auth"
 import Start from "../components/home/Start"
+import Footer from "../components/home/Footer"
 
 const Home = () => {
     const { user } = useAuth()
@@ -18,6 +19,7 @@ const Home = () => {
         >
             <Title />
             {user ? <Start name={user} /> : <Auth />}
+            <Footer />
         </ImageBackground>
     </Container>)
 }
