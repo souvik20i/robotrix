@@ -3,6 +3,7 @@
     "scheme": "acme",
     "name": "Robotrix",
     "slug": "robotrix",
+    "icon": "./public/icon.png",
     "android": {
       "package": "com.souvik720i.robotrix"
     },
