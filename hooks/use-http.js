@@ -28,13 +28,16 @@ export const useGet = () => {
 export const usePost = () => {
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false)
-    const postRequest = async (url, body) => {
+    const postRequest = async (url, body, token = null) => {
         try {
             setIsLoading(true)
             const response = await fetch(url, {
                 method: 'post',
                 body: JSON.stringify(body),
-                headers: { 'Content-Type': 'application/json' }
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
             })
             const { success, message, data } = await response.json()
             setIsLoading(false)

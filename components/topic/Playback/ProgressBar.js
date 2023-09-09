@@ -1,28 +1,35 @@
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 import { View, Text, TouchableWithoutFeedback, TouchableOpacity, StyleSheet, BackHandler } from "react-native"
 import { useSelector } from "react-redux"
 import { MaterialIcons } from "@expo/vector-icons"
+import { useGet, usePost } from "../../../hooks/use-http"
 import { colors } from "../../../colors"
 
+import Constants from "expo-constants"
+import jwtDecode from "jwt-decode"
 import useConversion from "../../../hooks/use-conversion"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import Slider from "@react-native-community/slider"
 
 const ProgressBar = ({ current, length, orientation, onChange }) => {
+    const { getRequest } = useGet(), { postRequest } = usePost()
+    const { domain } = Constants.expoConfig.extra
+    const { token } = useSelector(state => state.auth)
+    const { _id } = jwtDecode(token)
     const { currentModule, currentTopic } = useSelector(state => state.module)
+    const [isFinished, setIsFinished] = useState()
+    const currentTimestamp = useConversion(current), totalDuration = useConversion(length)
     const maxReachedKey = `max-reached-${currentModule}-${currentTopic}`
-    const isFinishedKey = `is-finished-${currentModule}-${currentTopic}`
-    const currentTimestamp = useConversion(current)
-    const totalDuration = useConversion(length)
+    const moduleIndex = `module${currentModule + 1}`, topicIndex = `topic${currentTopic + 1}`, url = `${domain}/progress/${_id}`
 
     const changeProgress = async () => {
         const maxReached = parseInt(await AsyncStorage.getItem(maxReachedKey) || 0)
         if (current > maxReached) await AsyncStorage.setItem(maxReachedKey, current.toString())
-        const isFinished = parseInt(await AsyncStorage.getItem(isFinishedKey) || 0)
-        if (!isFinished && length - maxReached < 5000) {
-            await AsyncStorage.setItem(isFinishedKey, '1')
-            const completedTopics = parseInt(await AsyncStorage.getItem('completed-topics') || 0) + 1
-            await AsyncStorage.setItem('completed-topics', completedTopics.toString())
+        const { progress } = await getRequest(url, token)
+        setIsFinished(progress[moduleIndex][topicIndex])
+        if (!progress[moduleIndex][topicIndex] && length - maxReached < 5000) {
+            await postRequest(url, { progressData: { [moduleIndex]: { [topicIndex]: true } } }, token)
+            setIsFinished(true)
         }
     }
 
@@ -41,7 +48,7 @@ const ProgressBar = ({ current, length, orientation, onChange }) => {
 
     const slidingHandler = async (value) => {
         const stored = parseInt(await AsyncStorage.getItem(maxReachedKey) || 0)
-        if (value < stored) onChange(value)
+        if (isFinished || value < stored) onChange(value)
     }
 
     return (<TouchableWithoutFeedback>

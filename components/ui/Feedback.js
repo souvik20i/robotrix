@@ -32,16 +32,17 @@ const styles = StyleSheet.create({
         zIndex: 10,
         width: '100%',
         height: '100%',
-        backgroundColor: colors.textLight + '80',
         justifyContent: 'center',
         alignItems: 'center'
     },
     feedback: {
+        width: '85%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.textLight,
         padding: 20,
-        borderRadius: 10
+        borderRadius: 10,
+        elevation: 5
     },
     message: {
         color: colors.textDark,
