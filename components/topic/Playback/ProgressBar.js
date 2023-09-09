@@ -47,11 +47,11 @@ const ProgressBar = ({ current, length, orientation, onChange }) => {
     return (<TouchableWithoutFeedback>
         <View style={styles.bottomBar}>
             <View style={styles.progressBar}>
-                <Text style={styles.time}>{currentTimestamp}</Text>
+                {length && <Text style={styles.time}>{currentTimestamp}</Text>}
                 <Slider
                     style={{
                         ...styles.slider,
-                        width: orientation.isFullscreen ? '90%' : '75%'
+                        width: !length ? '95%' : orientation.isFullscreen ? '90%' : '75%'
                     }}
                     value={current}
                     minimumValue={0}
@@ -61,7 +61,7 @@ const ProgressBar = ({ current, length, orientation, onChange }) => {
                     thumbTintColor={colors.bgSecondary}
                     onSlidingComplete={slidingHandler}
                 />
-                <Text style={styles.time}>{totalDuration}</Text>
+                {length && <Text style={styles.time}>{totalDuration}</Text>}
             </View>
             <TouchableOpacity>
                 {!orientation.isFullscreen

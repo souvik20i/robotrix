@@ -1,55 +1,65 @@
 import { useState, useCallback } from "react"
 import { usePathname, useFocusEffect, Stack } from "expo-router"
 import { useSelector } from "react-redux"
-import { FontAwesome, FontAwesome5, Ionicons } from '@expo/vector-icons'
+import { FontAwesome5, Ionicons } from '@expo/vector-icons'
+import { useGet } from "../../../hooks/use-http"
 import { colors } from "../../../colors"
 
-import AsyncStorage from "@react-native-async-storage/async-storage"
+import Constants from "expo-constants"
+import jwtDecode from "jwt-decode"
 import Topic from "../../../components/modules/Topic"
 import FloatButton from "../../../components/modules/FloatButton"
 import Container from "../../../components/ui/Container"
 import Scroll from "../../../components/ui/Scroll"
+import Loader from "../../../components/ui/Loader"
 
 const Module = () => {
     const pathname = usePathname()
+    const { getRequest, isLoading } = useGet()
+    const { domain } = Constants.expoConfig.extra
+    const { token } = useSelector(state => state.auth)
+    const { _id } = jwtDecode(token)
     const { modules, currentModule } = useSelector(state => state.module)
     const { name, topics } = modules[currentModule]
-    const [isEligible, setIsEligible] = useState()
-    const [status, setStatus] = useState()
+    const [progress, setProgress] = useState()
+    const [isTestLocked, setIsTestLocked] = useState()
+    const [hasTestPassed, setHasTestPassed] = useState()
 
     useFocusEffect(useCallback(() => {
         (async () => {
-            const isFinishedKey = `is-finished-${currentModule}-${modules[currentModule].topics.length - 1}`
-            const isFinished = parseInt(await AsyncStorage.getItem(isFinishedKey) || 0)
-            setIsEligible(isFinished)
-            const statusKey = `has-passed-${currentModule}`
-            const status = parseInt(await AsyncStorage.getItem(statusKey) || 0)
-            setStatus(status)
+            const { progress } = await getRequest(`${domain}/progress/${_id}`, token)
+            setProgress(progress)
+            setIsTestLocked(!progress[`module${currentModule + 1}`][`topic${modules[currentModule].topics.length}`])
+            setHasTestPassed(progress[`module${currentModule + 1}`]['quiz'])
         })().catch(console.error)
     }, []))
 
     return (<Container>
         <Stack.Screen options={{ title: name }} />
-        <Scroll>
-            {topics.map(({ id, title, video }) =>
-                <Topic
-                    key={id}
-                    id={id - 1}
-                    title={title}
-                    length={video.duration}
-                />)
-            }
-        </Scroll>
-        <FloatButton
-            label={'Take Assessment'}
-            href={`${pathname}/test`}
-            resist={!isEligible ? `Check your skills on '${modules[currentModule].name}' after completing the whole module` : null}
-        >
-            {!isEligible ? <FontAwesome5 name="lock" size={18} color={colors.textLight} /> :
-                status === 1 ? <Ionicons name="shield-checkmark" size={18} color={colors.textLight} /> :
-                    status === 2 ? <FontAwesome name="warning" size={18} color={colors.textLight} /> : null
-            }
-        </FloatButton>
+        {isLoading ? <Loader /> : <>
+            <Scroll>
+                {topics.map(({ id, title, video }) =>
+                    <Topic
+                        key={id}
+                        id={id - 1}
+                        title={title}
+                        length={video.duration}
+                        isLocked={(!currentModule && !(id - 1)) ? false : ((id - 1))
+                            ? progress && !progress[`module${currentModule + 1}`][`topic${id - 1}`]
+                            : progress && !progress[`module${currentModule}`][`topic${modules[currentModule - 1].topics.length}`]
+                        }
+                    />)
+                }
+            </Scroll>
+            <FloatButton
+                label={'Take Assessment'}
+                href={`${pathname}/test`}
+                resist={isTestLocked ? `Test your skills on '${modules[currentModule].name}' after completing the whole module` : null}
+            >
+                {isTestLocked && <FontAwesome5 name="lock" size={18} color={colors.textLight} />}
+                {hasTestPassed && <Ionicons name="shield-checkmark" size={18} color={colors.textLight} />}
+            </FloatButton>
+        </>}
     </Container >)
 }
 

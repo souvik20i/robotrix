@@ -1,22 +1,18 @@
-import { useState, useCallback } from "react"
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
-import { useRouter, usePathname, useFocusEffect } from "expo-router"
-import { useDispatch, useSelector } from "react-redux"
+import { useRouter, usePathname } from "expo-router"
+import { useDispatch } from "react-redux"
 import { FontAwesome5 } from '@expo/vector-icons'
 import { moduleActions } from "../../../store/module-slice"
 import { feedbackActions } from "../../../store/feedback-slice"
 import { colors } from "../../../colors"
 
-import AsyncStorage from "@react-native-async-storage/async-storage"
 import useConversion from "../../../hooks/use-conversion"
 
-const Topic = ({ id, title, length }) => {
+const Topic = ({ id, title, length, isLocked }) => {
     const router = useRouter()
     const pathname = usePathname()
     const dispatch = useDispatch()
     const duration = useConversion(length)
-    const { modules, currentModule } = useSelector(state => state.module)
-    const [isLocked, setIsLocked] = useState(true)
 
     const changeTopicHandler = () => {
         dispatch(moduleActions.changeCurrentTopic(id))
@@ -27,29 +23,13 @@ const Topic = ({ id, title, length }) => {
         else router.push(`${pathname}/${id}`)
     }
 
-    const lockHandler = async () => {
-        if (!currentModule && !id) {
-            setIsLocked(false)
-            return
-        }
-        const prevModule = id ? currentModule : currentModule - 1
-        const prevTopic = id ? id - 1 : modules[prevModule].topics.length - 1
-        const isLastFinishedKey = `is-finished-${prevModule}-${prevTopic}`
-        const isLastFinished = parseInt(await AsyncStorage.getItem(isLastFinishedKey) || 0)
-        setIsLocked(!isLastFinished)
-    }
-
-    useFocusEffect(useCallback(() => {
-        lockHandler().catch(console.error)
-    }, []))
-
     return (<TouchableOpacity style={styles.topic} onPress={changeTopicHandler}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.duration}>
             <FontAwesome5 name="video" size={12} color={colors.textGrey} />
             <Text style={styles.time}>{duration}</Text>
         </View>
-        {isLocked && < View style={styles.lock}>
+        {isLocked && <View style={styles.lock}>
             <FontAwesome5 name="lock" size={15} color={colors.textGrey} />
         </View>}
     </TouchableOpacity >)
