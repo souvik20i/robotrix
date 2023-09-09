@@ -20,12 +20,12 @@ const Certificate = () => {
     const { token } = useSelector(state => state.auth)
     const { _id } = jwtDecode(token)
     const { domain } = Constants.expoConfig.extra
-    const [portion, setPortion] = useState(0)
+    const [percent, setPercent] = useState(0)
 
     useEffect(() => {
         const getProgress = async () => {
             const { completion } = await getRequest(`${domain}/progress/${_id}`, token)
-            setPortion(completion)
+            setPercent(completion)
         }
         getProgress().catch(console.error)
     }, [])
@@ -33,9 +33,9 @@ const Certificate = () => {
     return (<Container style={styles.container}>
         <Stack.Screen options={{ title: 'Course Certificate' }} />
         {isLoading ? <Loader /> : <>
-            <Progress portion={portion} />
-            <Template user={user} isCompleted={portion === 100} />
-            {portion === 100 && <Action name={user} />}
+            <Progress portion={percent / 100} />
+            <Template user={user} isCompleted={percent === 100} />
+            {percent === 100 && <Action name={user} />}
         </>}
     </Container>)
 }
