@@ -32,7 +32,7 @@ const Topic = () => {
             navigationBarHidden: isFullscreen
         }} />
         <Playback
-            uri={`${domain}/stream/${video.slug}`}
+            uri={video.slug}
             orientation={{
                 isFullscreen, enterFullscreenHandler, exitFullscreenHandler
             }}
