@@ -13,9 +13,10 @@ const TopBar = ({ rate, onChangeRate }) => {
     return (<TouchableWithoutFeedback>
         <View style={styles.topBar}>
             <View style={styles.speed}>
-                <TouchableOpacity onPress={toggleSpeedBox}>
+                {rate && <TouchableOpacity onPress={toggleSpeedBox}>
                     <Text style={styles.rate}>{(rate == 1 ? 'Normal' : `${rate}x`)}</Text>
                 </TouchableOpacity>
+                }
                 {isSpeedActive &&
                     <Speed
                         current={rate}

@@ -13,7 +13,9 @@ const Playback = ({ uri, orientation }) => {
     const hideControlsHandler = () => setIsControlsActive(false)
 
     const hideControlsAfterDelay = () => setTimeout(() => hideControlsHandler(), 5000)
-    useEffect(() => { hideControlsAfterDelay() }, [])
+    useEffect(() => {
+        if (!status.isPlaying) setIsControlsActive(true)
+    }, [status.isPlaying])
 
     const togglePlaybackHandler = () => {
         if (status.isPlaying) {
