@@ -4,13 +4,11 @@ import { Stack } from "expo-router"
 import { lockAsync, OrientationLock } from "expo-screen-orientation"
 import { useSelector } from "react-redux"
 
-import Constants from "expo-constants"
 import Container from "../../../../components/ui/Container"
 import Playback from "../../../../components/topic/Playback"
 import Resources from "../../../../components/topic/Resources"
 
 const Topic = () => {
-    const { domain } = Constants.expoConfig.extra
     const { modules, currentModule, currentTopic } = useSelector(state => state.module)
     const [isFullscreen, setIsFullscreen] = useState(false)
     const { video, content } = modules[currentModule].topics[currentTopic]
