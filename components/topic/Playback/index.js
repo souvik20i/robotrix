@@ -6,6 +6,7 @@ import Controls from "./Controls"
 const Playback = ({ uri, orientation }) => {
     const videoRef = useRef()
     const [status, setStatus] = useState({})
+    const [isDeliberatelyPaused, setIsDeliberatelyPaused] = useState(false)
     const changeStatusHandler = status => setStatus(status)
 
     const [isControlsActive, setIsControlsActive] = useState(true)
@@ -20,9 +21,11 @@ const Playback = ({ uri, orientation }) => {
     const togglePlaybackHandler = () => {
         if (status.isPlaying) {
             videoRef.current.pauseAsync()
+            setIsDeliberatelyPaused(true)
         }
         else {
             videoRef.current.playAsync()
+            setIsDeliberatelyPaused(false)
             hideControlsAfterDelay()
         }
     }
@@ -42,6 +45,7 @@ const Playback = ({ uri, orientation }) => {
             <Controls
                 status={status}
                 orientation={orientation}
+                isDeliberatelyPaused={isDeliberatelyPaused}
                 onPress={hideControlsHandler}
                 onToggle={togglePlaybackHandler}
                 onChangePosition={changePositionHandler}

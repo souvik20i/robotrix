@@ -5,7 +5,7 @@ import Play from "./Play"
 import ProgressBar from "./ProgressBar"
 import TopBar from "./TopBar"
 
-const Controls = ({ status, orientation, onPress, onToggle, onChangePosition, onChangeSpeed }) => {
+const Controls = ({ status, orientation, isDeliberatelyPaused, onPress, onToggle, onChangePosition, onChangeSpeed }) => {
     const {
         isPlaying, rate, positionMillis, playableDurationMillis, durationMillis, didJustFinish
     } = status
@@ -22,7 +22,7 @@ const Controls = ({ status, orientation, onPress, onToggle, onChangePosition, on
             />
             <Play
                 isPlaying={isPlaying}
-                isBuffering={positionMillis === playableDurationMillis}
+                isBuffering={positionMillis === playableDurationMillis || (!isDeliberatelyPaused && !isPlaying)}
                 isFinished={didJustFinish}
                 current={positionMillis}
                 length={durationMillis}
