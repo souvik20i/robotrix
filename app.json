@@ -26,8 +26,9 @@
     "extra": {
       "domain": "http://robotrix-backend-env.eba-f4dbha2k.ap-south-1.elasticbeanstalk.com",
       "eas": {
-        "projectId": "e0dc3e74-bde6-47c4-a098-15551f68bcef"
+        "projectId": "3415a4ce-5d1b-42ae-b9e1-364b9e037afa"
       }
-    }
+    },
+    "owner": "arunava.kundu"
   }
 }
