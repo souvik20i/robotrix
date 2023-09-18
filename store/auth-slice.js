@@ -51,7 +51,7 @@ const authSlice = createSlice({
             state.signin.email = value
             state.signin.emailError = value.match(validation.email) ? null : error.email
             state.signin.phone = null
-            state.signin.isPhoneValid = false
+            state.signin.phoneError = null
         },
         changeSigninPassword(state, action) {
             const value = action.payload.trim()
@@ -63,7 +63,7 @@ const authSlice = createSlice({
             state.signin.phone = value
             state.signin.phoneError = value.match(validation.phone) ? null : error.phone
             state.signin.email = null
-            state.signin.isEmailValid = false
+            state.signin.emailError = null
         },
         changeSignupName(state, action) {
             const value = action.payload.trim()
@@ -109,6 +109,7 @@ const authSlice = createSlice({
             state.signup.nameError = null
             state.signup.emailError = null
             state.signup.passwordError = null
+            state.signup.phoneError = null
             state.signup.enrollmentError = null
             state.signup.courseError = null
             state.signup.streamError = null
