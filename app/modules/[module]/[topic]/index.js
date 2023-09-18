@@ -4,6 +4,7 @@ import { Stack } from "expo-router"
 import { lockAsync, OrientationLock } from "expo-screen-orientation"
 import { useSelector } from "react-redux"
 
+import Constants from "expo-constants"
 import Container from "../../../../components/ui/Container"
 import Playback from "../../../../components/topic/Playback"
 import Resources from "../../../../components/topic/Resources"
@@ -12,6 +13,7 @@ const Topic = () => {
     const { modules, currentModule, currentTopic } = useSelector(state => state.module)
     const [isFullscreen, setIsFullscreen] = useState(false)
     const { video, content } = modules[currentModule].topics[currentTopic]
+    const { domain } = Constants.expoConfig.extra
 
     const enterFullscreenHandler = async () => {
         await lockAsync(OrientationLock.LANDSCAPE)
@@ -22,6 +24,7 @@ const Topic = () => {
         await lockAsync(OrientationLock.PORTRAIT)
         setIsFullscreen(false)
     }
+
     return (<Container style={styles.container}>
         <Stack.Screen options={{
             title: modules[currentModule].topics[currentTopic].title,
@@ -30,7 +33,7 @@ const Topic = () => {
             navigationBarHidden: isFullscreen
         }} />
         <Playback
-            uri={video.slug}
+            uri={`${domain}/stream/${video.slug}`}
             orientation={{
                 isFullscreen, enterFullscreenHandler, exitFullscreenHandler
             }}
