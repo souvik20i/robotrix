@@ -10,7 +10,7 @@ const Layout = () => {
         <Stack screenOptions={{
             headerStyle: { backgroundColor: colors.bgSecondary },
             headerTintColor: colors.textLight,
-            statusBarTranslucent: true
+            // statusBarTranslucent: true
         }} />
         <Feedback />
     </Provider>)
