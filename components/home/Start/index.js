@@ -38,14 +38,13 @@ const Start = ({ name }) => {
 
 const styles = StyleSheet.create({
     start: {
-        flex: 0.3,
-        paddingTop: 20,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: '5%'
     },
     welcome: {
         color: colors.textLight,
         fontSize: 17,
-        paddingBottom: 10
+        marginBottom: '10%'
     },
     signout: {
         paddingVertical: 10

@@ -10,7 +10,7 @@ const Footer = () => {
 const styles = StyleSheet.create({
     footer: {
         position: 'absolute',
-        bottom: 5
+        bottom: '2%'
     },
     content: {
         color: colors.textLight,

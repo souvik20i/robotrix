@@ -21,6 +21,8 @@ const FloatButton = ({ label, href, resist, children }) => {
         <Button
             label={label}
             onPress={pressHandler}
+            frameStyle={styles.frame}
+            textStyle={styles.text}
         >
             {children}
         </Button>
@@ -34,6 +36,14 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         paddingBottom: 30
+    },
+    frame: {
+        marginHorizontal: '15%',
+        marginVertical: '5%'
+    },
+    text: {
+        paddingHorizontal: '10%',
+        paddingVertical: '5%',
     }
 })
 

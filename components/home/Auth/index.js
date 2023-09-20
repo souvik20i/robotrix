@@ -41,17 +41,16 @@ const Auth = () => {
 
 const styles = StyleSheet.create({
     auth: {
-        flex: 0.3,
-        paddingTop: 20
+        marginTop: '5%'
     },
     alter: {
         alignItems: 'center',
-        paddingTop: 20
+        marginTop: '10%'
     },
     altAuth: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: 10
+        marginVertical: '5%'
     },
     altAuthText: {
         fontSize: 17,
