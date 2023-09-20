@@ -32,7 +32,14 @@ const styles = StyleSheet.create({
     templateWrapper: {
         backgroundColor: colors.bgPrimary,
         marginVertical: 30,
-        elevation: 3
+        elevation: 3,
+        shadowColor: colors.textDark,
+        shadowOffset: {
+            height: 0.3,
+            width: 0.3
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 0.2
     },
     annnot: {
         fontSize: 15,
