@@ -35,7 +35,14 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
         borderRadius: 10,
         backgroundColor: colors.bgPrimary,
-        elevation: 2
+        elevation: 2,
+        shadowColor: colors.textDark,
+        shadowOffset: {
+            height: 0.2,
+            width: 0.2
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 0.1
     },
     header: {
         color: colors.textDark,
@@ -46,7 +53,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 200,
         marginVertical: 15,
-        borderRadius: 10
+        borderRadius: 10,
+        overflow: 'hidden'
     },
     title: {
         color: colors.textDark,
