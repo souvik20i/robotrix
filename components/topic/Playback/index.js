@@ -1,10 +1,13 @@
 import { useState, useRef, useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { feedbackActions } from "../../../store/feedback-slice"
 
 import Video from "./Video"
 import Controls from "./Controls"
 
 const Playback = ({ uri, orientation }) => {
     const videoRef = useRef()
+    const dispatch = useDispatch()
     const [status, setStatus] = useState({})
     const [isDeliberatelyPaused, setIsDeliberatelyPaused] = useState(false)
     const changeStatusHandler = status => setStatus(status)
@@ -15,8 +18,13 @@ const Playback = ({ uri, orientation }) => {
 
     const hideControlsAfterDelay = () => setTimeout(() => hideControlsHandler(), 5000)
     useEffect(() => {
-        if (!status.isPlaying) setIsControlsActive(true)
+        if (status && status.isPlaying === false) setIsControlsActive(true)
+        if (status && status.isLoaded === false) dispatch(feedbackActions.sendFeedback({
+            message: 'Video is not loaded\nKindly check your connectivity',
+            success: false
+        }))
     }, [status.isPlaying])
+    console.log(status)
 
     const togglePlaybackHandler = () => {
         if (status.isPlaying) {
