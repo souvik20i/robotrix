@@ -18,7 +18,7 @@ const Signin = () => {
     }
     const labels = ['Email / Phone', 'Password']
     const handlers = [emailPhoneChangeHandler, passwordChangeHandler]
-    const validity = [signin.emailError || signin.phoneError, signin.passwordError]
+    const validity = [signin.emailError || signin.phoneError, null]
 
     return (<Container>
         <Form

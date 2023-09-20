@@ -11,7 +11,6 @@ const authSlice = createSlice({
             password: null,
             phone: null,
             emailError: null,
-            passwordError: null,
             phoneError: null
         },
         signup: {
@@ -56,7 +55,6 @@ const authSlice = createSlice({
         changeSigninPassword(state, action) {
             const value = action.payload.trim()
             state.signin.password = value
-            state.signin.passwordError = value.match(validation.password) ? null : error.password
         },
         changeSigninPhone(state, action) {
             const value = action.payload.trim()
@@ -105,7 +103,6 @@ const authSlice = createSlice({
         clearValidations(state) {
             state.signin.phoneError = null
             state.signin.emailError = null
-            state.signin.passwordError = null
             state.signup.nameError = null
             state.signup.emailError = null
             state.signup.passwordError = null
