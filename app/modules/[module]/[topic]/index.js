@@ -14,7 +14,7 @@ const Topic = () => {
     const [isFullscreen, setIsFullscreen] = useState(false)
     const { video, content } = modules[currentModule].topics[currentTopic]
     const { domain } = Constants.expoConfig.extra
-
+    console.log(video);
     const enterFullscreenHandler = async () => {
         await lockAsync(OrientationLock.LANDSCAPE)
         setIsFullscreen(true)
@@ -24,16 +24,17 @@ const Topic = () => {
         await lockAsync(OrientationLock.PORTRAIT)
         setIsFullscreen(false)
     }
+    // console.log(`${domain}/stream/${video.slug}`)
 
     return (<Container style={styles.container}>
         <Stack.Screen options={{
             title: modules[currentModule].topics[currentTopic].title,
             headerShown: !isFullscreen,
-            statusBarHidden: isFullscreen,
+            // statusBarHidden: isFullscreen,
             navigationBarHidden: isFullscreen
         }} />
         <Playback
-            uri={`${domain}/stream/${video.slug}`}
+            uri={`http://dqy5w0tkqsil7.cloudfront.net/Videos/${video.slug}`}
             orientation={{
                 isFullscreen, enterFullscreenHandler, exitFullscreenHandler
             }}

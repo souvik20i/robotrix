@@ -6,6 +6,9 @@ import { colors } from "../../../colors"
 
 const Video = forwardRef(({ uri, isFullscreen, onPress, onChange }, ref) => {
     const { token } = useSelector(state => state.auth)
+    const replacedUri=uri.replace('http','https')
+    // console.log(replacedUri,token)
+
     return (<TouchableWithoutFeedback onPress={onPress}>
         <ExpoVideo
             ref={ref}
@@ -18,6 +21,8 @@ const Video = forwardRef(({ uri, isFullscreen, onPress, onChange }, ref) => {
             onPlaybackStatusUpdate={onChange}
             shouldCorrectPitch
             shouldPlay
+            // onLoad={(status)=>{console.log('Status',status);}}
+            // onError={(error)=>{console.log('Error:',error)}}
         />
     </TouchableWithoutFeedback>)
 })
