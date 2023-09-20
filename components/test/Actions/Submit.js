@@ -6,7 +6,6 @@ import { feedbackActions } from "../../../store/feedback-slice"
 import { useGet, usePost } from "../../../hooks/use-http"
 import { colors } from "../../../colors"
 
-import Constants from "expo-constants"
 import jwtDecode from "jwt-decode"
 import Button from "../../ui/Button"
 import Loader from "../../ui/Loader"
@@ -15,14 +14,13 @@ const Submit = ({ frameStyle, textStyle }) => {
     const router = useRouter()
     const dispatch = useDispatch()
     const { getRequest } = useGet(), { postRequest, isLoading: isPostLoading } = usePost()
-    const { domain } = Constants.expoConfig.extra
     const { token } = useSelector(state => state.auth)
     const { _id } = jwtDecode(token)
     const { modules, currentModule } = useSelector(state => state.module)
     const { questions } = modules[currentModule]
     const { givenAnswers } = useSelector(state => state.test)
     const [hasPassedEver, setHasPassedEver] = useState()
-    const moduleIndex = `module${currentModule + 1}`, url = `${domain}/progress/${_id}`
+    const moduleIndex = `module${currentModule + 1}`, url = `/progress/${_id}`
 
     useEffect(() => {
         (async () => {

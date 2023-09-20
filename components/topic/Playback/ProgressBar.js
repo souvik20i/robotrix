@@ -5,7 +5,6 @@ import { MaterialIcons } from "@expo/vector-icons"
 import { useGet, usePost } from "../../../hooks/use-http"
 import { colors } from "../../../colors"
 
-import Constants from "expo-constants"
 import jwtDecode from "jwt-decode"
 import useConversion from "../../../hooks/use-conversion"
 import AsyncStorage from "@react-native-async-storage/async-storage"
@@ -13,14 +12,14 @@ import Slider from "@react-native-community/slider"
 
 const ProgressBar = ({ current, length, orientation, onChange }) => {
     const { getRequest } = useGet(), { postRequest } = usePost()
-    const { domain } = Constants.expoConfig.extra
     const { token } = useSelector(state => state.auth)
     const { _id } = jwtDecode(token)
     const { currentModule, currentTopic } = useSelector(state => state.module)
     const [isFinished, setIsFinished] = useState()
     const currentTimestamp = useConversion(current), totalDuration = useConversion(length)
     const maxReachedKey = `max-reached-${currentModule}-${currentTopic}`
-    const moduleIndex = `module${currentModule + 1}`, topicIndex = `topic${currentTopic + 1}`, url = `${domain}/progress/${_id}`
+    const moduleIndex = `module${currentModule + 1}`, topicIndex = `topic${currentTopic + 1}`
+    const url = `/progress/${_id}`
 
     const changeProgress = async () => {
         const maxReached = parseInt(await AsyncStorage.getItem(maxReachedKey) || 0)

@@ -2,13 +2,16 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { feedbackActions } from "../store/feedback-slice"
 
+import Constants from "expo-constants"
+const { domain } = Constants.expoConfig.extra
+
 export const useGet = () => {
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false)
     const getRequest = async (url, token) => {
         try {
             setIsLoading(true)
-            const response = await fetch(url, {
+            const response = await fetch(`${domain}${url}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             })
             const { success, message, data } = await response.json()
@@ -31,7 +34,7 @@ export const usePost = () => {
     const postRequest = async (url, body, token = null) => {
         try {
             setIsLoading(true)
-            const response = await fetch(url, {
+            const response = await fetch(`${domain}${url}`, {
                 method: 'post',
                 body: JSON.stringify(body),
                 headers: {

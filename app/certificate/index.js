@@ -4,7 +4,6 @@ import { Stack } from "expo-router"
 import { useSelector } from "react-redux"
 import { useGet } from "../../hooks/use-http"
 
-import Constants from "expo-constants"
 import jwtDecode from "jwt-decode"
 import useAuth from "../../hooks/use-auth"
 import Container from "../../components/ui/Container"
@@ -19,12 +18,11 @@ const Certificate = () => {
     const { getRequest, isLoading } = useGet()
     const { token } = useSelector(state => state.auth)
     const { _id } = jwtDecode(token)
-    const { domain } = Constants.expoConfig.extra
     const [percent, setPercent] = useState(0)
 
     useEffect(() => {
         const getProgress = async () => {
-            const { completion } = await getRequest(`${domain}/progress/${_id}`, token)
+            const { completion } = await getRequest(`/progress/${_id}`, token)
             setPercent(completion)
         }
         getProgress().catch(console.error)

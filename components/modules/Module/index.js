@@ -1,10 +1,11 @@
 import { Text, Image, TouchableOpacity, StyleSheet } from "react-native"
 import { useRouter } from "expo-router"
 import { useDispatch } from "react-redux"
+import { FontAwesome } from "@expo/vector-icons"
 import { moduleActions } from "../../../store/module-slice"
 import { colors } from "../../../colors"
 
-const Module = ({ id, name, image }) => {
+const Module = ({ id, name, image, isDone }) => {
     const dispatch = useDispatch()
     const router = useRouter()
 
@@ -15,6 +16,7 @@ const Module = ({ id, name, image }) => {
 
     return (<TouchableOpacity style={styles.module} onPress={changeModuleHandler}>
         <Text style={styles.header}>Module {id + 1}</Text>
+        {isDone && <FontAwesome name="check-square-o" style={styles.checkmark} size={24} color={colors.success} />}
         <Image
             style={styles.image}
             source={{ uri: image }}
@@ -50,6 +52,11 @@ const styles = StyleSheet.create({
         color: colors.textDark,
         fontSize: 17,
         lineHeight: 30
+    },
+    checkmark: {
+        position: 'absolute',
+        right: '5%',
+        top: '7%'
     }
 })
 
