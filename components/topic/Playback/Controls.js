@@ -9,7 +9,7 @@ const Controls = ({ status, orientation, isDeliberatelyPaused, onPress, onToggle
     const {
         isPlaying, rate, positionMillis, playableDurationMillis, durationMillis, didJustFinish
     } = status
-console.log(status);
+
     return (<TouchableWithoutFeedback onPress={onPress}>
         <View style={{
             ...styles.controls,

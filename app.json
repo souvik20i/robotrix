@@ -24,14 +24,10 @@
       ]
     ],
     "extra": {
-      "domain": "http://robotrixbackend-env.eba-eqfkgqfc.ap-south-1.elasticbeanstalk.com",
+      "domain": "http://robotrix-backend-env.eba-f4dbha2k.ap-south-1.elasticbeanstalk.com",
       "eas": {
-        "projectId": "8a3ced75-ca8c-4b98-8ac4-d2bc58678bca"
+        "projectId": "d4fa25f5-8eb9-408b-bdc4-c750ba141f6a"
       }
-    },
-    "ios": {
-      "bundleIdentifier": "com.siddharth.robotrix",
-      "buildNumber":"1.0.1"
     }
   }
 }
