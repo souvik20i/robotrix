@@ -21,15 +21,15 @@ const Signup = () => {
     const options = {
         'Course': {
             current: signup.course,
-            items: ['BSc', 'BTech', 'BCom', 'BA', 'MSc', 'MTech', 'MCom', 'MA']
+            items: ['BTech', 'MTech', 'BCA', 'MCA', 'Others']
         },
         'Stream': {
             current: signup.stream,
-            items: ['Computer Science', 'Information Technology', 'Machine Learning', 'Internet of Things', 'Botany', 'Zoology', 'Physiology', 'Maths', 'Physics', 'Chemisty', 'Commerce', 'English', 'Geography']
+            items: ['CSE', 'IT', 'CSE(IOT)', 'CSE(IOTCSBT)', 'CSE(AI)', 'CSE(AIML)', 'CSBS', 'ECE', 'EEE', 'EE', 'ME', 'Others']
         },
         'Section': {
             current: signup.section,
-            items: ['Single', 'Double', 'Triple']
+            items: ['Single', 'Double', 'Others']
         }
     }
 
