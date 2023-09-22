@@ -18,6 +18,7 @@ const SignupButton = () => {
             name, email, password, phone, enrollmentno: enrollment, course, stream, section
         })
         await AsyncStorage.setItem('token', token)
+        router.back()
         router.replace('/')
     })
 

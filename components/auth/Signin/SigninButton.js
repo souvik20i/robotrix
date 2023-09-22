@@ -16,6 +16,7 @@ const SigninButton = () => {
             emailOrPhone: email || phone, password
         })
         await AsyncStorage.setItem('token', token)
+        router.back()
         router.replace('/')
     })
 
