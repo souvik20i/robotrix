@@ -24,8 +24,6 @@ const Controls = ({ status, orientation, isDeliberatelyPaused, onPress, onToggle
                 isPlaying={isPlaying}
                 isBuffering={positionMillis === playableDurationMillis || (!isDeliberatelyPaused && !isPlaying)}
                 isFinished={didJustFinish}
-                current={positionMillis}
-                length={durationMillis}
                 onToggle={onToggle}
                 onChange={onChangePosition}
             />

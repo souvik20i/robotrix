@@ -4,11 +4,8 @@ import { colors } from "../../../colors"
 
 import Loader from "../../ui/Loader"
 
-const Play = ({ isPlaying, isBuffering, isFinished, current, length, onToggle, onChange }) => {
-    const replayHandler = () => onChange(Math.max(current - 10000, 0))
-    const forwardHandler = () => onChange(Math.min(current + 10000, length))
+const Play = ({ isPlaying, isBuffering, isFinished, onToggle, onChange }) => {
     const playAgainHandler = () => onChange(0)
-
     return (<TouchableWithoutFeedback>
         {isFinished
             ?
@@ -17,9 +14,6 @@ const Play = ({ isPlaying, isBuffering, isFinished, current, length, onToggle, o
             </TouchableOpacity>
             :
             <View style={styles.middleBar}>
-                <TouchableOpacity onPress={replayHandler}>
-                    <MaterialIcons name="replay-10" size={40} color={colors.textLight} />
-                </TouchableOpacity>
                 <TouchableWithoutFeedback onPress={onToggle}>
                     {isBuffering ? <Loader color={colors.textLight} raw /> : isPlaying
                         ?
@@ -28,9 +22,6 @@ const Play = ({ isPlaying, isBuffering, isFinished, current, length, onToggle, o
                         <FontAwesome name="play" size={40} color={colors.textLight} />
                     }
                 </TouchableWithoutFeedback>
-                <TouchableOpacity onPress={forwardHandler}>
-                    <MaterialIcons name="forward-10" size={40} color={colors.textLight} />
-                </TouchableOpacity>
             </View>
         }
     </TouchableWithoutFeedback>)

@@ -24,7 +24,6 @@ const Playback = ({ uri, orientation }) => {
             success: false
         }))
     }, [status.isPlaying])
-    console.log(status)
 
     const togglePlaybackHandler = () => {
         if (status.isPlaying) {
