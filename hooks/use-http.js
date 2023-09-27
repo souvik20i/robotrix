@@ -64,17 +64,21 @@ export const useDelete = () => {
     const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
     const navigator = useNavigation()
-    const deleteRequest = async (url, token, failureUrl) => {
+    const deleteRequest = async (email, token) => {
         try {
             setIsLoading(true)
-            const response = await fetch(`${domain}${url}`, {
+            const response = await fetch(`${domain}/delete`, {
                 method: 'delete',
-                headers: { 'Authorization': `Bearer ${token}` }
+                body: JSON.stringify({ email }),
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
             })
             const { success, message } = await response.json()
             setIsLoading(false)
             if (success) navigator.reset({ index: 0, routes: [{ name: 'index' }] })
-            else router.push(failureUrl)
+            else router.push('/modules')
             dispatch(feedbackActions.sendFeedback({ success, message }))
         } catch (err) {
             setIsLoading(false)

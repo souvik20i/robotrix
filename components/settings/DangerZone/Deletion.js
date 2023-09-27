@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { View, Text, StyleSheet } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
-import { feedbackActions } from "../../../store/feedback-slice"
 import { authActions } from "../../../store/auth-slice"
 import { useDelete } from "../../../hooks/use-http"
 import { colors } from "../../../colors"
@@ -20,8 +19,7 @@ const Deletion = () => {
 
     const deletionHandler = async () => {
         if (!isConfirmed) return
-        await deleteRequest(`/delete/${user._id}`, token, '/modules')
-        dispatch(feedbackActions.dismissFeedback())
+        await deleteRequest(user.email, token)
         await AsyncStorage.removeItem('token')
         dispatch(authActions.clearToken())
     }
@@ -51,7 +49,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     deletion: {
-        width:'100%',
+        width: '100%',
         marginTop: 30
     },
     deleteFrame: {
