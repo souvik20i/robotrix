@@ -10,7 +10,7 @@ const Field = ({ label, data }) => {
 
 const styles = StyleSheet.create({
     field: {
-        width: '100%',
+        width: '90%',
         marginBottom: '10%',
         borderWidth: 1.5,
         borderRadius: 10,
@@ -23,10 +23,11 @@ const styles = StyleSheet.create({
         left: 10,
         color: colors.textGrey,
         backgroundColor: colors.bgPrimary,
+        fontSize: 12,
         paddingHorizontal: 3
     },
     data: {
-        fontSize: 20,
+        fontSize: 17,
         left: 10
     }
 })

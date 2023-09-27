@@ -1,10 +1,18 @@
+import { useEffect, useRef } from "react"
 import { View, Text, TextInput, StyleSheet } from "react-native"
 import { colors } from "../../../colors"
 
 const ConfirmInput = ({ user, onConfirm }) => {
+    const confirmRef = useRef()
+
+    useEffect(() => {
+        if (confirmRef.current) confirmRef.current.focus()
+    }, [])
+
     return (<View>
         <Text style={styles.annot}>Please enter your email <Text style={styles.email}>{user.email}</Text></Text>
         <TextInput
+            ref={confirmRef}
             style={styles.input}
             onChangeText={value => onConfirm(user.email === value)}
         />

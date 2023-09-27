@@ -35,7 +35,6 @@ const Deletion = () => {
                 frameStyle={{
                     ...styles.deleteFrame,
                     backgroundColor: isConfirmed ? colors.error : colors.bgGrey,
-                    borderWidth: isConfirmed ? 0 : 1,
                 }}
                 textStyle={{
                     ...styles.deleteText,
@@ -52,10 +51,10 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     deletion: {
+        width:'100%',
         marginTop: 30
     },
     deleteFrame: {
-        borderColor: colors.textGrey,
         borderRadius: 15,
         marginHorizontal: 0
     },

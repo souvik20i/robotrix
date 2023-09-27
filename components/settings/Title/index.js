@@ -15,9 +15,8 @@ const styles = StyleSheet.create({
         marginBottom: '7%'
     },
     label: {
-        color: colors.textDark,
-        fontSize: 17,
-        fontWeight: 'bold',
+        color: colors.textGrey,
+        fontSize: 15,
         paddingHorizontal: 10
     }
 })

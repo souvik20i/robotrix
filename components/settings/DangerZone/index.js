@@ -32,14 +32,16 @@ const DangerZone = () => {
 
 const styles = StyleSheet.create({
     annot: {
-        lineHeight: 20
+        lineHeight: 20,
+        paddingHorizontal: '5%'
     },
     deleteFrame: {
         backgroundColor: colors.error,
         borderRadius: 20,
-        marginHorizontal: 0
+        marginHorizontal: '10%'
     },
     deleteText: {
+        fontSize: 15,
         paddingVertical: 10
     }
 })
