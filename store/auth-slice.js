@@ -5,6 +5,7 @@ const authSlice = createSlice({
     name: 'auth',
     initialState: {
         token: null,
+        user: null,
         isSigninActive: true,
         signin: {
             email: null,
@@ -36,8 +37,12 @@ const authSlice = createSlice({
         changeToken(state, action) {
             state.token = action.payload
         },
+        changeUser(state, action) {
+            state.user = action.payload
+        },
         clearToken(state) {
             state.token = null
+            state.user = null
         },
         turnToSignin(state) {
             state.isSigninActive = true

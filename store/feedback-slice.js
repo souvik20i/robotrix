@@ -5,19 +5,22 @@ const feedbackSlice = createSlice({
     initialState: {
         isShown: false,
         message: null,
-        success: null
+        success: null,
+        isDeletionModal: false
     },
     reducers: {
         sendFeedback(state, action) {
-            const { message, success } = action.payload
+            const { message, success, isDeletionModal } = action.payload
             state.isShown = true
             state.message = message
             state.success = success
+            state.isDeletionModal = isDeletionModal
         },
         dismissFeedback(state) {
             state.isShown = false
             state.message = null
             state.success = null
+            state.isDeletionModal = false
         }
     }
 })

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useRouter, useNavigation } from "expo-router"
 import { useDispatch } from "react-redux"
 import { feedbackActions } from "../store/feedback-slice"
 
@@ -19,6 +20,7 @@ export const useGet = () => {
             if (!success) throw new Error(message)
             return data
         } catch (err) {
+            setIsLoading(false)
             dispatch(feedbackActions.sendFeedback({
                 message: err.message,
                 success: false
@@ -47,6 +49,7 @@ export const usePost = () => {
             if (!success) throw new Error(message)
             return data
         } catch (err) {
+            setIsLoading(false)
             dispatch(feedbackActions.sendFeedback({
                 message: err.message,
                 success: false
@@ -54,6 +57,34 @@ export const usePost = () => {
         }
     }
     return { postRequest, isLoading }
+}
+
+export const useDelete = () => {
+    const dispatch = useDispatch()
+    const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
+    const navigator = useNavigation()
+    const deleteRequest = async (url, token, failureUrl) => {
+        try {
+            setIsLoading(true)
+            const response = await fetch(`${domain}${url}`, {
+                method: 'delete',
+                headers: { 'Authorization': `Bearer ${token}` }
+            })
+            const { success, message } = await response.json()
+            setIsLoading(false)
+            if (success) navigator.reset({ index: 0, routes: [{ name: 'index' }] })
+            else router.push(failureUrl)
+            dispatch(feedbackActions.sendFeedback({ success, message }))
+        } catch (err) {
+            setIsLoading(false)
+            dispatch(feedbackActions.sendFeedback({
+                message: err.message,
+                success: false
+            }))
+        }
+    }
+    return { deleteRequest, isLoading }
 }
 
 export const catchAsync = func => {

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { View, Text, TouchableOpacity, TouchableWithoutFeedback, StyleSheet } from 'react-native'
-import { Entypo } from '@expo/vector-icons'
 import { colors } from "../../../colors"
 
 import Speed from './Speed'
@@ -26,9 +25,6 @@ const TopBar = ({ rate, onChangeRate }) => {
                     />
                 }
             </View>
-            <TouchableOpacity>
-                <Entypo name="dots-three-vertical" size={17} color={colors.textLight} />
-            </TouchableOpacity>
         </View>
     </TouchableWithoutFeedback>)
 }
@@ -45,7 +41,7 @@ const styles = StyleSheet.create({
     },
     rate: {
         color: colors.textLight,
-        paddingHorizontal: 20
+        paddingHorizontal: 10
     }
 })
 

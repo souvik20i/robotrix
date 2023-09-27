@@ -9,7 +9,7 @@ import Start from "../components/home/Start"
 import Footer from "../components/home/Footer"
 
 const Home = () => {
-    const { user } = useAuth()
+    const user = useAuth()
     return (<Container>
         <Stack.Screen options={{ headerShown: false }} />
         <ImageBackground
@@ -18,7 +18,7 @@ const Home = () => {
             style={styles.background}
         >
             <Title />
-            {user ? <Start name={user} /> : <Auth />}
+            {user ? <Start name={user.name} /> : <Auth />}
             <Footer />
         </ImageBackground>
     </Container>)

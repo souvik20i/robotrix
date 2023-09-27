@@ -17,12 +17,13 @@ const useAuth = () => {
             if (!token) return
             dispatch(authActions.changeToken(token))
             const { _id } = jwtDecode(token)
-            const { name } = await getRequest(`/user/${_id}`, token)
-            setUser(name)
+            const user = await getRequest(`/user/${_id}`, token)
+            dispatch(authActions.changeUser(user))
+            setUser(user)
         }))()
     }, [])
 
-    return { user }
+    return user
 }
 
 export default useAuth

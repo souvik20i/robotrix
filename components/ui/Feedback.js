@@ -4,14 +4,16 @@ import { feedbackActions } from "../../store/feedback-slice"
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import { colors } from "../../colors"
 
+import Deletion from "../settings/DangerZone/Deletion"
+
 const Feedback = () => {
-    const { isShown, message, success } = useSelector(state => state.feedback)
+    const { isShown, message, success, isDeletionModal } = useSelector(state => state.feedback)
     const dispatch = useDispatch()
     const dismissHandler = () => {
         dispatch(feedbackActions.dismissFeedback())
     }
 
-    return (<Modal transparent={true} visible={isShown} animationType='slide'>
+    return (<Modal transparent={!isDeletionModal} visible={isShown} animationType='slide' onRequestClose={dismissHandler}>
         <Pressable style={styles.modal} onPress={dismissHandler}>
             <View style={styles.feedback}>
                 <>
@@ -19,7 +21,9 @@ const Feedback = () => {
                         ? <Ionicons name="shield-checkmark" size={50} color={colors.success} />
                         : <FontAwesome name="warning" size={50} color={colors.error} />
                     }
-                    <Text style={styles.message}>{message}</Text>
+                    {isDeletionModal
+                        ? <Deletion />
+                        : <Text style={styles.message}>{message}</Text>}
                 </>
             </View>
         </Pressable>
