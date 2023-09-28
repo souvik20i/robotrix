@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useRouter, useNavigation } from "expo-router"
+import { useNavigation } from "expo-router"
 import { useDispatch } from "react-redux"
 import { feedbackActions } from "../store/feedback-slice"
 
@@ -62,8 +62,6 @@ export const usePost = () => {
 export const useDelete = () => {
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false)
-    const router = useRouter()
-    const navigator = useNavigation()
     const deleteRequest = async (email, token) => {
         try {
             setIsLoading(true)
@@ -75,11 +73,9 @@ export const useDelete = () => {
                     'Content-Type': 'application/json'
                 }
             })
-            const { success, message } = await response.json()
+            const resJson = await response.json()
             setIsLoading(false)
-            if (success) navigator.reset({ index: 0, routes: [{ name: 'index' }] })
-            else router.push('/modules')
-            dispatch(feedbackActions.sendFeedback({ success, message }))
+            return resJson
         } catch (err) {
             setIsLoading(false)
             dispatch(feedbackActions.sendFeedback({

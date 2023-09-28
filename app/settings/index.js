@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     settings: {
         height: '100%',
         paddingVertical: '7%',
-        paddingHorizontal: '2%'
+        paddingHorizontal: '3%'
     }
 })
 

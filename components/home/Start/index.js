@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet } from "react-native"
 import { useRouter } from "expo-router"
-import { useDispatch } from "react-redux"
-import { authActions } from "../../../store/auth-slice"
+import { catchAsync } from "../../../hooks/use-http"
 import { FontAwesome } from '@expo/vector-icons'
 import { colors } from "../../../colors"
 
@@ -10,17 +9,15 @@ import Button from "../../ui/Button"
 
 const Start = ({ name }) => {
     const router = useRouter()
-    const dispatch = useDispatch()
 
     const startHandler = () => {
         router.push('/modules')
     }
 
-    const signOutHandler = async () => {
+    const signOutHandler = catchAsync(async () => {
         await AsyncStorage.removeItem('token')
-        dispatch(authActions.clearToken())
         router.replace('/')
-    }
+    })
 
     return (<View style={styles.start}>
         <Text style={styles.welcome}>Welcome, {name.split(' ')[0]}</Text>

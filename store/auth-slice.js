@@ -42,6 +42,8 @@ const authSlice = createSlice({
         },
         clearToken(state) {
             state.token = null
+        },
+        clearUser(state) {
             state.user = null
         },
         turnToSignin(state) {

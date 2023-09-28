@@ -1,4 +1,4 @@
-import { View ,StyleSheet} from "react-native"
+import { View, StyleSheet } from "react-native"
 import { useSelector } from "react-redux"
 import { Ionicons } from "@expo/vector-icons"
 import { colors } from "../../../colors"
@@ -8,6 +8,8 @@ import Field from "./Field"
 
 const UserDetails = () => {
     const { user } = useSelector(state => state.auth)
+    const { name, email, phone, enrollmentno } = user
+
     return (<View>
         <Title
             label={'Your Account'}
@@ -15,18 +17,18 @@ const UserDetails = () => {
         />
         <View style={styles.fields}>
             {user && <>
-                <Field label={'Name'} data={user.name} />
-                <Field label={'Email'} data={user.email} />
-                <Field label={'Phone'} data={user.phone} />
-                <Field label={'Enrollment No'} data={user.enrollmentno} />
+                <Field label={'Name'} data={name} />
+                <Field label={'Email'} data={email} />
+                <Field label={'Phone'} data={phone} />
+                <Field label={'Enrollment No'} data={enrollmentno} />
             </>}
         </View>
     </View>)
 }
 
 const styles = StyleSheet.create({
-    fields:{
-        alignItems:'center'
+    fields: {
+        alignItems: 'center'
     }
 })
 
